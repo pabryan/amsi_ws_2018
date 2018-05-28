@@ -1,0 +1,62 @@
+* Summary
+
+The role of curvature in geometry and topology is quite subtle but comparison geometry allows us to glimpse some of the hidden interactions between geometry and topology. The material is both classical and contemporary with classical fundamental results like the Bishop-Gromov volume comparison playing a very important role in contemporary research such as in the study of the Ricci flow. The theory is quite beautiful exhibiting how powerful modern techniques in analysis may be used to expose geometric and topological phenomena and illuminate aspects of Gromov’s little monster, namely the curvature tensor.
+
+We will develop comparison geometry as expressed by the Rauch comparison theorems through the Riccati equation which is the linearisation off the geodesic equation, an innocuous looking equation belying much complexity. In particular we will see how curvature affects distance, triangles volume, and surface area and also some topological implications. If all goes well, we shall sketch the proof of the famous, classical topological sphere theorem of Berger-Klinenberg and discuss the contemporary differentiable sphere theorem of Brendle-Schoen as well as some open problems.
+
+* Reading
+
+Comparison Theorems in Riemannian Geometry, J-H. Eschenburg
+
+http://myweb.rz.uni-augsburg.de/~eschenbu/comparison.pdf
+
+* Biography
+
+Paul Bryan is a researcher in geometric analysis at the university of Macquarie. He received his Ph.D. in 2012 for work relating isoperimetric comparisons with curvature flows such as the Ricci Flow and the Curve Shortening Flow. In between, he worked in China, USA, UK, Germany and Australia. He spent 2017 as a Research Fellow at UQ and is very much looking forward to visiting Brisbane again for the winter school.
+
+Paul’s research focuses particularly on geometric evolution equations such as the Ricci Flow and the Mean Curvature Flow where one deforms a geometric structure via a gradient flow to decrease an energy in the fastest way possible. This is a classic technique in the calculus of variations, used here to determine optimal, or canonical geometric structures. Such methods have enjoyed considerable success in modern times, with the famous resolution of the Poincaré Conjecture and Thurston Geometrisation Conjecture classifying the structure of three-dimensional spaces modelling the universe in which we live as well as the Riemannian Penrose Inequality relating the mass in the universe with the area of Black Holes. A simple illustrative example is that of a soap bubble; upon blowing a soap bubble, it’s shape evolves according to reducing the surface tension as fast as possible which in turn depends on how the bubble is curved. As we all know, the soap bubble becomes spherical which is the desired canonical geometry – the curvature is constant everywhere.
+
+* Lecture Notes
+** Lecture 1
+- Curvature Tensor
+  - Gromov's little monster!
+  - Sectional curvature
+  - Sectional curvature as Gauss curvature of embedded planes
+  - Ricci curvature
+  - Scalar curvature
+  - Curvature operator
+- Curvature complexity
+  - Surfaces
+  - Constant sectional curvature
+  - Weyl tensor, Shouten tensor, Ricci decomposition
+- Constant sectional curvature
+  - Volume of geodesic balls, area, MCF
+- Small scale asymptotic behaviour
+  - Scalar and Ricci curvatures as Taylor expansion of volume
+  - Interpretations of curvature tensor
+** Lecture 2
+- Geodesic Equation
+- Exponential map
+- Variations of geodesics
+  - Jacobi Equation
+  - Geodesic variations <-> Jacobi fields
+  - Riccati equation
+- Cut locus
+  - Cheeger-Grommol mention somewhere about how bad the \(\exp\) map is in general in terms of lifting from \(M\) to \(T_p M\) and trying to use \(\exp_p\) as a covering map. Worth mentioning since all the complexity is contained in there by Hopf-Rinow.
+- Constant sectional curvature spaces
+** Lecture 3
+- Comparison Theory for Riccati
+- Rauch comparison theorems
+- Bishop-Gromov volume comparison theorem
+- Myers Theorem and finite fundamental group
+** Lecture 4
+- Topogonov - illustrates how to deal with cut/conjugate points - very important!
+- Bochner technique
+- Growth of fundamental group - tricky, just sketch/discuss
+- Gromov's Betti number estimates - tricky, just sketch/discuss
+- Soul Theorem - too much to discuss/mention?
+- Splitting Theorem - too much discuss/mention?
+** Lecture 5
+- Homeomorphic sphere theorem
+- Some remarks on differentiable sphere theorem and Brendle-Schoen
+- Some remarks on Milnor conjecture and open manifolds
