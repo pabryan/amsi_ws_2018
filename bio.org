@@ -1,0 +1,35 @@
+* Bio for winter school
+
+Paul Bryan is a researcher in geometric analysis at the university of Macquarie. He received his Ph.D. in 2012 for work relating isoperimetric comparisons with curvature flows such as the Ricci Flow and the Curve Shortening Flow. In between, he worked in China, USA, UK, Germany and Australia. He spent 2017 as a Research Fellow at UQ and is very much looking forward to visiting Brisbane again for the winter school.
+
+Paul's research focuses particularly on geometric evolution equations such as the Ricci Flow and the Mean Curvature Flow where one deforms a geometric structure via a gradient flow to decrease an energy in the fastest way possible. This is a classic technique in the calculus of variations, used here to determine optimal, or canonical geometric structures. Such methods have enjoyed considerable success in modern times, with the famous resolution of the Poincaré Conjecture and Thurston Geometrisation Conjecture classifying the structure of three-dimensional spaces modelling the universe in which we live as well as the Riemannian Penrose Inequality relating the mass in the universe with the area of Black Holes. A simple illustrative example is that of a soap bubble; upon blowing a soap bubble, it's shape evolves according to reducing the surface tension as fast as possible which in turn depends on how the bubble is curved. As we all know, the soap bubble becomes spherical which is the desired canonical geometry - the curvature is constant everywhere.
+
+* Interview questions
+
+1. Can you tell us about your work? What drives your interest in this field?
+
+My research focuses particularly on non-linear, geometric evolution equations such as the Ricci Flow and the Mean Curvature Flow where one deforms a geometric structure via a gradient flow to decrease an energy in the fastest way possible. This is a classic technique in the calculus of variations, used here to determine optimal, or canonical geometric structures. Such methods have enjoyed considerable success in modern times, with the famous resolution of the Poincaré Conjecture and Thurston Geometrisation Conjecture classifying the structure of three-dimensional spaces modelling the universe in which we live as well as the Riemannian Penrose Inequality relating the mass in the universe with the area of Black Holes.
+
+A simple illustrative example is that of a soap bubble; upon blowing a soap bubble, it's shape evolves according to reducing the surface tension as fast as possible which in turn depends on how the bubble is curved. As we all know, the soap bubble becomes spherical which is the desired canonical geometry - the curvature is constant everywhere.
+
+I can't really explain what "drives my interest". I just enjoy working on these problems. I never really planned to work in my field - there was just a sequence of events starting with an undergraduate summer research project that lead to honours, PhD. and so on. I can't say I really think much about why I do what I do. I simply enjoy doing it and seem to be reasonably proficient at it.
+
+3. What are your favourite applications of your work?
+
+Like G.H. Hardy, I don't really think a good deal about the applications of my work. Unlike Hardy however, I don't proudly announce that there are no applications of my work! I don't know that anyone has used my work for anything outside mathematics, but who knows what may occur in the future.
+
+Right now I'm interested in exploring the landscape as it were; adding a little to humanities understanding of non-linear geometric problems. This is how much of mathematics developed - some was immediately of interest to applications and some was just for the sake of understanding. It's very difficult to estimate the impact of such "pure mathematics" as it only becomes clear over time - possibly centuries!
+
+3. Why did you become a mathematician/statistician?
+
+Just following my nose so to speak. I left high school in year 11, got bored and so went to TAFE. I chose my course (electronics) because I was disorganised so most courses had closed enrolment by the time I got around to enrolling. I picked something that sounded interesting out of what was left was and only required a year 10 certificate. Fortunately I both enjoyed it and did well and it lead into me studying TV/VCR and PC servicing and the software development.
+
+I got a job working repairing computer monitors which led to repairing PC's and laptops and to providing IT tech support. Then I got a job administering GNU/Linux systems at TAFE (the same one I originally learnt how to from!) and became interested in hacking the Linux kernel so I went to university to study computer science.
+
+I hadn't taken any calculus before and I had to take first year maths. I found this tremendously more interesting than the computer science so I switched to mathematics and the rest is as they say history.
+
+The turning point that led me to work in my field was when I enrolled in a summer research program. The coordinator of the program at the time was Ben Andrews. I had taken his analysis course and done reasonably well so when I asked him about potential projects and supervisors, he suggested I work with him. We studied Huisken's paper on distance comparison for the curve shortening flow and discussed various ways to interpret and extend the result. This led to my honours project and then Ph.D. project.
+
+4. Do you have any advice for future researchers?
+
+I'm not entirely sure I am qualified to give advice! I didn't make any plans to become a researcher - it just sort of happened naturally. I was lucky in that I just did whatever seemed interesting at the time and it all worked out. My dad used to say "it will be there when you need it". I guess that's my main advice. Try not to worry too much. If you like what you do, you'll put in the time and effort because it's not a chore, it's more like an enjoyable hobby :)
