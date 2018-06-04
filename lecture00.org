@@ -21,6 +21,120 @@ More details are given in [[#second_derivative][Second Derivative]].
 
 In particular, when working in coordinates, or more generally with respect to a local frame, often you will see \(\nabla_i \nabla_j Z\) to mean \(\nabla^2 Z (\partial_i, \partial_j)\). For the most part, we will not work with respect to any local frames, but if the need arises we will write \(\nabla^2_{ij} Z\) for \(\nabla^2 Z(\partial_i, \partial_j)\).
 
+* Vector Bundles
+
+#+BEGIN_defn
+A vector bundle is a triple \((E, \pi, M)\) with \(\pi : E \to M\) and such that there is an open cover \(U_i\) (local trivialisation) of \(M\) with diffeomorphisms
+\[
+\varphi_i : \pi^{-1} (U_i) \to U_i \times \mathbb{R}^k
+\]
+satisfying
+\[
+\pi_1 \circ \varphi_i = \pi
+\]
+where \(\pi_1 : U_i \times \mathbb{R}^k \to \mathbb{R}^k\) is the projection onto the first factor, and such that the transitions functions
+\[
+\varphi_i^{-1} \circ \varphi_j : U_i \cap U_j \times \mathbb{R}^k \to U_i \cap U_j \times \mathbb{R}^k
+\]
+are of the form
+\[
+(x, X) \in U_i \cap U_j \times \mathbb{R}^k \mapsto (x, \tau_{ij}(x) \cdot X)
+\]
+where \(\tau_{ij} : U_i \cap U_j \to \operatorname{GL}_k(\mathbb{R})\) is a smooth map.
+#+END_defn
+
+Given \(x \in M\), the /fibre/ \(E_x\) of a vector bundle over \(x\) is the set \(\pi^{-1} (\{x\})\). It has a vector space structure obtained by choosing a local trivialistion \(\varphi : \pi^{-1}(U) \to U \times \mathbb{R}^k\) with \(x \in U\) and for \(X, Y \in E_x\), \(\lambda \in \mathbb{R}\) defining
+\[
+X +_{\varphi} Y = \varphi^{-1} ((x, \pi_2 \circ \varphi(X) + \pi_2 \circ \varphi(Y)))
+\]
+and
+\[
+\lambda \cdot_{\varphi} X = \varphi^{-1}((x, \lambda \cdot \pi_2 \circ \varphi(X)))
+\]
+where the \(\varphi\) subscripts on the operations \(+, \cdot\) are to emphasise that these definitions depend on the local trivialisation \(\varphi\). The idea of course is to next show that the definition is independent of the choice of local trivialisation.
+
+Let's just unpack the definition a little first: given \(X \in E_x\) we have \(\pi(X) = x\). Then \(\varphi(X) = (x, \bar{X})\) for a uniqune \(\bar{X} \in \mathbb{R}^k\). This follows since \(\varphi(X) \in U \times \mathbb{R}^k\) satisfies \(\pi_1 \circ \varphi (X) = \pi(X) = x\). Similarly for \(Y\). Then to add \(X\) and \(Y\) we note that \(\pi_2 \circ \varphi(X) = \bar{X}\) (likewise for \(Y\)) and we add \(\bar{X}, \bar{Y} \in \mathbb{R}^k\) to get the element
+\[
+(x, \bar{X} + \bar{Y}) \in U \times \mathbb{R}^k.
+\]
+Then take \(\varphi^{-1}\) of the result to get an element in \(E_x\). Similar considerations apply to \(\lambda \cdot_{\varphi} X\).
+
+*Quick exercise*: Check that \(X + Y\) so defined is in fact in \(E_x\).
+
+*Quick exercise*: Check the same for \(\lambda X\).
+
+*Quick exercise*: Check that \(+_{\varphi}, \cdot_{\varphi}\) satisfy the axioms for a vector space. That is, \(+_{\varphi}\) gives \(E_x\) the structure of an Abelian group and \(\cdot_{\varphi}\) distributes over \(+_{\varphi}\) appropriately etc.
+
+Now let's see the independence of the choice of local trivialisation.
+
+*Using the definitions exercise*: Let \(\varphi : \pi^{-1}(U) \to U \times \mathbb{R}^k\) and \(\psi : \pi^{-1}(V) \to V \times \mathbb{R}^k\) be local trivialisations with \(x \in U\) and \(x \in V\). Show that
+\[
+\varphi(X +_{\psi} Y) = \varphi(X +_{\varphi} Y)
+\]
+and hence, since \(\varphi\) is a diffeomorphism,
+\[
+X +_{\psi} Y = X +_{\varphi} Y.
+\]
+/Hint/: Show that
+\[
+\varphi(X +_{\psi} Y) = (x, \tau(x) \cdot (\pi_2 \circ \psi(X)) + \tau(x) \cdot (\pi_2 \circ \psi(Y)))
+\]
+where \(\tau(x) = \varphi \circ \psi^{-1} (x)\) is the transition function from \(\psi\) to \(\varphi\) at \(x\); it is an invertible linear transformation. On the other hand,
+\[
+\varphi(X +_{\varphi} Y) = (x, \pi_2 \circ \varphi(X) + \pi_2 \circ \varphi(Y)).
+\]
+To finish you need to argue that
+\[
+\tau(x) \cdot (\pi_2 \circ \psi(X)) = \pi_2 \circ \varphi(X).
+\]
+
+* Tensors Bundles
+
+The main vector bundles of interest to use are the /tangent bundle/ \(\pi: TM \to M\), the /co-tangent bundle/ \(\pi^{\ast} : T^{\ast} M \to M\) and various tensor products \(\pi^p_q : T^p_q M = \otimes^p T^{\ast} M \bigotimes \otimes^q T^M \to M\). These are all constructed from \(TM\). For example, to construct \(T^{\ast} M\), we may first take the set
+\[
+T^{\ast} M = \bigsqcup_{x \in M} (T_x M)^{\ast}
+\]
+with projection map \(\pi^{\ast}\) that takes \(\alpha \in T^{\ast} M\) to the unique \(x \in M\) such that \(\alpha \in (T_x M)^{\ast}\). That is, \((T_x M)^{\ast} = \operatorname{Hom} (T_x M \to \mathbb{R})\) is the dual space of \(T_x M\) consisting of linear maps \(T_x M \to \mathbb{R}\) and \(T^{\ast} M\) is the disjoint union of all of them over \(x \in M\).
+
+The vector bundle structure is obtained by the vector bundle structure for \(TM\) as follows: take a local trivialistion \(\varphi : \pi^{-1} U \to U \times \mathbb{R}^n\) of \(TM\). For any \(\alpha \in (\pi^{\ast})^{-1} (U)\) (so that \(\pi^{\ast} \alpha \in U\)) and any \((X^1, \dots, X^n) \in \mathbb{R}^n\) define
+\[
+\bar{\alpha}_{\varphi} ((X^1, \cdots, X^n)) = \alpha(\varphi^{-1} (\pi^{\ast}(\alpha), (X^1, \dots, X^n))).
+\]
+In other words, letting \(x = \pi^{\ast} (\alpha)\), we take any \((X^1, \cdots, X^n) \in \mathbb{R}^n\) and map \((x, (X^1, \cdots, X^n))\) to \(T_x M\) by \(\varphi^{-1}\) and then apply \(\alpha\). Remember \(\alpha\) is a linear map \(T_x M \to \mathbb{R}\) so that this is well defined and produces a real number.
+
+*Quick Exercise from the definitions*: Check that \(\bar{\alpha}_{\varphi}\) is a linear map \(\mathbb{R}^n \to \mathbb{R}\).
+
+We can identify \(\bar{\alpha}_{\varphi}\) with the element \((\bar{\alpha}_{\varphi} ((1, 0, \dots, 0)), \dots, \bar{\alpha}_{\varphi} ((0, \dots, 0, 1))) \in \mathbb{R}^n\).
+
+So now we have a map
+\[
+\varphi^{\ast} : \alpha \in (\pi^{\ast})^{-1} (U) \mapsto (\pi^{\ast}(\alpha), (\bar{\alpha}_{\varphi} ((1, 0, \dots, 0)), \dots, \bar{\alpha}_{\varphi} ((0, \dots, 0, 1))) \in U \times \mathbb{R}^k.
+\]
+We can of course do this for any trivialisation of \(TM\) and so we obtain a candidate family \(\{\varphi_i^{\ast}\}\) of trivialisations for \(T^{\ast} M\) from the trivialisations \(\{\varphi_i\}\) of \(TM\). Notice that we have \(\pi_1 \circ \varphi^{\ast} = \pi^{\ast} (\alpha)\). We just need to verify the form of the transition functions
+\[
+(\varphi_i^{\ast})^{-1} \circ \varphi_j^{\ast}.
+\]
+
+*Exercise from the definitions and linear algebra*: Show that
+\[
+(\varphi_i^{\ast})^{-1} \circ \varphi_j^{\ast} (x, \bar{\alpha}_{\varphi}) = (x, (\tau_{ij}^{-1})^T(x) \cdot \bar{\alpha}_{\varphi})
+\]
+where \(\tau_{ij}\) is the transition function for \(TM\) and \(T\) denotes the transpose. /Hint/: you only really need to do this at the vector space level proving that an isomorphismr \(\tau : \mathbb{R}^n \to \mathbb{R}^n\) induces the isomorphism \((\tau^{-1})^T : (\mathbb{R}^n)^{\ast} \to (\mathbb{R}^n)^{\ast}\). Then the transition functions are obtained by just carrying the \(x\) through.
+
+An equivalent way to construct to \(T^{\ast} M\) is to apply the so-called /vector bundle gluing lemma/ to the transition functions \(\tau_{ij}^{\ast} = (\tau_{ij}^{-1})^T\). This approach gives a quite general approach to constructing new vector bundles from old; one just has to construct the appropriate local trivialisations from the existing ones. All the tensor bundles may be constructed this way for example.
+
+*Exercise*: Look up the vector bundle gluing lemma.
+
+Similar constructions apply to create the tensor bundles \(T^p_q M\). For example, the transition functions for \(T^1_1 M = T^{\ast}M \otimes TM\) are
+\[
+(\tau^1_1)_{ij} = \tau_{ij}^{\ast} \otimes \tau_{ij}.
+\]
+
+More generally,
+\[
+(\tau^p_q)_{ij} = \otimes^p \tau_{ij}^{\ast} \bigotimes \otimes^q \tau_{ij}.
+\]
+
 * The Curvature Tensor
   :PROPERTIES:
   :CUSTOM_ID: curvature_tensor
