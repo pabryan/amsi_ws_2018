@@ -9,7 +9,7 @@ We work with a Riemannian manifold \((M, g)\) with \(\nabla\) denoting the Levi-
 
 Vector fields will be denoted \(X, Y, Z, W, \dots\). Most to the time we will abuse notation and write \(X, Y, Z, W, \dots\) for tangent /vectors/. We do this because many tensors, such as the curvature tensor are defined for vector fields, are tensorial so at a fixed point only depend on the value of the vector fields in question at that fixed point.
 
-*In practice what this usually means* is that tensorial expression such as \(\Rm(X, Y) Z\), is a priori only defined vector fields (by differentiating them which makes no sense for vectors) but is tensorial hence it's value at a point \(c\) depends only on \(X, Y, Z\) at the point \(X\). Thus if we extend tangent vectors \(X, Y, Z \in T_x M\) to vector fields defined in a neighbourhood of \(x\), the value of \(\Rm(X, Y) Z\) at \(x\) will be independent of the extension. Rather than continually saying "for an extension", we will just assume whenever necessary that such an extension has been made and denote it by \(X, Y, Z\). *At times there will be exceptions to this abuse and they will be clearly stated*.
+*In practice what this usually means* is that tensorial expression such as \(\operatorname{Rm}(X, Y) Z\), is a priori only defined on vector fields (by differentiating them which makes no sense for vectors) but is tensorial hence it's value at a point \(x\) depends only on \(X, Y, Z\) at the point \(x\). Thus if we extend tangent vectors \(X, Y, Z \in T_x M\) to vector fields defined in a neighbourhood of \(x\), the value of \(\operatorname{Rm}(X, Y) Z\) at \(x\) will be independent of the extension. Rather than continually saying "for an extension", we will just assume whenever necessary that such an extension has been made and denote it by \(X, Y, Z\). *At times there will be exceptions to this abuse and they will be clearly stated*.
 
 One forms will be written \(\alpha, \beta, \dots\) and the same abuse of not specifying whether we are working at a point or with a field as with vectors will be followed.
 
@@ -40,7 +40,7 @@ Another way of expressing this compensation is to say that \(\operatorname{Rm}\)
 
 **Exercise**: Using the Leibniz rule for the connection \(\nabla\) and the corresponding rule for the Lie bracket, prove the claimed tensorality in \(X, Y\).
 
-As a consequence, although as written, \(\operatorname{Rm}\) is defined for vector /fields/, tensorality induces a well defined map defined on tangent vectors. As mentioned in [setup and conventions](#sec:setup), we will typically not differentiate by vector fields and tangent vectors when dealing with tensorial equations. But /just this time/, let us be very explicit: Let \(X, Y, Z \in T_x M\) be tangent vectors, let \(\bar{X}, \bar{Y}, \bar{Z}\) and \(\tilde{X}, \tilde{Y}, \tilde{Z}\) be vector fields defined on a neighbourhood of \(x\) such that
+As a consequence, although as written, \(\operatorname{Rm}\) is defined for vector /fields/, tensorality induces a well defined map defined on tangent vectors. As mentioned in [[*Basic setup and conventions][Basic setup and conventions]], we will typically not differentiate by vector fields and tangent vectors when dealing with tensorial equations. But /just this time/, let us be very explicit: Let \(X, Y, Z \in T_x M\) be tangent vectors, let \(\bar{X}, \bar{Y}, \bar{Z}\) and \(\tilde{X}, \tilde{Y}, \tilde{Z}\) be vector fields defined on a neighbourhood of \(x\) such that
 \[
 \bar{X} (x) = X, \bar{Y} (x) = Y, \bar{Z} (x) = Z
 \]
