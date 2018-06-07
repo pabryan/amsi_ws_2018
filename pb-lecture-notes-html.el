@@ -31,4 +31,5 @@
     (org-export-to-file 'pa-lecture-notes-html outfile
       async subtreep visible-only body-only ext-plist)))
 
-
+(defun pa-lecture-notes-publish-to-html (plist filename pub-dir)
+  (org-publish-org-to 'pa-lecture-notes-export-to-html filename ".html" plist pub-dir))
