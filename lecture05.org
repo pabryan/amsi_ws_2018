@@ -2,6 +2,8 @@
 
 #+TITLE: Sphere Theorem
 
+* Topogonov Triangle Theorem
 * Homeomorphic sphere theorem
 * Some remarks on differentiable sphere theorem and Brendle-Schoen
-* Some remarks on Milnor conjecture and open manifolds
+
+See Andrews-Hopper.

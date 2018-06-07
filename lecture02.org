@@ -1,11 +1,6 @@
 #+OPTIONS: toc:nil
 
-#+TITLE: Geodesics and Exponential Map
+#+TITLE: Linearisation of Geodesic Equation and Jacobi Fields
 
-* Geodesics
-* Exponential Map
-* Hopf-Rinow
-* Asymptotic Expansion of Geometry in Normal Coordinates
-* Cut Locus
-
-
+* Variations of Geodesics and Jacobi Fields
+* First Order System For Jacobi Fields and Riccati Equation

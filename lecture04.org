@@ -5,4 +5,7 @@
 * Myers Positive Curvature Diameter Theorem
 * Finite Fundamental Group in Positive Curvature
 * Bishop-Gromov Volume Comparison Theorem
-* Topogonov Triangle Theorem
+* Some remarks on Milnor conjecture and open manifolds
+
+See https://arxiv.org/pdf/math/0606774.pdf
+
