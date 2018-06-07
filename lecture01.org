@@ -1,0 +1,28 @@
+#+OPTIONS: toc:nil
+
+#+TITLE: The Curvature Tensor
+
+* Curvature Tensors
+- Riemann
+- Ricci
+- Scalar
+* Symmetries of The Curvature Tensor
+- First pair interchange
+- Bianchi
+- Second pair interchange
+- Counting Dimensions
+* Constant Sectional Curvature
+- Kulkarni-Nomizu
+* Surfaces
+- Only one component
+* Sub-manifolds
+- Gauss equation
+- In Euclidean space
+* Ricci Decomposition
+- Curvature like tensors (e.g K-N)
+- Traces and K-N product are adjoints
+- Weyl is what's left over!
+- Irreducible decomposition
+* Three Dimensions
+- Vanishing Weyl
+- Curvature tensor is K-N product of g and Schouten

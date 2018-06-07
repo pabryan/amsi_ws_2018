@@ -1,0 +1,11 @@
+#+OPTIONS: toc:nil
+
+#+TITLE: Geodesics and Exponential Map
+
+* Geodesics
+* Exponential Map
+* Hopf-Rinow
+* Asymptotic Expansion of Geometry in Normal Coordinates
+* Cut Locus
+
+

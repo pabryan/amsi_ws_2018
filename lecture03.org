@@ -1,0 +1,7 @@
+#+OPTIONS: toc:nil
+
+#+TITLE: Linearisation of Geodesic Equation and Comparison Theory
+
+* Variations of Geodesics and Jacobi Fields
+* First Order System For Jacobi Fields and Riccati Equation
+* Comparison Theory
