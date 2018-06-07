@@ -21,6 +21,69 @@ More details are given in [[#second_derivative][Second Derivative]].
 
 In particular, when working in coordinates, or more generally with respect to a local frame, often you will see \(\nabla_i \nabla_j Z\) to mean \(\nabla^2 Z (\partial_i, \partial_j)\). For the most part, we will not work with respect to any local frames, but if the need arises we will write \(\nabla^2_{ij} Z\) for \(\nabla^2 Z(\partial_i, \partial_j)\).
 
+* Universal Property of Tensor Products
+
+See also the Wikipedia article: https://en.wikipedia.org/wiki/Tensor_product.
+
+*The* defining property of the tensor product of vectors spaces \(V, W\) is the *universal property*. That is, given vector spaces \(V, W\) there is exists a vector space, denoted \(V \otimes W\) and a binilear map \(\pi : V \times W \to V \otimes W\) such that we have the universal diagram for bilinear maps:
+\begin{array}[ccc]
+& V \times W & \xrightarrow{\pi} & V \otimes W \\
+& \searrow & \downarrow \exists ! & \\
+& & Z &
+\end{array}
+
+/Ideally the down arrow should be dashed but commutative diagrams and MathJax seem problematic./
+
+In words, given any bilinear map \(f : V \times W \to Z\), there exists a unique /linear/ map \(\bar{f} : V \otimes W \to Z\) such that \(\bar{f} \circ \pi = f\).
+
+*Exercise* Consult an algebra text book to see that this property uniquely determines \(V \otimes W\) up to /canonical/ isomorphism.
+
+Give \(v \in V, w \in W\) we define
+\[
+v \otimes w = \pi((v, w)).
+\]
+Elements of the form \(v \otimes w\) are called /simple/ or /decomposable/. Any element of \(V \otimes W\) may be written (non-uniquely!) as a finite sum of simple tensors. For example
+\[
+(v_1 + v_2) \otimes w = v_1 \otimes w + v_2 \otimes w.
+\]
+The expression on the left is simple, while the expression on the right is a sum of two simple tensors. If \(\{v_i\}_{1 \leq i \leq n}\) is a basis for \(V\) and \(\{w_j\}_{1 \leq j \leq m}\) is a basis for \(W\), then \(\{v_i \otimes w_j\}_{1 \leq i \leq n, 1 \leq j \leq m}\) is a basis for \(V \otimes W\) and so any element of \(V \otimes W\) may be written uniquely as a linear combination of basis elements \(v_i \otimes w_j\). Comparing with the example above,
+\[
+(v_1 + v_2) \otimes w_1 = v_1 \otimes w_1 + v_2 \otimes w_1
+\]
+are both expressions for the same element, but now the expression of the right is a linear combination of the basis elements while the expression on the left is not.
+
+Here are a couple of exercises showing basic properties of tensor products may be obtained from the universal property. Below in [[*Construction of Tensor Products][Construction of Tensor Products]] we will do this more directly. Feel free to skip these exercise if they seem to abstract.
+
+*Exercise*: Show that \(\{v_i \otimes w_j\}\) is a basis as claimed. /Hint/: show that the span of \(\{v_i \otimes w_j\}\) satisfies the universal property and hence that the inclusion of this span into \(V \otimes W\) is in fact the identity map.
+
+*Longish Exercise*: Show that \(\otimes\) distributes over \(+\) and that for \(\lambda \in \mathbb{R}\) we have \(\lambda (v \otimes w) = (\lambda v) \otimes w = v \otimes (\lambda w)\).
+
+* Traces/Contractions
+
+The main point for us is that by the universal property, to define a linear map \(f : V \otimes W \to Z\) is equivalent to defining a bilinear map \(g : V \times W \to Z\) whence \(f\) is determined by the universal property and satisfies \(g = f \circ \pi\). In other words, for every \(v \in V\) and \(w \in W\),
+\[
+f(v \otimes w) = f(\pi((v, w))) = g(v, w).
+\]
+For this reason, the map \(g\) is often implicit and a the definition of \(f\) is given for the simple elements. For example, consider any \(V\) and let \(W = V^{\ast} = \operatorname{Hom}(V, \mathbb{R})\) be the dual space to \(V\) consisting of linear maps \(V \to \mathbb{R}\). We may use the universal property of tensor products to define the /trace/ or /contraction/,
+\[
+\operatorname{Tr} : V \otimes V^{\ast} \to \mathbb{R}
+\]
+on simple elements as
+\[
+\operatorname{Tr} (v \otimes \alpha) = \alpha(v).
+\]
+Formally, we first define the bilinear map \(V \times V^{\ast} \to \mathbb{R}\):
+\[
+f: (v, \alpha) = \alpha(v)
+\]
+and note that the universal property guarantees the existence of a map \(\operatorname{Tr} : V \otimes V^{\ast} \to \mathbb{R}\) such that \(\operatorname{Tr} (v \otimes \alpha) = f((v, \alpha)) = \alpha(v)\).
+
+*Exercise*: Check that \(f\) is bilinear.
+
+* Construction of Tensor Products
+
+The tensor product itself may be constructed in several ways. We will use the construction that works for finite dimensional vector spaces. This construction fails for inifinte dimensional vector spaces and for modules over a ring (in general). However, we only need the finite dimensional vector space case which is rather more concrete than the general construction and also allows us to make good sense of tensor contractions.
+
 * Vector Bundles
 
 #+BEGIN_defn
