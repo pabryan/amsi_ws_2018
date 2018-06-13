@@ -451,7 +451,56 @@ But still, we have the question **why is \(\operatorname{Rm}\) tensorial in \(Z\
 
 
 * Symmetries of the Curvature Tensor
-- Interchange symmetries
-- Bianchi
+
+The curvature tensor has the following fundamental symmetries:
+1. \(\operatorname{Rm} (X, Y) Z = -\operatorname{Rm} (Y, X) Z\) (first interchange anti-symmetry)
+2. \(\operatorname{Rm} (X, Y) Z + \operatorname{Rm} (Y, Z) X + \operatorname{Rm} (Z, X) Y = 0\) (Bianchi identity)
+3. \(\operatorname{Rm} (X, Y, Z, W) = -\operatorname{Rm} (X, Y, W, Z)\) (second interchange anti-symmetry)
+4. \(\operatorname{Rm} (X, Y, Z, W) = \operatorname{Rm} (Z, W, X, Y)\) (pairwise interchange symmetry)
+
+The first symmetry follows directly from the definition of the curvature tensor simply by swapping \(X\) and \(Y\).
+
+The second symmetry follows from the fact that \(\nabla\) is torsion free and by the corresponding cyclic identity for vector fields:
+\[
+[X, [Y, Z]] + [Y, [Z, X]] + [Z, [X, Y]] = 0 \quad \text{(Jacobi Identity)}.
+\]
+
+By using the first identity, the third and fourth are equivalent to each other. Either may be proved using the metric compatability and the first two symmetries.
+
 * Ricci, Scalar and Sectional Curvature
-- Definitions
+
+*Definition* The Ricci curvature is the trace,
+\[
+\operatorname{Ric} (X, Y) = \operatorname{Tr} Z \mapsto \operatorname{Rm} (Z, X) Y.
+\]
+That, we fix \(X, Y\) and then trace the resulting linear operator acting on \(Z\). It may also be written
+\[
+\operatorname{Ric} (X, Y) = \operatorname{Tr}_g \operatorname{Rm} (\cdot, X, Y, \cdot).
+\]
+
+Since tracing is an averaging operation (e.g. it's the sum of the eigenvalues), the Ricci curvature represents and average curvature over two directions.
+
+*Exercise*: Using the symmetries of the curvature tensor, show that \(\operatorname{Ric}\) is symmetric.
+
+*Exercise* Using the symmetries of the curvature tensor, show that fixing any two other vector fields and tracing either reproduces the Ricci tensor or vanishes.
+
+*Definition*: The scalar curvature is the trace of the Ricci tensor,
+\[
+\operatorname{R} = \operatorname{Tr}_g \operatorname{Ric}.
+\]
+The scalar curvature is a fully averaged curvature over all four directions.
+
+*Definition*: The sectional curvature of a two-plane spanned by \(X, Y\) is
+\[
+\operatorname{K} (X \wedge Y) = \frac{1}{|X \wedge Y|_g} \operatorname{Rm}(X, Y, Y, X).
+\]
+At each point, this is the Gauss curvature of a flat surface embedded into \(M\) and with tangent plane equal to \(X \wedge Y\).
+
+*Exercise (conceptually tricky but short)*: Show that the symmetries of the curvature tensor imply that the sectional curvatures determine the curvature tensor. /Hint/: The basic idea is to note that the symmetries of the curvature tensor imply that
+\[
+\operatorname{Rm} (X \wedge Y, W \wedge Z) = \operatorname{Rm} (X, Y, Z, W)
+\]
+determines a symmetric bilinear form on the space of two-planes. This bilinear form is uniquely determined by polarising the corresponding quadratic form
+\[
+Q(X \wedge Y) = \operatorname{Rm} (X \wedge Y, Y \wedge X) = |X \wedge Y|_g K(X \wedge Y).
+\]
