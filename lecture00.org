@@ -23,10 +23,221 @@ In particular, when working in coordinates, or more generally with respect to a 
 
 * Tensors
 
-- Definition as multi-linear forms
-- Traces and contractions
-- Tensorality
- 
+#+BEGIN_defn
+*Definition*: Let \(V\) be a finite dimensional, real vector space. A tensor of type \((p, q)\) is a multi-linear map
+\[
+T : \underbrace{V \times \cdots V}_{p \text{ times}} \times \underbrace{V^{\ast} \times \cdots V^{\ast}}_{q \text{ times}} \to \mathbb{R}.
+\]
+The space of such tensors is written
+\[
+T^p_q V = \bigotimes^p V^{\ast} \otimes \bigotimes^q V.
+\]
+#+END_defn
+
+#+BEGIN_remark
+*Remark*: In more general situations such as infinite dimensional vector spaces or modules over a commutative ring, the definition above is unsatisfactory. In general, *the* defining property of the tensor product of vectors spaces \(V, W\) is the *universal property*. That is, given vector spaces \(V, W\) there is exists a vector space, denoted \(V \otimes W\) and a binilear map \(\pi : V \times W \to V \otimes W\) such that we have the universal diagram for bilinear maps:
+# #+BEGIN_EXPORT latex
+# \[
+\begin{array}{ccc}
+V \times W & \xrightarrow{\pi} & V \otimes W \\
+\searrow & \downarrow \exists ! & \\
+& Z &
+\end{array}
+# \]
+# #+END_EXPORT
+In words, given any bilinear map \(f : V \times W \to Z\), there exists a unique /linear/ map \(\bar{f} : V \otimes W \to Z\) such that \(\bar{f} \circ \pi = f\).
+
+This notion generalises readily to the \(q\) copies of \(V\) and \(p\) copies of \(W\). In particular, with \(W = V^{\ast}\) we obtain the tensors \(T^p_q V\).
+
+For finite dimensional vector spaces however, the universal property is satisfied by our definition and hence our definition agrees with the more general definition *in the case of finite dimensional vector spaces*.
+
+We won't worry about the universal property much here except to note a couple of points:
+
+1. To define \(\pi : V^{\ast} \times V^{\ast} \to V^{\ast} \otimes V^{\ast}\) we need to define \(\alpha^1 \otimes \alpha^2 = \pi(\alpha_1, \alpha_2)\) as a bilinear map \(V \times V \to \mathbb{R}\). For this we define
+   \[
+   \alpha^1 \otimes \alpha^2 (X_1, X_2) = \alpha^1(X_1) \alpha^2(X_2).
+   \]
+   Then we note that the bilinear maps of the form \(\alpha^1 \otimes \alpha^2\) generate \(V^{\ast} \otimes V^{\ast}\) as a vector space - they aren't a basis however - there are too many of them and they are not linearly independent. To get a basis, choose a basis \(\{e_i\}_{i=1}^n\) for \(V\) and let \(\{\theta^j\}\) denote the dual basis defined by \(\theta^j(e_i) = \delta^i_j\). Then for an arbitrary bilinear form \(B\) we may write uniquely
+   \[
+   B = \sum_{i,j=1}^n B_{ij} \theta^i \otimes \theta^j
+   \]
+   with \(B_{ij} = B(e_i, e_j)\).
+
+   Note here that we have used that \(V\) is a finite dimensional vector space! We then obtain that the set of bilinear maps along with the map \(\pi\) satisfies the universal property for \(V^{\ast} \otimes V^{\ast}\).
+
+2. To define \(\pi : V \times V \to V \otimes V\) we use the isomorphism \(V \simeq (V^{\ast})^{\ast}\) obtained by the map
+   \[
+   X \in V \mapsto \alpha_X : V^{\ast} \to \mathbb{R}
+   \]
+   with
+   \[
+   \alpha_X (\beta) = \beta(X).
+   \]
+   That is, given \(X \in V\), we define the element \(\alpha_X \in (V^{\ast})^{\ast}\) and the correspondence \(X \mapsto \alpha_X\) is a vector space isomorphism. Then we may define \(V \otimes V\) as the set of bilinear maps \(V^{\ast} \times V^{\ast} \to \mathbb{R}\) and apply the previous part.
+
+   Note again we used that \(V\) is a finite dimensional vector space!
+
+Note that the expression \(B = B_{ij} \theta^i \otimes \theta^j\) (employing the summation convention) shows that \(\theta^i \otimes \theta^j\) is a basis for \(V^{\ast} \otimes V^{\ast}\). In general, we may write \(B\) non uniquely as a sum of elements of the form \(\alpha \otimes \beta\). For example,
+\[
+(\theta^1 + \theta^2) \otimes \theta^2 = \theta^1 \otimes \theta^3 + \theta^2 \otimes \theta^3
+\]
+expresses the same element as different sums of such elements whereas if we insist on using only the basis elements \(\theta^i \otimes \theta^j\), then we obtain a unique expression. The left hand side just above would then be inadmissible. The situation is similar to that of how fractions do not have a unique representation \(m/n\) in general, but if we insist that \(m, n\) are co-prime then (up to sign), the expression is unique.
+#+END_remark
+
+*Exercise*: If you're interested, define \(\pi : V^{\ast} \times V \to V^{\ast} \otimes V\) and show the universal property is satisfied. It might help to verify the universal properties more explicitly for \(V^{\ast} \otimes V^{\ast}\) and \(V \otimes V\) first.
+
+*Exercise*: If you're interested, formulate and verify the appropriate universal property for \(T^p_q V\). /Hint/: Replace bilinearlity with multilinearity.
+
+* Traces
+
+Now we have a fundamental operation.
+
+#+BEGIN_defn
+*Definition*: The /trace/ is the unique linear map \(\operatorname{Tr} : V^{\ast} \otimes V \to \mathbb{R}\) determined by
+\[
+(\alpha, X) \in V^{\ast} \times V \mapsto \alpha(X) \in \mathbb{R}.
+\]
+#+END_defn
+
+The universal property ensures this map is well defined. We may realise it by writing (non-uniquely!) any tensor \(T \in T^1_1 V\) as a finite sum
+\[
+T = \sum_{i=1}^N \alpha_i \otimes X_i
+\]
+and extend the definition by linearity. That this is well defined (i.e. independent of the choice of \(\alpha_i, X_i\)) is guaranteed by the universal property. With respect to this expression for \(T\) we have
+\[
+\operatorname{Tr} (T) = \sum_{i=1}^N \alpha_i(X_i).
+\]
+
+Alternatively, we may choose a basis \(\{e_i\}\) for \(V\) and write uniquely
+\[
+T = \sum_{ij} T_i^j \theta^i \otimes e_j
+\]
+in which case, the definition above gives \(\operatorname{Tr}(\theta_i e^j) = \theta^i(e_j) = \delta^i_j\) and we extend by linearity to \(T\). In this case, the extension is automatically well defined since a linear map is uniquely determined by it's values on a basis. With respect to this expression for \(T\) we have
+\[
+\operatorname{Tr} (T) = \sum_{ij} T_i^j \theta^i(e_j) = \sum_{ij} T_i^j \delta^i_j = \sum_i T^i_i
+\]
+That is the trace defined here, when written with respect to basis is the trace of the matrix with respect to that basis.
+
+More generally given a tensor of type \(T^{p+1}_{q+1}\), we may choose any of the upper slots and any lower slot to obtain a trace
+\[
+\operatorname{Tr} : T^{p+1}_{q+1} \to T^p_q.
+\]
+
+Of course it must be made clear which upper slot is contracted with which lower slot and this will always be explicitly stated. For example, consider a tensor of the form
+\[
+T = \alpha \otimes X \otimes Y.
+\]
+Then we have two possible traces
+\[
+\operatorname{Tr}_{12} T = \alpha(X) Y, \quad \operatorname{Tr}_{13} T = \alpha(Y) X.
+\]
+Both are linear maps \(T^1_2 V = V^{\ast} \otimes V \otimes V \to T^0_1 V = V\).
+
+* Traces with respect to an inner product
+
+Finally, if \(V\) is equipped with an inner-product \(g\), we may use the inner-product to raise and lower indices. That is, the inner-product induces an isomorphism \(V \to V^{\ast}\) by
+\[
+X \in V \mapsto (Y \mapsto g(X, Y)) \in V^{\ast}.
+\]
+This isomorphism is often denoted \(\flat : V \to V^{\ast}\) because we lower the \(1\) from the top index to the bottom:
+\[
+\flat : V = T^1_0 V \to V^{\ast} = T^0_1 V.
+\]
+It's inverse is denoted \(\sharp : V^{\ast} \to V\) which raises the index. Then we have maps
+\[
+\flat : T^{p+1}_q V \to T^p_{q+1}
+\]
+and
+\[
+\sharp : T^p_{q+1} \to T^{p+1}_q
+\]
+where as with the traces we must specify which index is being acted upon.
+
+As with the trace example above we then have
+\[
+\flat_2 (\alpha \otimes X \otimes Y) = \alpha \otimes \flat(X) \otimes Y, \quad \flat_3 (\alpha \otimes X \otimes Y) = \alpha \otimes X \otimes \flat(Y)
+\]
+and
+\[
+\sharp_1 (\alpha \otimes X \otimes Y) = \sharp_1(\alpha) \otimes X \otimes Y.
+\]
+
+A particularly important example of this is with bilinear forms. Then we have the Riesz representation
+\[
+B(X, Y) = g(B^{\sharp} (X), Y)
+\]
+where \(B^{\sharp}\) is the linear transformation \(V \to V\) representing \(B\). Here we note really \(B^{\sharp} \in T^1_1 V\) but in fact \(T^1_1 V \simeq \operatorname{Hom} (V, V)\), the latter being the vector space of linear transformations \(V \to V\).
+
+*Exercise* Show that the map
+\[
+\alpha \otimes X \in T^1_1 V \mapsto (Y \mapsto \alpha(Y) X) \in \operatorname{Hom}(V, V)
+\]
+is an isomorphism. That is,
+\[
+\alpha \otimes X (Y) = \operatorname{Tr}_{13} \alpha \otimes X \otimes Y.
+\]
+/Hint/: you will not be able to show surjectivity directly without using the assumption that \(V\) is finite dimensional. Thus you might either try to show injectivity and conclude surjectivity by looking at dimension, or use a basis.
+
+*Exercise* Verify that for a bilinear form \(B \in T^0_2 V\), we have the relation
+\[
+B(X, Y) = g(B^{\sharp} (X), Y)
+\]
+where \(B^{\sharp} = \sharp(B) \in T^1_1 V\) is the musical raising and \(B^{\sharp} (X) = \operatorname{Tr}_{13} \sharp{B} \otimes X\). /Hint/: you only need to prove this for \(B\) of the form \(\alpha \otimes \beta\) and then apply the universal property to extend by linearity to general \(B\). Make sure to check bilinearity with respect to \(\alpha, \beta\)! Alternatively, choose a basis for \(V\) prove the result for \(B = \theta^i \otimes \theta^j\) once more extending by linearity to general \(B = \sum_{ij} B_{ij} \theta^i \otimes \theta^j\).
+
+Then we define the trace of a bilinear form \(B\) with respect to the inner-product \(g\):
+\[
+\operatorname{Tr}_g (B) = \operatorname{Tr} B^{\sharp}.
+\]
+That is, the trace of \(B\) is the trace of the linear transformation \(B^{\sharp}\) representing \(B\). Note that if we used a different inner-product \(k\) to define \(B^{\sharp}\) then in general \(\operatorname{Tr}_g (B) \ne \operatorname{Tr}_k B\). *There is no general way to define the trace of a bilinear form; it depends on a choice of inner-product*.
+
+Also take caution to note that if \(B\) is symmetric, there are two distinct choices for \(B^{\sharp}\) depending on which index we raise. Mostly for us however, we will only apply this construction to symmetric \(B\) and then it does not matter which index is raised.
+
+*Exercise*: Show that if \(B\) is a symmetric bilinear form (i.e. \(B(X, Y) = B(Y, X)\)), then
+\[
+\sharp_1 B = \sharp_2 B.
+\]
+
+* Tensor Fields
+
+For a manifold \(M\), we have the tangent bundle \(TM\) and cotangent bundle \(T^{\ast} M\) along with tensor bundles \(T^p_q M = \bigotimes^p TM \otimes \bigotimes^q T^{\ast} M\). A tensor field of type \((p, q)\) is a section \(S \in \Gamma(T^p_q M)\). Thus at each point \(x \in M\), we have a multilinear map
+\[
+S_x : \underbrace{T_x^{\ast} M \times \cdots T_x^{\ast} M}_{p \text{ times}} \times \underbrace{T_x M \times \cdots T_x M}_{q \text{ times}} \to \mathbb{R}.
+\]
+Then if \(\alpha^1, \
+dots, \alpha^p \in \Gamma(T^{\ast} M)\) and \(X_1, \dots, X_q \in \Gamma(TM)\) we have the smooth function
+\[
+x \mapsto S_x (\alpha^1(x), \dots, \alpha^p(x), X_1(x), \dots, X_q(x))
+\]
+which we abbreviate as \(S (\alpha^1, \dots, \alpha^p, X_1, \dots, X_q)\).
+
+By definition, \(S_x\) is \(\mathbb{R}\)-linear for each \(x\). Then in fact \(S\) is \(C^{\infty} (M)\) multilinear by which we mean that if \(f\) is a smooth function then
+\begin{align*}
+S (f \alpha^1, \dots, \alpha^p, X_1, \dots, X_q) (x) &= S_x (f(x) \alpha^1(x), \dots, \alpha^p(x), X_1(x), \dots, X_q(x)) \\
+&= f(x) S_x(\alpha^1(x), \dots, \alpha^p(x), X_1(x), \dots, X_q(x)) \\
+&= [f S(\alpha^1, \dots, \alpha^p, X_1, \dots, X_q)] (x).
+\end{align*}
+In other words,
+\[
+S (f \alpha^1, \dots, \alpha^p, X_1, \dots, X_q) = f S(\alpha^1, \dots, \alpha^p, X_1, \dots, X_q).
+\]
+Similarly if we multiply any slot by \(f\).
+
+*Definition*: An \(\mathbb{R}\)-multilinear map \(\Gamma(T^p_q M) = \Gamma(\bigotimes^p TM \otimes \bigotimes^q T^{\ast}M) \to C^{\infty} (M)\) is *tensorial* if it is \(C^{\infty} (M)\) linear.
+
+For example, for bilinear forms this means that for every \(f \in C^{\infty}(M)\) and every \(X_1, X_2 \in \Gamma(TM)\) we have
+\[
+B(f X_1, X_2) = B(X_1, f X_2) = f B(X_1, X_2).
+\]
+
+Then we have that tensorial multilinear maps are in fact determined /pointwise/. That is, the value of \(B(X_1, X_2)\) at a point \(x\) depends only on the values \(X_1(x), X_2(x)\) of the \(X_1, X_2\) at \(x\). In other words, if \(Y_1, Y_2\) are vector fields such that \(Y_1(x) = X_1(x)\) and \(Y_2(x) = X_2(x)\), then
+\[
+(B(X_1, X_2)) (x) = (B(Y_1, Y_2))(x).
+\]
+
+As such \(B\) determines a section of \(T^2_0 M = T^{\ast} M \otimes T^{\ast} M\). Here \(B_x \in T_x^{\ast} M \otimes T_x^{\ast} M\) is determined for example by it's values on a basis for \(T_x M\) extended arbitrarily to all of \(TM\). The result is we defined since \(B\) is pointwise hence independent of the extension.
+
+*That is, the (infinite dimensional) vector space of tensorial, \(\mathbb{R}\) multilinear maps is precisely equal to the vector space of sections of tensor bundles.*
+
 * The Curvature Tensor
   :PROPERTIES:
   :CUSTOM_ID: curvature_tensor
@@ -230,7 +441,6 @@ Now we observe that since we defined \(\nabla^2 Z\) in a tensorial way, immediat
 But still, we have the question **why is \(\operatorname{Rm}\) tensorial in \(Z\)?**
 
 **Exercise** Show that \(\nabla_X \nabla_Y fZ - \nabla_Y \nabla_X fZ - \nabla_{[X,Y]} fZ = f \operatorname{Rm} (X, Y) Z + (\operatorname{Rm} (X, Y) f) Z = f \operatorname{Rm} (X, Y) Z.\) Thus we conclude the tensorality in \(Z\) follows since \(M \times \mathbb{R} \to M\) is a flat vector bundle.
-
 
 
 
