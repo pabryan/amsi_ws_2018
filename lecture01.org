@@ -2,7 +2,176 @@
 
 #+TITLE: Geodesics and Exponential Map
 
+* References
+
+- [[http://pabryan.github.io/pdf/teaching/dg/dg.pdf][DG Notes]] Weeks 07 and 08
+- Riemannian Geometry: a Modern Introduction by Chavel I.6, I.7
+- [[http://myweb.rz.uni-augsburg.de/~eschenbu/comparison.pdf][Comparison Geometry]] by Eschenburg, Section 1.
+
+* Metric Structure
+
+The length of a smooth path \(\gamma : [a, b] \to M\) is
+\[
+L(\gamma) = \int_a^b \sqrt{g_{\gamma(t)}(\gamma'(t), \gamma'(t))} dt.
+\]
+Here \(g_x\) is the metric at the point \(x \in M\). If we define
+\[
+\lvert \gamma' \rvert_g = \sqrt{g_{\gamma(t)}(\gamma'(t), \gamma'(t)})
+\]
+we may write more briefly
+\[
+L(\gamma) = \int_a^b |\gamma'| dt
+\]
+where we dropped the subscript \(g\) because it's tedious to include it every time we write it out! There will usually only be one metric under consideration so this convention won't cause any confusion. If there is more than one metric under consideration, then we will be explicit with subscripts.
+
+A metric (i.e. distance function not Riemannian metric!) on \((M, g)\) is given by
+\[
+d_g (x, y) = \inf\{L(\gamma) : \gamma(0) = x, \gamma(1) = y\}.
+\]
+Again, typically we will drop the subscript and just write \(d\).
+
+- The metric topology on \(M\) induced by \(d\) is the same as the manifold topology.
+
+#+BEGIN_defn
+The Riemannian manifold \((M, g))\) is /complete/ if the metric space \((M, d)\) is a complete metric space.
+#+END_defn
+
+- All our Riemannian manifolds will be complete.
+
 * Geodesics
+
+We'll parametrise our curves over \([0, 1]\) for convenience. Geometric quantities are independent of the parametrisation so this will not result in any loss of generality.
+
+#+BEGIN_defn
+*Definition*: A smooth curve \(\gamma : [0, 1] \to M\) is a geodesic if
+\[
+\nabla_{\gamma'} \gamma' = 0.
+\]
+#+END_defn
+
+- Geodesics have zero acceleration.
+- Equivalently, the velocity vector to a geodesic is /parallel/ along the geodesic.
+
+#+BEGIN_lem
+*Lemma*: Geodesics have constant speed. That is \(|\gamma'| \equiv \text{const}\).
+#+END_lem
+
+#+BEGIN_proof
+*Proof*: By metric compatibility we have
+\[
+\partial_t |\gamma'(t)|^2 = \partial_{\gamma'} g(\gamma', \gamma') = 2 g(\nabla_{\gamma'} \gamma', \gamma') = 0.
+\]
+#+END_proof
+
+We say that a curve \(\gamma\) is /length minimising/ if
+\[
+L(\gamma) = d(\gamma(0), \gamma(1)).
+\]
+That is, the length of \(\gamma\) realises the infimum in the definition of \(d\).
+
+Now is a good time to state a theorem.
+
+#+BEGIN_thm
+*Theorem*: Suppose \(\gamma\) is length minimising. Then \(\gamma\) is a geodesic. Conversely, every geodesic is locally length minimising in the sense that for all \(t_0 \in [0, 1]\), there is an \(\epsilon > 0\) such that \(\gamma\) restricted to \([0, 1] \cap \{|t - t_0| < \epsilon\}\) is length minimising.
+#+END_thm
+
+Let us give the proof of the first part here since it involves calculating variations of curves which will be important later so this is a good opportunity to get accustomed to such variations.
+
+The proof of the second part is more delicate and will be discussed below in [[*Exponential Map][Exponential Map]].
+
+#+BEGIN_proof
+*Proof of the first part*: A /variation/ of \(\gamma\) is a map
+\[
+F : [0, 1] \times (-\epsilon, \epsilon) \to M
+\]
+such that
+\[
+F(t, 0) = \gamma(t).
+\]
+We restrict to variations that preserve the end points:
+\[
+F(0, s) = \gamma(0), \quad F(1, s) = \gamma(1).
+\]
+
+Define
+\[
+\gamma_s(t) = F(t, s).
+\]
+Then \(\gamma_0 = \gamma\) and \(\gamma_s(0) = \gamma_0(0)\), \(\gamma_s(1) = \gamma_0(1)\). Since each \(\gamma_s\) has the same endpoints as \(\gamma\) and \(\gamma\) minimises length between these points, the function
+\[
+s \mapsto L_s := L(\gamma_s)
+\]
+has a minimum at \(s = 0\) hence
+\[
+\partial_s|_{t=0} L_s = 0.
+\]
+
+That is, /the first variation of \(L\) vanishes at \(s = 0\)/. Now we compute this variation. For notation, let's write
+\[
+T(s, t) = F_{\ast} \partial_t = \partial_t F (s, t), \quad S(s, t) = F_{\ast} \partial_s = \partial_s F.
+\]
+Thus is \(T_0(t) := T(0, t) = \gamma'(t)\) is the velocity vector to \(\gamma\) and \(S_0(t) = S(0, t)\) is the variation vector field along \(\gamma\). Note also that \(T_0\) satisfies \(|T_0| = L(\gamma)\) because geodesics are parametrised with constant speed.
+
+Now we compute, using metric compatability
+\[
+\partial_s|_{s=0} \int_0^1 \sqrt{g(T, T)} dt = \int_0^1 \frac{1}{\sqrt{g(T_0, T_0)}} g(\nabla_S T, T)|_{s=0} dt = \frac{1}{L(\gamma)} \int_0^1 g(\nabla_S T, T)|_{s=0} dt.
+\]
+Then we commute derivatives using
+\[
+\nabla_S T - \nabla_T S = [S, T] = [F_{\ast} \partial_s, F_{\ast} \partial_t] = F_{\ast} [\partial_s, \partial_t] = 0
+\]
+to get
+\[
+\partial_s L_s|_{s=0} = \frac{1}{L(\gamma)} \int g(\nabla_T S, T)|_{s=0} dt = \frac{1}{L(\gamma)} \int g(\nabla_{T_0} S_0, T_0) dt.
+\]
+
+Notice that by commuting derivatives we may evaluate at \(s=0\) because now we are differentiating with respect to \(t\) and not \(s\). Then we use metric compatability once more to move the derivatives off the variation vector
+\[
+\partial_s L_s|_{s=0} = \frac{1}{L(\gamma)} \int g(\nabla_{T_0} T_0, S) dt.
+\]
+
+In other words,
+\[
+dL_{\gamma} (S) = \frac{1}{L(\gamma)} \int g(\nabla_{T_0} T_0, S) dt.
+\]
+
+Since this is true for every vector field \(S\) along \(\gamma\) with \(S(0) = 0, S(1) = 0\), we find that
+\[
+\nabla_{\gamma'} \gamma' = \nabla_{T_0} T_0 = 0
+\]
+and hence \(\gamma\) is a geodesic.
+#+END_proof
+
+#+BEGIN_rem
+*Remark*: Another way of saying this is that Euler-Lagrange equation for the length functional of curves with fixed end points \(x, y \in M\) is precisely the geodesic equation. *The critical points of the length functional are geodesics*.
+#+END_rem
+
+A few of the steps above weren't fully justified so here are some exercises to justify them.
+
+First, given a \(\gamma\), variations may be constructed in several ways.
+
+#+BEGIN_ex
+*Exercise*: Show that there exist variations of \(\gamma\), and in particular that there are variations fixing the endpoints. /Hint/: By the implicit function theorem we can always choose a chart \(\varphi : U \to \mathbb{R}^n\) for \(M\) such that \(\gamma \cap U\) is mapped to a coordinate axis \(x^2 = \cdots = x^n = 0\). Then define a variation of \(\gamma\) in coordinates and transfer back to \(M\) by the inverse of the chart. This produces just a local variation. To get a variation of all \(\gamma\), cover it by charts and patch together the local variations using a partition of unity.
+#+END_ex
+
+Recall that a vector field \(V\) along \(\gamma\) is a map \(V : [0, 1] \to TM\) such that \(\pi(V(t)) = \gamma(t)\). Or in other words such that \(V(t) \in T_{\gamma(t)} M\) for each \(t\).
+
+#+BEGIN_ex
+*Exercise*: Show that for a vector field \(V\) along \(\gamma\) with \(V(0) = 0, V(1) = 0\), if
+\[
+\int_0^1 g(V(t), S(t)) dt = 0
+\]
+for every vector field \(S\) along \(\gamma\), then \(V \equiv 0\). /Hint/: Try \(S(t) = \rho(t) V(t)\) where \(\rho : [0, 1] \to \mathbb{R}\).
+#+END_ex
+
+#+BEGIN_ex
+*Exercise*: Show that given a vector field \(S\) along \(\gamma\), there exists a variation of \(\gamma\) with variation field \(S\). /Hint/: You need to define for each \(t\), a curve \(\alpha_t(s)\) such that \(\alpha_t(0) = \gamma(t)\) and \(\alpha_t'(0) = S(t)\). This must be done is such a way that the map
+\[
+F(t, s) = \alpha_t(s)
+\]
+depends smoothly on \(t\) and each \(\alpha_t\) is defined for \(s \in (-\epsilon, \epsilon)\) independently of \(t\). Compactness of \(\gamma([0, 1])\) should help here.
+#+END_ex
+
 * Exponential Map
 * Hopf-Rinow
 * Cut Locus
