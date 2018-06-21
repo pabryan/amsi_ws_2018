@@ -10,15 +10,17 @@
   (setq note-section-id (or (or (org-element-property :ID headline) (org-element-property :CUSTOM_ID headline)) (org-export-get-reference headline info)))
   (concat
    "<div class=\"panel panel-default notes-panel\">\n<div class=\"panel-heading\">\n"
-   (format "<a href=\"#notes-section-%s\" data-toggle=\"collapse\" class=\"notes-toggle\">" note-section-id)
    "<h3>"
+   (format "<a href=\"#notes-section-%s\" data-toggle=\"collapse\" class=\"notes-toggle\">" note-section-id)
+   "<i class=\"notes-arrow fa fa-caret-down px-1\"></i>"
    (org-element-property :raw-value headline)
-   "</h3>\n"
    "</a>\n"
+   "</h3>\n"
    "</div>\n"
-   (format "<div class=\"panel-body\" class=\"collapse\" id=\"notes-section-%s\">" note-section-id)
+   (format "<div id=\"notes-section-%s\" class=\"panel-collapse collapse\">\n" note-section-id)
+   "<div class=\"panel-body\">\n"
    contents
-   "\n</div>\n</div>\n"
+   "\n</div>\n</div>\n</div>\n"
    ))
 
 (provide 'pa-lecture-notes)
