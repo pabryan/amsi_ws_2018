@@ -43,7 +43,7 @@ The Riemannian manifold \((M, g))\) is /complete/ if the metric space \((M, d)\)
 We'll parametrise our curves over \([0, 1]\) for convenience. Geometric quantities are independent of the parametrisation so this will not result in any loss of generality.
 
 #+BEGIN_defn
-*Definition*: A smooth curve \(\gamma : [0, 1] \to M\) is a geodesic if
+A smooth curve \(\gamma : [0, 1] \to M\) is a geodesic if
 \[
 \nabla_{\gamma'} \gamma' = 0.
 \]
@@ -53,11 +53,11 @@ We'll parametrise our curves over \([0, 1]\) for convenience. Geometric quantiti
 - Equivalently, the velocity vector to a geodesic is /parallel/ along the geodesic.
 
 #+BEGIN_lem
-*Lemma*: Geodesics have constant speed. That is \(|\gamma'| \equiv \text{const}\).
+Geodesics have constant speed. That is \(|\gamma'| \equiv \text{const}\).
 #+END_lem
 
 #+BEGIN_proof
-*Proof*: By metric compatibility we have
+By metric compatibility we have
 \[
 \partial_t |\gamma'(t)|^2 = \partial_{\gamma'} g(\gamma', \gamma') = 2 g(\nabla_{\gamma'} \gamma', \gamma') = 0.
 \]
@@ -72,7 +72,7 @@ That is, the length of \(\gamma\) realises the infimum in the definition of \(d\
 Now is a good time to state a theorem.
 
 #+BEGIN_thm
-*Theorem*: Suppose \(\gamma\) is length minimising. Then \(\gamma\) is a geodesic. Conversely, every geodesic is locally length minimising in the sense that for all \(t_0 \in [0, 1]\), there is an \(\epsilon > 0\) such that \(\gamma\) restricted to \([0, 1] \cap \{|t - t_0| < \epsilon\}\) is length minimising.
+Suppose \(\gamma\) is length minimising. Then \(\gamma\) is a geodesic. Conversely, every geodesic is locally length minimising in the sense that for all \(t_0 \in [0, 1]\), there is an \(\epsilon > 0\) such that \(\gamma\) restricted to \([0, 1] \cap \{|t - t_0| < \epsilon\}\) is length minimising.
 #+END_thm
 
 Let us give the proof of the first part here since it involves calculating variations of curves which will be important later so this is a good opportunity to get accustomed to such variations.
@@ -80,7 +80,9 @@ Let us give the proof of the first part here since it involves calculating varia
 The proof of the second part is more delicate and will be discussed below in [[*Exponential Map][Exponential Map]].
 
 #+BEGIN_proof
-*Proof of the first part*: A /variation/ of \(\gamma\) is a map
+/First part only/.
+
+A /variation/ of \(\gamma\) is a map
 \[
 F : [0, 1] \times (-\epsilon, \epsilon) \to M
 \]
@@ -143,7 +145,7 @@ and hence \(\gamma\) is a geodesic.
 #+END_proof
 
 #+BEGIN_rem
-*Remark*: Another way of saying this is that Euler-Lagrange equation for the length functional of curves with fixed end points \(x, y \in M\) is precisely the geodesic equation. *The critical points of the length functional are geodesics*.
+Another way of saying this is that Euler-Lagrange equation for the length functional of curves with fixed end points \(x, y \in M\) is precisely the geodesic equation. *The critical points of the length functional are geodesics*.
 #+END_rem
 
 A few of the steps above weren't fully justified so here are some exercises to justify them.
@@ -151,13 +153,13 @@ A few of the steps above weren't fully justified so here are some exercises to j
 First, given a \(\gamma\), variations may be constructed in several ways.
 
 #+BEGIN_ex
-*Exercise*: Show that there exist variations of \(\gamma\), and in particular that there are variations fixing the endpoints. /Hint/: By the implicit function theorem we can always choose a chart \(\varphi : U \to \mathbb{R}^n\) for \(M\) such that \(\gamma \cap U\) is mapped to a coordinate axis \(x^2 = \cdots = x^n = 0\). Then define a variation of \(\gamma\) in coordinates and transfer back to \(M\) by the inverse of the chart. This produces just a local variation. To get a variation of all \(\gamma\), cover it by charts and patch together the local variations using a partition of unity.
+Show that there exist variations of \(\gamma\), and in particular that there are variations fixing the endpoints. /Hint/: By the implicit function theorem we can always choose a chart \(\varphi : U \to \mathbb{R}^n\) for \(M\) such that \(\gamma \cap U\) is mapped to a coordinate axis \(x^2 = \cdots = x^n = 0\). Then define a variation of \(\gamma\) in coordinates and transfer back to \(M\) by the inverse of the chart. This produces just a local variation. To get a variation of all \(\gamma\), cover it by charts and patch together the local variations using a partition of unity.
 #+END_ex
 
 Recall that a vector field \(V\) along \(\gamma\) is a map \(V : [0, 1] \to TM\) such that \(\pi(V(t)) = \gamma(t)\). Or in other words such that \(V(t) \in T_{\gamma(t)} M\) for each \(t\).
 
 #+BEGIN_ex
-*Exercise*: Show that for a vector field \(V\) along \(\gamma\) with \(V(0) = 0, V(1) = 0\), if
+Show that for a vector field \(V\) along \(\gamma\) with \(V(0) = 0, V(1) = 0\), if
 \[
 \int_0^1 g(V(t), S(t)) dt = 0
 \]
@@ -165,7 +167,7 @@ for every vector field \(S\) along \(\gamma\), then \(V \equiv 0\). /Hint/: Try 
 #+END_ex
 
 #+BEGIN_ex
-*Exercise*: Show that given a vector field \(S\) along \(\gamma\), there exists a variation of \(\gamma\) with variation field \(S\). /Hint/: You need to define for each \(t\), a curve \(\alpha_t(s)\) such that \(\alpha_t(0) = \gamma(t)\) and \(\alpha_t'(0) = S(t)\). This must be done is such a way that the map
+Show that given a vector field \(S\) along \(\gamma\), there exists a variation of \(\gamma\) with variation field \(S\). /Hint/: You need to define for each \(t\), a curve \(\alpha_t(s)\) such that \(\alpha_t(0) = \gamma(t)\) and \(\alpha_t'(0) = S(t)\). This must be done is such a way that the map
 \[
 F(t, s) = \alpha_t(s)
 \]

@@ -24,7 +24,7 @@ In particular, when working in coordinates, or more generally with respect to a 
 * Tensors
 
 #+BEGIN_defn
-*Definition*: Let \(V\) be a finite dimensional, real vector space. A tensor of type \((p, q)\) is a multi-linear map
+Let \(V\) be a finite dimensional, real vector space. A tensor of type \((p, q)\) is a multi-linear map
 \[
 T : \underbrace{V \times \cdots V}_{p \text{ times}} \times \underbrace{V^{\ast} \times \cdots V^{\ast}}_{q \text{ times}} \to \mathbb{R}.
 \]
@@ -34,8 +34,8 @@ T^p_q V = \bigotimes^p V^{\ast} \otimes \bigotimes^q V.
 \]
 #+END_defn
 
-#+BEGIN_remark
-*Remark*: In more general situations such as infinite dimensional vector spaces or modules over a commutative ring, the definition above is unsatisfactory. In general, *the* defining property of the tensor product of vectors spaces \(V, W\) is the *universal property*. That is, given vector spaces \(V, W\) there is exists a vector space, denoted \(V \otimes W\) and a binilear map \(\pi : V \times W \to V \otimes W\) such that we have the universal diagram for bilinear maps:
+#+BEGIN_rem
+In more general situations such as infinite dimensional vector spaces or modules over a commutative ring, the definition above is unsatisfactory. In general, *the* defining property of the tensor product of vectors spaces \(V, W\) is the *universal property*. That is, given vector spaces \(V, W\) there is exists a vector space, denoted \(V \otimes W\) and a binilear map \(\pi : V \times W \to V \otimes W\) such that we have the universal diagram for bilinear maps:
 # #+BEGIN_EXPORT latex
 # \[
 \begin{array}{ccc}
@@ -82,18 +82,22 @@ Note that the expression \(B = B_{ij} \theta^i \otimes \theta^j\) (employing the
 (\theta^1 + \theta^2) \otimes \theta^2 = \theta^1 \otimes \theta^3 + \theta^2 \otimes \theta^3
 \]
 expresses the same element as different sums of such elements whereas if we insist on using only the basis elements \(\theta^i \otimes \theta^j\), then we obtain a unique expression. The left hand side just above would then be inadmissible. The situation is similar to that of how fractions do not have a unique representation \(m/n\) in general, but if we insist that \(m, n\) are co-prime then (up to sign), the expression is unique.
-#+END_remark
+#+END_rem
 
-*Exercise*: If you're interested, define \(\pi : V^{\ast} \times V \to V^{\ast} \otimes V\) and show the universal property is satisfied. It might help to verify the universal properties more explicitly for \(V^{\ast} \otimes V^{\ast}\) and \(V \otimes V\) first.
+#+BEGIN_ex
+If you're interested, define \(\pi : V^{\ast} \times V \to V^{\ast} \otimes V\) and show the universal property is satisfied. It might help to verify the universal properties more explicitly for \(V^{\ast} \otimes V^{\ast}\) and \(V \otimes V\) first.
+#+END_ex
 
-*Exercise*: If you're interested, formulate and verify the appropriate universal property for \(T^p_q V\). /Hint/: Replace bilinearlity with multilinearity.
+#+BEGIN_ex
+If you're interested, formulate and verify the appropriate universal property for \(T^p_q V\). /Hint/: Replace bilinearlity with multilinearity.
+#+END_ex
 
 * Traces
 
 Now we have a fundamental operation.
 
 #+BEGIN_defn
-*Definition*: The /trace/ is the unique linear map \(\operatorname{Tr} : V^{\ast} \otimes V \to \mathbb{R}\) determined by
+The /trace/ is the unique linear map \(\operatorname{Tr} : V^{\ast} \otimes V \to \mathbb{R}\) determined by
 \[
 (\alpha, X) \in V^{\ast} \times V \mapsto \alpha(X) \in \mathbb{R}.
 \]
@@ -168,7 +172,8 @@ B(X, Y) = g(B^{\sharp} (X), Y)
 \]
 where \(B^{\sharp}\) is the linear transformation \(V \to V\) representing \(B\). Here we note really \(B^{\sharp} \in T^1_1 V\) but in fact \(T^1_1 V \simeq \operatorname{Hom} (V, V)\), the latter being the vector space of linear transformations \(V \to V\).
 
-*Exercise* Show that the map
+#+BEGIN_ex
+Show that the map
 \[
 \alpha \otimes X \in T^1_1 V \mapsto (Y \mapsto \alpha(Y) X) \in \operatorname{Hom}(V, V)
 \]
@@ -177,12 +182,15 @@ is an isomorphism. That is,
 \alpha \otimes X (Y) = \operatorname{Tr}_{13} \alpha \otimes X \otimes Y.
 \]
 /Hint/: you will not be able to show surjectivity directly without using the assumption that \(V\) is finite dimensional. Thus you might either try to show injectivity and conclude surjectivity by looking at dimension, or use a basis.
+#+END_ex
 
-*Exercise* Verify that for a bilinear form \(B \in T^0_2 V\), we have the relation
+#+BEGIN_ex
+Verify that for a bilinear form \(B \in T^0_2 V\), we have the relation
 \[
 B(X, Y) = g(B^{\sharp} (X), Y)
 \]
 where \(B^{\sharp} = \sharp(B) \in T^1_1 V\) is the musical raising and \(B^{\sharp} (X) = \operatorname{Tr}_{13} \sharp{B} \otimes X\). /Hint/: you only need to prove this for \(B\) of the form \(\alpha \otimes \beta\) and then apply the universal property to extend by linearity to general \(B\). Make sure to check bilinearity with respect to \(\alpha, \beta\)! Alternatively, choose a basis for \(V\) prove the result for \(B = \theta^i \otimes \theta^j\) once more extending by linearity to general \(B = \sum_{ij} B_{ij} \theta^i \otimes \theta^j\).
+#+END_ex
 
 Then we define the trace of a bilinear form \(B\) with respect to the inner-product \(g\):
 \[
@@ -192,10 +200,12 @@ That is, the trace of \(B\) is the trace of the linear transformation \(B^{\shar
 
 Also take caution to note that if \(B\) is symmetric, there are two distinct choices for \(B^{\sharp}\) depending on which index we raise. Mostly for us however, we will only apply this construction to symmetric \(B\) and then it does not matter which index is raised.
 
-*Exercise*: Show that if \(B\) is a symmetric bilinear form (i.e. \(B(X, Y) = B(Y, X)\)), then
+#+BEGIN_ex
+Show that if \(B\) is a symmetric bilinear form (i.e. \(B(X, Y) = B(Y, X)\)), then
 \[
 \sharp_1 B = \sharp_2 B.
 \]
+#+END_ex
 
 * Tensor Fields
 
@@ -222,7 +232,9 @@ S (f \alpha^1, \dots, \alpha^p, X_1, \dots, X_q) = f S(\alpha^1, \dots, \alpha^p
 \]
 Similarly if we multiply any slot by \(f\).
 
-*Definition*: An \(\mathbb{R}\)-multilinear map \(\Gamma(T^p_q M) = \Gamma(\bigotimes^p TM \otimes \bigotimes^q T^{\ast}M) \to C^{\infty} (M)\) is *tensorial* if it is \(C^{\infty} (M)\) linear.
+#+BEGIN_defn
+An \(\mathbb{R}\)-multilinear map \(\Gamma(T^p_q M) = \Gamma(\bigotimes^p TM \otimes \bigotimes^q T^{\ast}M) \to C^{\infty} (M)\) is *tensorial* if it is \(C^{\infty} (M)\) linear.
+#+END_defn
 
 For example, for bilinear forms this means that for every \(f \in C^{\infty}(M)\) and every \(X_1, X_2 \in \Gamma(TM)\) we have
 \[
@@ -255,7 +267,9 @@ Another way of expressing this compensation is to say that \(\operatorname{Rm}\)
 \operatorname{Rm}(fX, Y) Z = f \operatorname{Rm}(X, Y) Z = \operatorname{Rm}(X, fY) Z.
 \]
 
-**Exercise**: Using the Leibniz rule for the connection \(\nabla\) and the corresponding rule for the Lie bracket, prove the claimed tensorality in \(X, Y\).
+#+BEGIN_ex
+Using the Leibniz rule for the connection \(\nabla\) and the corresponding rule for the Lie bracket, prove the claimed tensorality in \(X, Y\).
+#+END_ex
 
 As a consequence, although as written, \(\operatorname{Rm}\) is defined for vector /fields/, tensorality induces a well defined map defined on tangent vectors. As mentioned in [[*Basic setup and conventions][Basic setup and conventions]], we will typically not differentiate by vector fields and tangent vectors when dealing with tensorial equations. But /just this time/, let us be very explicit: Let \(X, Y, Z \in T_x M\) be tangent vectors, let \(\bar{X}, \bar{Y}, \bar{Z}\) and \(\tilde{X}, \tilde{Y}, \tilde{Z}\) be vector fields defined on a neighbourhood of \(x\) such that
 \[
@@ -288,7 +302,9 @@ The second derivative of a vector field, in directions \(X, Y\) is defined to be
 \nabla^2_{X, Y} Z := \nabla_X (\nabla_Y Z) - \nabla Z (\nabla_X Y) = \nabla_X (\nabla_Y Z) - \nabla_{\nabla_X Y} Z.
 \]
 
-**Exercise**: Check that \(\nabla^2_{X, Y} Z\) is tensorial in \(X, Y\).
+#+BEGIN_ex
+Check that \(\nabla^2_{X, Y} Z\) is tensorial in \(X, Y\).
+#+END_ex
 
 The reason for this definition is that once again, \(\nabla_X (\nabla_Y Z)\) will include the variation, \(\nabla_X Y\) of \(Y\) along \(X\) so we must subtract it off so that it doesn't contribute to \(\nabla^2 Z\). Essentially the way to understand how to choose what to substract off is by the product rule. First, for those more comfortable with coordinates, we have
 \[
@@ -309,7 +325,9 @@ which we recognise as the first term occuring in
 
 If one is so inclined, this computation may be fully carried out to verify that the result only depends on the components \(X^i, Y^j, Z^k\) and the first two derivatives of \(Z\): \(\partial_i Z^k, \partial_i \partial_j Z^k\). It's worth doing and doesn't actually take very long. Doing is better than reading, hence we have:
 
-**Exercise**: Carry out the computation if you are so inclined.
+#+BEGIN_ex
+Carry out the computation if you are so inclined.
+#+END_ex
 
 * The Hessian of a function
   :PROPERTIES:
@@ -377,7 +395,9 @@ Now we'd like to be able to differentiate \(\alpha\). As before, if we different
 \nabla \alpha (X, Y) = \partial_X (\alpha(Y)) - \alpha(\nabla_X Y).
 \]
 
-**Exercise**: Check this is tensorial in \(X\) and \(Y\).
+#+BEGIN_ex
+Check this is tensorial in \(X\) and \(Y\).
+#+END_ex
 
 In terms of tensor products and traces we may express the defintion as
 \[
@@ -399,7 +419,9 @@ Rearranging gives
 (\nabla_X T) (Y) = \nabla_X (T(Y)) - T(\nabla_X Y).
 \]
 
-**Exercise**: Check directly that this is tensorial in both \(X\) and \(Y\). Do it both with the final expression and with the identities using traces and tensor products. Think about how requiring that the connection commutes with traces and satisfies the Leibniz product rule for tensor products leads to tensorality.
+#+BEGIN_ex
+Check directly that this is tensorial in both \(X\) and \(Y\). Do it both with the final expression and with the identities using traces and tensor products. Think about how requiring that the connection commutes with traces and satisfies the Leibniz product rule for tensor products leads to tensorality.
+#+END_ex
 
 Then for \(T = \nabla Z\) we finally obtain
 \[
@@ -418,7 +440,9 @@ Now that we understand second derivatives, we can express the curvature tensor \
 \]
 This equation is known as the /Ricci Identity/.
 
-**Exercise**: Prove the Ricci Identity. /Hint/: Use the fact that \(\nabla\) is torsion-free \(\nabla_X Y - \nabla_Y X = [X, Y].\)
+#+BEGIN_ex
+Prove the Ricci Identity. /Hint/: Use the fact that \(\nabla\) is torsion-free \(\nabla_X Y - \nabla_Y X = [X, Y].\)
+#+END_ex
 
 Sometimes this expression is written
 \[
@@ -427,28 +451,26 @@ Sometimes this expression is written
 Be /careful/ with this phrasing: \([\nabla_X, \nabla_Y] Z \ne \nabla_X (\nabla_Y Z) - \nabla_Y (\nabla_X Z)\)! The right hand side is not tensorial.
 
 
-**Exercise**: Define \(\operatorname{Rm}(X, Y)f = \nabla^2_{X, Y} f - \nabla^2_{Y, X} f\). Show that \(\operatorname{Rm} (X, Y) f = 0\). Equivalently, \(\nabla^2 f(X, Y) = \nabla^2 f(Y, X)\). We might then say that \(M \times \mathbb{R} \to M\) is a flat (i.e. not curved!) vector bundle.
+#+BEGIN_ex
+Define \(\operatorname{Rm}(X, Y)f = \nabla^2_{X, Y} f - \nabla^2_{Y, X} f\). Show that \(\operatorname{Rm} (X, Y) f = 0\). Equivalently, \(\nabla^2 f(X, Y) = \nabla^2 f(Y, X)\). We might then say that \(M \times \mathbb{R} \to M\) is a flat (i.e. not curved!) vector bundle.
+#+END_ex
 
 Thus the curvature tensor measures the lack of commutativity of second derivatives of vector fields. Put another way, unlike for functions, \(\nabla^2_{X, Y} Z\) need not be symmetric. Instead we have
 \[
 \nabla^2_{X, Y} Z = \nabla^2_{Y, X} Z + \operatorname{Rm} (X, Y) Z.
 \]
 
-**Exercise**: Show that in Euclidean space, \(\nabla^2_{X, Y} Z\) is symmetric in \(X, Y\).
+#+BEGIN_ex
+Show that in Euclidean space, \(\nabla^2_{X, Y} Z\) is symmetric in \(X, Y\).
+#+END_ex
 
 Now we observe that since we defined \(\nabla^2 Z\) in a tensorial way, immediately we have \(\operatorname{Rm}(X, Y)Z\) is tensorial in \(X, Y\). By defining \(\operatorname{Rm}\) as the second order commutator, we also immediately obtained the correction term.
 
 But still, we have the question **why is \(\operatorname{Rm}\) tensorial in \(Z\)?**
 
-**Exercise** Show that \(\nabla_X \nabla_Y fZ - \nabla_Y \nabla_X fZ - \nabla_{[X,Y]} fZ = f \operatorname{Rm} (X, Y) Z + (\operatorname{Rm} (X, Y) f) Z = f \operatorname{Rm} (X, Y) Z.\) Thus we conclude the tensorality in \(Z\) follows since \(M \times \mathbb{R} \to M\) is a flat vector bundle.
-
-
-
-
-
-
-
-
+#+BEGIN_ex
+Show that \(\nabla_X \nabla_Y fZ - \nabla_Y \nabla_X fZ - \nabla_{[X,Y]} fZ = f \operatorname{Rm} (X, Y) Z + (\operatorname{Rm} (X, Y) f) Z = f \operatorname{Rm} (X, Y) Z.\) Thus we conclude the tensorality in \(Z\) follows since \(M \times \mathbb{R} \to M\) is a flat vector bundle.
+#+END_ex
 
 * Symmetries of the Curvature Tensor
 
@@ -469,7 +491,8 @@ By using the first identity, the third and fourth are equivalent to each other. 
 
 * Ricci, Scalar and Sectional Curvature
 
-*Definition* The Ricci curvature is the trace,
+#+BEGIN_defn
+The Ricci curvature is the trace,
 \[
 \operatorname{Ric} (X, Y) = \operatorname{Tr} Z \mapsto \operatorname{Rm} (Z, X) Y.
 \]
@@ -477,26 +500,36 @@ That, we fix \(X, Y\) and then trace the resulting linear operator acting on \(Z
 \[
 \operatorname{Ric} (X, Y) = \operatorname{Tr}_g \operatorname{Rm} (\cdot, X, Y, \cdot).
 \]
+#+END_defn
 
 Since tracing is an averaging operation (e.g. it's the sum of the eigenvalues), the Ricci curvature represents and average curvature over two directions.
 
-*Exercise*: Using the symmetries of the curvature tensor, show that \(\operatorname{Ric}\) is symmetric.
+#+BEGIN_ex
+Using the symmetries of the curvature tensor, show that \(\operatorname{Ric}\) is symmetric.
+#+END_ex
 
-*Exercise* Using the symmetries of the curvature tensor, show that fixing any two other vector fields and tracing either reproduces the Ricci tensor or vanishes.
+#+BEGIN_ex
+Using the symmetries of the curvature tensor, show that fixing any two other vector fields and tracing either reproduces the Ricci tensor or vanishes.
+#+END_ex
 
-*Definition*: The scalar curvature is the trace of the Ricci tensor,
+#+BEGIN_defn
+The scalar curvature is the trace of the Ricci tensor,
 \[
 \operatorname{R} = \operatorname{Tr}_g \operatorname{Ric}.
 \]
 The scalar curvature is a fully averaged curvature over all four directions.
+#+END_defn
 
-*Definition*: The sectional curvature of a two-plane spanned by \(X, Y\) is
+#+BEGIN_defin
+The sectional curvature of a two-plane spanned by \(X, Y\) is
 \[
 \operatorname{K} (X \wedge Y) = \frac{1}{|X \wedge Y|_g} \operatorname{Rm}(X, Y, Y, X).
 \]
 At each point, this is the Gauss curvature of a flat surface embedded into \(M\) and with tangent plane equal to \(X \wedge Y\).
+#+END_defn
 
-*Exercise (conceptually tricky but short)*: Show that the symmetries of the curvature tensor imply that the sectional curvatures determine the curvature tensor. /Hint/: The basic idea is to note that the symmetries of the curvature tensor imply that
+#+BEGIN_ex
+Show that the symmetries of the curvature tensor imply that the sectional curvatures determine the curvature tensor. /Hint/: The basic idea is to note that the symmetries of the curvature tensor imply that
 \[
 \operatorname{Rm} (X \wedge Y, W \wedge Z) = \operatorname{Rm} (X, Y, Z, W)
 \]
@@ -504,3 +537,4 @@ determines a symmetric bilinear form on the space of two-planes. This bilinear f
 \[
 Q(X \wedge Y) = \operatorname{Rm} (X \wedge Y, Y \wedge X) = |X \wedge Y|_g K(X \wedge Y).
 \]
+#+END_ex
