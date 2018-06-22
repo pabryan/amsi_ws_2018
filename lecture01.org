@@ -140,7 +140,7 @@ One issue is that the solution so obtained is defined in the chart and it may in
 Fill in the details of the open set/continuity argument.
 #+END_ex
 
-* Length Minimisation
+* Geodesics are Critical Points for the Length Functional
 
 We say that a curve \(\gamma\) is /length minimising/ if
 \[
@@ -154,13 +154,17 @@ Now is a good time to state a theorem.
 Suppose \(\gamma\) is length minimising. Then \(\gamma\) is a geodesic. Conversely, every geodesic is locally length minimising in the sense that for all \(t_0 \in [0, 1]\), there is an \(\epsilon > 0\) such that \(\gamma\) restricted to \([0, 1] \cap \{|t - t_0| < \epsilon\}\) is length minimising.
 #+END_thm
 
-Let us give the proof of the first part here since it involves calculating variations of curves which will be important later so this is a good opportunity to get accustomed to such variations.
+For now we just give a proof of the first part since it involves calculating variations of curves which will be important later so this is a good opportunity to get accustomed to such variations.
 
 The proof of the second part is more delicate and will be discussed below in [[*Exponential Map][Exponential Map]].
 
-#+BEGIN_proof
-/First part only/.
+The first part follows immediately from the following:
 
+#+BEGIN_lem
+The Euler-Lagrange equation for the length function with fixed end points is precisely the geodesic equation.
+#+END_lem
+
+#+BEGIN_proof
 A /variation/ of \(\gamma\) is a map
 \[
 F : [0, 1] \times (-\epsilon, \epsilon) \to M
@@ -178,16 +182,13 @@ Define
 \[
 \gamma_s(t) = F(t, s).
 \]
-Then \(\gamma_0 = \gamma\) and \(\gamma_s(0) = \gamma_0(0)\), \(\gamma_s(1) = \gamma_0(1)\). Since each \(\gamma_s\) has the same endpoints as \(\gamma\) and \(\gamma\) minimises length between these points, the function
-\[
-s \mapsto L_s := L(\gamma_s)
-\]
-has a minimum at \(s = 0\) hence
-\[
-\partial_s|_{t=0} L_s = 0.
-\]
+Then \(\gamma_0 = \gamma\) and \(\gamma_s(0) = \gamma_0(0)\), \(\gamma_s(1) = \gamma_0(1)\).
 
-That is, /the first variation of \(L\) vanishes at \(s = 0\)/. Now we compute this variation. For notation, let's write
+The curve \(\gamma\) is a /critical point/ for \(L\) among variations with fixed endpoints precisely when
+\[
+\partial_s|_{s=0} L(\gamma_t) = 0
+\]
+for all variations with \(\gamma_0 = \gamma\). That is, precisely when /the first variation of \(L\) vanishes at \(s = 0\)/. Now we compute this variation. For notation, let's write
 \[
 T(s, t) = F_{\ast} \partial_t = \partial_t F (s, t), \quad S(s, t) = F_{\ast} \partial_s = \partial_s F.
 \]
@@ -207,27 +208,44 @@ to get
 \]
 
 Notice that by commuting derivatives we may evaluate at \(s=0\) because now we are differentiating with respect to \(t\) and not \(s\). Then we use metric compatability once more to move the derivatives off the variation vector
-\[
-\partial_s L_s|_{s=0} = \frac{1}{L(\gamma)} \int g(\nabla_{T_0} T_0, S) dt.
-\]
+\begin{align*}
+\partial_s L_s|_{s=0} &= \frac{1}{L(\gamma)} \int \partial_t [g(S_0, T_0)] dt - g(S_0, \nabla_{T_0} T_0) dt \\
+&= g(S_0, T_0)|_{t=0}^1 - \frac{1}{L(\gamma)} \int g(S_0, \nabla_{T_0} T_0) dt.
+\end{align*}
 
+But notice that since our variation fixes the endpoints,
+\[
+S_0(0) = \partial_s|_{s=0} F(0, s) = \partial_s|_{s=0} \gamma(0) = 0
+\]
+and similarly \(S_0(1) = 0\).
+
+Therefore,
+\[
+\partial_s L_s|_{s=0} = - \frac{1}{L(\gamma)} \int g(S_0, \nabla_{T_0} T_0) dt.
+\]
 In other words,
 \[
-dL_{\gamma} (S) = \frac{1}{L(\gamma)} \int g(\nabla_{T_0} T_0, S) dt.
+dL_{\gamma} (S_0) = -\frac{1}{L(\gamma)} \int g(\nabla_{T_0} T_0, S_0) dt.
 \]
 
-Since this is true for every vector field \(S\) along \(\gamma\) with \(S(0) = 0, S(1) = 0\), we find that
+Since \(dL_{\gamma} (S_0) = 0\) for every vector field \(S_0\) along \(\gamma\) with \(S(0) = 0, S(1) = 0\), we find that
 \[
 \nabla_{\gamma'} \gamma' = \nabla_{T_0} T_0 = 0
 \]
 and hence \(\gamma\) is a geodesic.
 #+END_proof
 
-#+BEGIN_rem
-Another way of saying this is that Euler-Lagrange equation for the length functional of curves with fixed end points \(x, y \in M\) is precisely the geodesic equation. *The critical points of the length functional are geodesics*.
-#+END_rem
+The first part of the length minimisation theorem - that if a curve \(\gamma\) minimises length then it is a geodesic - follows since then for any variation fixing the endpoints, each \(\gamma_s\) has the same endpoints as \(\gamma\) which minimises length between these points. Thus the function
+\[
+s \mapsto L_s := L(\gamma_s)
+\]
+has a local minimum at \(s = 0\) and the first derivative test implies
+\[
+\partial_s|_{t=0} L_s = 0.
+\]
+The lemma now applies to conclude that \(\gamma\) is a geodesic.
 
-A few of the steps above weren't fully justified so here are some exercises to justify them.
+- A few of the steps above weren't fully justified so here are some exercises to justify them.
 
 First, given a \(\gamma\), variations may be constructed in several ways.
 
