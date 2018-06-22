@@ -10,10 +10,13 @@
 
 * Metric Structure
 
+#+BEGIN_defn
 The length of a smooth path \(\gamma : [a, b] \to M\) is
 \[
 L(\gamma) = \int_a^b \sqrt{g_{\gamma(t)}(\gamma'(t), \gamma'(t))} dt.
 \]
+#+END_defn
+
 Here \(g_x\) is the metric at the point \(x \in M\). If we define
 \[
 \lvert \gamma' \rvert_g = \sqrt{g_{\gamma(t)}(\gamma'(t), \gamma'(t)})
@@ -24,11 +27,14 @@ L(\gamma) = \int_a^b |\gamma'| dt
 \]
 where we dropped the subscript \(g\) because it's tedious to include it every time we write it out! There will usually only be one metric under consideration so this convention won't cause any confusion. If there is more than one metric under consideration, then we will be explicit with subscripts.
 
+#+BEGIN_defn
 A metric (i.e. distance function not Riemannian metric!) on \((M, g)\) is given by
 \[
 d_g (x, y) = \inf\{L(\gamma) : \gamma(0) = x, \gamma(1) = y\}.
 \]
-Again, typically we will drop the subscript and just write \(d\).
+#+END_defn
+
+Again, typically we will drop the subscript in \(d_g\) and just write \(d\) except when any confusion might occur.
 
 - The metric topology on \(M\) induced by \(d\) is the same as the manifold topology.
 
@@ -62,6 +68,79 @@ By metric compatibility we have
 \partial_t |\gamma'(t)|^2 = \partial_{\gamma'} g(\gamma', \gamma') = 2 g(\nabla_{\gamma'} \gamma', \gamma') = 0.
 \]
 #+END_proof
+
+One question might come to mind: do any geodesics exist? If so, how many? What there properties? We'll answer the first two questions here and consider the third question in the next sections.
+
+#+BEGIN_lem
+Let \(x \in M\) and \(X \in T_x M\). Then there exists a unique geodesic \(\gamma\) defined on a maximal interval \([0, T)\) such that
+\[
+\gamma(0) = x, \quad \gamma'(0) = X.
+\]
+#+END_lem
+
+Here it could be that \(T\) is finite or that \(T = \infty\). The uniqueness here refers to the maximal interval. That is, if \(\sigma\) is a geodesic with \(\sigma(0) = x\) and \(\sigma'(0) = X\) defined on \([0, S)\), then \(S \leq T\) and \(\sigma(t) = \gamma(t)\) for all \(t \in [0, S)\).
+
+The proof is about ODE's on manifolds which are typically done in local coordinates. A coordinate free proof can be given by considering the /geodesic flow/ on the tangent bundle. This is quite an important perspective that we will consider in [[*Exponential Map][Exponential Map]] to obtain smooth dependence on \(x\) and \(X\). I don't know how to produce a coordinate free proof without working on the tangent bundle since the geodesic ODE is a second order system and to turn it into a system of first order ODE's in order to apply local existence and uniqueness theory, one defines variables \(V = \gamma') which is in the tangent bundle. Let me know if there's another way to do it coordinate free!
+
+#+BEGIN_proof
+In local coordinates, write \(\gamma(t) = (\gamma^1(t), \dots, \gamma^n(t))\) and
+\[
+\dot{\gamma} := \partial_t \gamma = \dot{\gamma}^i \partial_i
+\]
+where the Einstein summation convention is used. Here it's convenient to use a dot rather than a prime to denote derivatives because of the superscripted indices \(i\). Otherwise, it looks rather messy.
+
+Then
+\begin{align*}
+\nabla_{\dot{\gamma}} \dot{\gamma} &= \partial_{\dot{\gamma}} (\dot{\gamma}^i) \partial_i + \dot{\gamma}^i \nabla_{\dot{\gamma}} \partial_i \\
+&= \ddot{\gamma}^i \partial_i + \dot{\gamma}^i \dot{\gamma}^j \nabla_{\partial_j} \partial_i \\
+&= \ddot{\gamma}^i \partial_i + \dot{\gamma}^i \dot{\gamma}^j \Gamma_{ij}^k \partial_k.
+\end{align*}
+where \(\Gamma_{ij}^k = \nabla_{\partial_i} \partial_j\) are the Christoffel symbols of the connection. These are smooth, real valued functions indexed by \(1 \leq i,j,k \leq n\) defined on a coordinate patch /independently of \(\gamma\)/. But keep in mind that they vary from point to point and are evaluated here at \(\gamma(t)\).
+
+Also keep in mind that there are sums here in \(i, j, k\) whenever an index is repeated in a superscript and a subscript. Relabeling the indices (\(i \leftrightarrow k\) in the second sum) and grouping together the coefficients of \(\partial_i\) we get
+\[
+\nabla_{\dot{\gamma}} \dot{\gamma} = \left(\ddot{\gamma} + \dot{\gamma}^k \dot{\gamma}^j \Gamma_{kj}^i(\gamma^1, \dots, \gamma^n))\right) \partial_i.
+\]
+
+Thus \(\gamma = (\gamma^1, \dots, \gamma^n)\) is a geodesic if and only if it satisfies the second order, non-linear system of ODE's
+\[
+\ddot{\gamma}^i(t) + \Gamma_{kj}^i(\gamma^1(t), \dots, \gamma^n(t)) \dot{\gamma}^k(t) \dot{\gamma}^j(t) = 0.
+\]
+with \(1 \leq i \leq n\).
+
+The assertion of the lemma is then that given any \(x = (x^1, \cdots, x^n)\) in coordinates and \(X = X^i \partial_i\) there exists a unique solution to the initial value problem
+\begin{cases}
+\ddot{\gamma}^i + \Gamma_{kj}^i(\gamma^1, \dots, \gamma^n) \dot{\gamma}^k \dot{\gamma}^j &= 0 \\
+\gamma^i(0) &= x^i \\
+\dot{\gamma}^i (0) &= X^i.
+\end{cases}
+
+As a first order system of ODE's obtained by introducing \(V^i = \dot{\gamma}^i\) we have
+\begin{cases}
+\begin{pmatrix}
+\dot{\gamma}^i \\
+\dot{V}^i
+\end{pmatrix}
+&=
+\begin{pmatrix}
+V^i \\
+- \Gamma_{kj}^i(\gamma^1, \dots, \gamma^n) V^k V^j
+\end{pmatrix}
+\\
+\gamma^i(0) &= x^i \\
+V^i (0) &= X^i.
+\end{cases}
+
+Existence and uniqueness is now guaranteed by the [[https://en.wikipedia.org/wiki/Picard%25E2%2580%2593Lindel%25C3%25B6f_theorem][Picard–Lindelöf theorem]] which states that since the right hand side in parentheses is a smooth function of \(\gamma^i, V^j\) and is in particular Lipschitz, a unique solution exists on a maximal interval \([0, T)\).
+
+One issue is that the solution so obtained is defined in the chart and it may in fact leave the chart whence we can no longer use the inverse chart map to transfer the solution to \(M\). However, we simply use a new chart and existence and uniqueness ensures there exists a unique extension into this chart. Now one uses an open set/continuity argument to complete the details of the proof.
+#+END_proof
+
+#+BEGIN_ex
+Fill in the details of the open set/continuity argument.
+#+END_ex
+
+* Length Minimisation
 
 We say that a curve \(\gamma\) is /length minimising/ if
 \[
