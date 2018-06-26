@@ -387,7 +387,27 @@ U = F_{\ast} \partial_{\theta} = d\exp_x|_{tv} \cdot (\cos\theta v + \sin\theta 
 
 * Geodesic Flow
 
-The idea here is to split the geodesic equation into a system of second order equations. We did this in coordinates in order to prove the existence and uniqueness of the geodesic equation. Here we do it intrinsically without reference to coordinates. That is, we obtain a first order system on \(TM\). The usefulness of this approach is that we may then immediately infer the smooth dependence of geodesics on the initial tangent vector (which includes smooth dependence on the base point \(x\)). As a result we conclude some important properties about the exponential map.
+The idea here is to split the geodesic equation into a system of second order equations. We did this in coordinates in order to prove the existence and uniqueness of the geodesic equation. Here we phrase the question as a first order system on \(TM\). That is we defined a vector field on \(TM\) and use it to deduce the existence, uniqueness and regularity properties of geodesics. The usefulness of this approach is that we may then immediately infer the smooth dependence of geodesics on the initial tangent vector (which includes smooth dependence on the base point \(x\)).
+
+In point of fact, such smooth dependence may be obtained by working in coordinates for \(M\) and using standard smooth dependence on parameters for ODE's. What we achieve here is an approach that works intrinsically on the manifold but is more or less equivalent to the standard proof in coordinates.
+
+As a result we conclude some important properties about the exponential map in [[*Regularity of Exponential Map][Regularity of Exponential Map]].
+
+To obtain an entirely coordinate free proof, one needs to phrase the connection in terms of a splitting of the map \(\pi_{\ast} : TTM \to TM\) where \(\pi_{\ast}\) is the differential of the bundle projection \(\pi : TM \to M\). Such a proof may be found for example in [[https://www.springer.com/gp/book/9780817641443][Geodesic Flows by Gabriel Paternain]]. But note that here we only use coordinates to define \(G\), so all one really needs is a coordinate-independent definition of \(G\). I don't know how to do this other than as described in Paternain's book.
+
+Another approach is to take a Hamiltonian point of view and compute the Euler-Lagrange equation for the Hamiltonian flow on the Dirichlet energy for a curve. That is for,
+\[
+E = \frac{1}{2} \int |\gamma'(t)|^2 dt.
+\]
+This is the same as the length apart from a square root. The following exercise connects the energy and the length functions:
+
+#+BEGIN_ex
+Show that critical points for the length function are precisely critical points for \(E\).
+#+END_ex
+
+I haven't seen a coordinate independent proof that the resulting Euler-Lagrange equation is precisely the geodesic equation however. See [[https://terrytao.wordpress.com/tag/geodesic-flow/][Geodesic flow on Terry Tao's blog]] for more details on this approach.
+
+See also [[https://mathoverflow.net/questions/88624/is-there-a-coordinate-free-proof-of-the-hamiltonian-character-of-the-geodesic-fl][this MathOverFlow question]] and the references therein for some discussion on the topic and the two approaches mentioned above.
 
 #+BEGIN_thm
 There exists a unique, smooth vector field \(G \in \mathfrak{X}(TM)\) such that the integral curves of \(G\) are precisely the maps
@@ -407,7 +427,7 @@ should be smooth in both \(t\) and \(v\). We already have smoothness in \(t\) wh
 
 Since we're working on the tangent bundle, let us recall the differential structure. For \((x^1, \cdots, x^n)\) local coordinates \(\phi: U \to V\), writing \(v = v^i \partial_i\), we have coordinates on \(\pi^{-1} [U]\),
 \[
-Phi(v) = (x^1, \cdots, x^n, v^1, \cdots, v^n)
+\Phi(v) = (x^1, \cdots, x^n, v^1, \cdots, v^n)
 \]
 where \((x^1, \cdots, x^n) = \phi (\pi(v))\). Let \(\partial_i\) denote the coordinate vector field corresponding to \(x^i\) and let \(\dot{\partial}_i\) denote the coordinate vector field corresponding to \(v^i\). Thus a tangent vector \(V \in T(TM)\) to the tangent bundle may be written,
 \[
@@ -468,8 +488,6 @@ You may be wondering why we didn't simply define, \(G(v) = \left.\partial_t\righ
 #+END_thm
 
 #+BEGIN_proof
-[Proof of Theorem]
-
 1. The exponential map is smooth.
 
    The geodesic flow is a smooth map and has the property that \(\exp(v) = \gamma_v(1) = \pi \circ \phi_1(v)\) where \(\phi_t\) is the geodesic flow. This is the composition of smooth maps, hence smooth.
@@ -497,7 +515,7 @@ You may be wondering why we didn't simply define, \(G(v) = \left.\partial_t\righ
    \]
    Or in other words, the composition,
    \[
-   v \in T_x M \mapsto V \in T_O(T_x M) \mapsto d \exp_x \cdot V in T_x M
+   v \in T_x M \mapsto V \in T_O(T_x M) \mapsto d \exp_x \cdot V \in T_x M
    \]
    is the identity and hence \(d\exp_x \) is an isomorphism. The inverse function theorem furnishes us with a local, smooth inverse to \(\exp_x\).
 
