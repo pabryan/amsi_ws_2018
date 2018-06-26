@@ -2,5 +2,89 @@
 
 #+TITLE: Linearisation of Geodesic Equation and Jacobi Fields
 
+* References
+
+- [[http://myweb.rz.uni-augsburg.de/~eschenbu/comparison.pdf][Comparison Geometry]] by Eschenburg, Section 1.
+
 * Variations of Geodesics and Jacobi Fields
+
+Except in special cases (e.g. Euclidean space, the sphere), the non-linearity of the geodesic equation precludes us from solving it. Nevertheless, as is typical with non-linear ODE's, in order to obtain some understanding of the solutions, we linearise the equation.
+
+For a nonlinear, equation \(F(u) = 0\) where \(u : \in E = C^{\inft}(\mathbb{R}^n \to \mathbb{R})\) and \(F : \mathbb{R} \to \mathbb{R}\), the linearisation of \(F\) around \(u_0\) is simply \(dF_{u_0}\). It is a linear map acting on tangent vectors based at \(u_0) to \(E\). Since \(E\) is a (infinite dimensional) vector space, the tangent space \(T_{u_0} E\) may be identified with \(E\) itself via the map
+\[
+v \in E \mapsto \partial_s|_{s=0} (u_0 + sv).
+\]
+More generally, we may take any curve \(r(s) \in E\) (so that for each \(s\), \(r(s) : \mathbb{R}^n \to \mathbb{R}\)) with \(r(0) = u_0\) and \(\partial_s|_{s=0} r(s) = v\) and the result is independent of the chosen curve.
+
+Then we may compute
+\[
+dF_{u_0} (v) = \partial_s|_{s=0} F(u_0 + s v).
+\]
+
+#+BEGIN_eg
+For example, if \(F(u) = u^2\), then for \(u_0(x) = \sin(x) \in E = C^{\inft}(\mathbb{R} \to \mathbb{R})\) and \(v(x) e^x \in E = T_{u_0} E\) we have
+\[
+dF_{u_0} (v) = \partial_s|_{s=0} (u_0 + s v)^2 = 2u_0 v.
+\]
+That is, \(dF_{u_0} (v)\) is the function
+\[
+x \mapsto 2\sin(x) e^x.
+\]
+
+Notice here that we really interpret \(F : E \to E\) so that \(dF_{\sin(x)} : v \in T_{\sin(x)} E \mapsto 2\sin v \in T_{\sin^2(x)} E\).
+#+END_eg
+
+#+BEGIN_eg
+An example closer to the geodesic equation is a non-linear differential operator. Let us define the Newtonian momentum,
+\[
+P(u) = \frac{1}{2} (u')^2.
+\]
+for \(u \in C^{\infty}(\mathbb{R} \to \mathbb{R}\). Then
+\[
+dP_{u_0} (v) = u_0' v'.
+\]
+So with \(u_0(x) = \sin(x)\) and \(v(x) = e^x\) as in the previous example,
+\[
+dP_{\sin(x)} (e^x) = \cos(x) e^x.
+\]
+#+END_eg
+
+Notice that the function \(x \mapsto dP_{u_0(x)} (v(x))\) need not be a linear function of \(x\). The point is that \(dP_{u_0} (v)\) is linear in the tangent vector \(v\).
+
+There are two points of relevance to geodesics to make here:
+
+1. The space of curves \(C^{\infty}([0, 1] \to M)\) is not a linear space so we expressions like \(\gamma_s = \gamma_0 + s \mu\) do note make sense,
+2. The tangent space \(T_{u_0} E\) is infinite dimensional and that can cause some complications. We will discover below, for variations of geodesics, there is a very important finite dimensional subspace, the space of /Jacobi fields/.
+
+To overcome 1., we note that as remarked above, any curve \(r(s)\) can take the place of \(u_0 + s v\) so that our variations may be taken just as in deriving the geodesic equation, namely we consider maps \(\varphi(t, s)\) with \(\gamma_0(t) := \varphi(t, 0)\) satisfying \(\gamma_0 = \gamma\).
+
+Regarding point 2., instead of considering all possible variations of \(\gamma\), we consider only /geodesic variations/:
+
+#+BEGIN_defn
+Let \(\gamma: [0, 1] \to M\) be a geodesic. A /geodesic variation/ of \(\gamma\) is a map
+\[
+\varphi : [0, 1] \times (-\epsilon, \epsilon) \to M
+\]
+such that for each \(s \in (-\epsilon, \epsilon)\), the curve
+\[
+t \mapsto \gamma_s(t) := \varphi(t, s)
+\]
+is a geodesic.
+#+END_defn
+
+Here's an unmotivated definition:
+
+#+BEGIN_defn
+Let \(\gamma\) be a geodesic. A /Jacobi field/ along \(\gamma\) is a vector field \(J\) along \(\gamma\) such that
+\[
+J'' + \operatorname{Rm}(J, \gamma') \gamma' = 0.
+\]
+#+END_defn
+
+And here's the motivation.
+
+#+BEGIN_lem
+Geodesic variations correspond to Jacobi fields.
+#+END_lem
+
 * First Order System For Jacobi Fields and Riccati Equation
