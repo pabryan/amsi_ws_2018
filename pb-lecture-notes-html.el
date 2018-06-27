@@ -3,7 +3,7 @@
 (defvar note-section-id)
 
 (org-export-define-derived-backend 'pa-lecture-notes-html 'html
-  :translate-alist '((headline . pa-lecture-notes-headline)))
+  :translate-alist '((headline . pa-lecture-notes-headline) (template . pa-lecture-notes-template)))
 
 (defun pa-lecture-notes-headline (headline contents info)
   "Format org-mode headlines to my specs"
@@ -22,6 +22,10 @@
    contents
    "\n</div>\n</div>\n</div>\n"
    ))
+
+(defun pa-lecture-notes-template (contents info)
+  "No html pre- or post-amble"
+  contents)
 
 (provide 'pa-lecture-notes)
 
