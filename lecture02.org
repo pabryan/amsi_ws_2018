@@ -363,20 +363,22 @@ Show moreover that \(J^{\perp} \in \mathcal{J}^{\perp}\). /Hint/: Evaluate a cer
 
 Now we split the Jacobi equation into a first order system. The interesting thing about the way we do it is that we /do not/ do the obvious thing, introducing a new variable for the derivative of \(J\), say \(K = J'\) which satisfies \(K' = - \operatorname{R}(J, V) V\). Such a formulation is useful for proving existence and uniqueness of Jacobi fields but does not furnish us with a useful comparison theory.
 
-Rather, let us set
+Rather, suppose for a moment that there is an embedding \(\varphi : [0, 1] \times S \to M\) with \(S\) an \(n-1\) dimensional manifold so that \(U = \varphi([0,1] \times S)\) is an open subset of \(M\) and \(\varphi\) is a diffeomorphism onto this subset.
+
+Suppose further that for each \(s\), \(\gamma_s = \varphi(\cdot, s)\) is a geodesic. In other words, \(\varphi\) is an \(n-1\) parameter geodesic variation. Then for each curve \(\alpha\), in \(S\), \((t, u) \mapsto \varphi(t, \alpha(u))\) is a \(1\) parameter geodesic variation with Jacobi field \(J(t) = \partial_u|_{u=0} \varphi(t, \alpha(u))\). Equivalently, for each \(V\) tangent to \(S\), \(J_s(t) = J(s, t) = \varphi_{\ast} V\) is a Jacobi field along \(\gamma_s\).
+
+Then we have \(\nabla_V V = 0\) where \(V = \varphi_{\ast} \partial_t\) and \([V, J] = 0\) for any \(J\) the Jacobi field arising above as the variation in a direction tangent to \(S\).
+
+Let us set
 \[
 A = \nabla V.
 \]
-where \(V = \gamma'\) as before. That is, \(A : \Gamma(\gamma, TM) \to \Gamma(\gamma, TM)\) is a \(C^{\infty}\) linear (tensorial) map taking vector fields \(X\) along \(\gamma\) to vector fields along \(\gamma\) defined as
+Then \(A : \Gamma(U, TM) \to \Gamma(U, TM)\) is a \(C^{\infty}\) linear (tensorial) map taking vector fields \(X\) along \(U\) to vector fields along \(U\). Explicitly,
 \[
 A(X) = \nabla V (X) = \nabla_X V.
 \]
 
-Given a Jacobi field, \(J\) along \(\gamma\) we have a geodesics variations \(\varphi : [0, 1] \times (-\epsilon, \epsilon) \to M\) such that \(\varphi_{\ast} \partial_s|_{s=0} = J\) and \(\varphi(t, 0) = \gamma(t)\) so that \(\varphi_{\ast} \partial_t |_{s=0} = \gamma'\). In particular, as already used
-\[
-[J, \gamma'] = 0.
-\]
-Therefore,
+Since \([V, J] = 0\), we get
 \[
 A(J) = \nabla_J V = \nabla_V J = J'.
 \]
@@ -408,13 +410,54 @@ Writing \(\operatorname{R}_V (J) = \operatorname{Rm} (J, V) V\) and noting that 
 \]
 Such an equation is an example of a non-homogeneous [[https://en.wikipedia.org/wiki/Riccati_equation][Riccati equation]].
 
-That is, the Jacobi equation is equivalent to
+Let's rigorously obtain the relationship between Jacobi fields and \(A\) satisfying the Riccati equation. That is, rather than as in the derivation of the Riccati equation where we assumed (without proof) that we had a \(n-1\) parameter geodesic variation. Now we establish the correspondence only assuming \(A\) satisfies the Riccati equation and without assuming \(A = \nabla V\).
+
+#+BEGIN_lem
+Let \(\gamma\) be a geodesic. Then the the Jacobi equation along \(\gamma\) is equivalent to
 \begin{cases}
 \nabla_V J &= A (J) \\
-\nabla_V A + A^2 + \operatorname{R}_V &= 0.
+\nabla_V A + A^2 + \operatorname{R}_V &= 0 \\
+J(0) &= J_0 \\
+A(0) &= A_0.
 \end{cases}
 
-The initial conditions specifying \(J(0)\) and \(J'(0)\) are now replaced by initial conditions specifying \(J(0)\) and \(A(0)\).
+That is, if \(J\) is a Jacobi field, then there exists an \(A\) satisfying the Riccati equation and such that \(J' = A (J)\). Conversely, if \(A\) satisfies the Riccati equation, then the solution to \(J' = A(J)\) with \(J(0) = X\) is the unique Jacobi field such that \(J(0) = X\) and \(J'(0) = A(0) (X)\).
+#+END_lem
+
+#+BEGIN_proof
+First let \(A\) be any solution the Riccati equation and let \(J\) be any solution of \(J' = A(J)\). Then we need to show \(J\) is a Jacobi field. For this, we compute
+\[
+J'' = \nabla^2 J (\gamma', \gamma') = \nabla_{\gamma'}(A(J)) = (\nabla_{\gamma'} A) (J) + A(\nabla_{\gamma'} J) = -\operatorname{R}_V (J) - A^2(J) + A(\nabla_{\gamma'} J).
+\]
+But
+\[
+-A^2(J) + A(\nabla_{\gamma'} J) = A(-A(J) + J') = A(0) = 0
+\]
+by construction hence
+\[
+J'' = - \operatorname{R}_V (J)
+\]
+and \(J\) satisfies the Jacobi equation.
+
+Conversely, let \(J\) be any Jacobi field. We need to construct \(A\) satisfying the Riccati equation and such that \(\nabla_{\gamma'} = A(J)\).
+
+Let \(A_0 : T_{\gamma(0)} M \to T_{\gamma(0)} M\) be any linear transformation such that \(J'(0) = A_0 (J(0))\) and let \(A(t)\) be the unique solution of \(A' + A^2 + \operatorname{R}_V = 0\) with \(A(0) = A_0\). Then as in the previous part the solution \(\tilde{J}\) to \(\tilde{J}' = A(\tilde{J})\) with \(\tilde{J}(0) = J(0)\) is a Jacobi field such that \(\tilde{J}(0) = J(0)\) and
+\[
+\tilde{J}'(0) = A(0) (\tilde{J}(0)) = A_0(J(0)) = J'(0).
+\]
+That is, \(\tilde{J}\) is a Jacobi field with the same initial conditions as \(J\) hence \(\tilde{J} = J\) and
+\[
+J' = \tilde{J}' = A(\tilde{J}) = A(J).
+\]
+#+END_proof
+
+#+BEGIN_rem
+Notice that in each implication of the proof we have \(J' = A(J)\). That is \(A(J) = \nabla_{\gamma'} J\). If we let \(\varphi\) be a geodesic variation corresponding to \(J\), then \([V, J] = 0\) so that
+\[
+A(J) = \nabla_V J = \nabla_J V = \nabla V (J).
+\]
+But note here that \(\nabla V\) is only defined here on \(V\) and on \(J\). In other words, we don't need to construct an \(n-1\) dimensional variation of \(\gamma\) and set \(A = \nabla V\) - the construction essentially works for one parameter variations of \(\gamma\).
+#+END_rem
 
 #+BEGIN_rem
 Note that while the equation for \(J\) is linear, the equation for \(A\) is nonlinear. This may seem like a step backward, but this formulation allows us to develop comparison theorems for \(A\) (and then in turn \(J\)) based on comparisons of the curvature \(\operatorname{R}_V\) along the geodesic \(\gamma\). What's more, the equation for \(A\) is completely decoupled from that of \(J\) so that we may solve for \(A\) independently of any Jacobi field \(J\). There is much geometric information contained in \(A\) and the equation is of the same form for all geodesics and all manifolds with the only difference occurring in the \(\operatorname{R}_V\). In other words, we may think of the geometry along \(\gamma\), expressed through \(\operatorname{R}_V\), as a forcing term in
@@ -434,4 +477,16 @@ Note that
 Then \(A\) satisfies \(A' + A^2 = 0\) in the \(V\) direction. Notice that this equation is the same for all geodesics in all manifolds! As already noted: /there is no geometry in the radial direction/.
 
 In the previous section, we observed that the only interesting behaviour occurs along \(\mathcal{J}^{\perp}\). For this reason, sometimes only the restriction of \(A\) to \(\mathcal{J}^{\perp}\) is considered.
+#+END_rem
+
+#+BEGIN_rem
+Finally, note that \(A\) really encodes for an \(n\)-dimensional family of Jacobi fields. That is if \(J_1, \cdots, J_n\) are linearly independent Jacobi fields, then \(A\) is determined by
+\[
+A(J_i) = J_i'
+\]
+or indeed, \(A\) is determined by
+\[
+A_0(J_i(0)) = J_i'(0)
+\]
+and the Riccati equation.
 #+END_rem
