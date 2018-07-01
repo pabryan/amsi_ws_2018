@@ -250,4 +250,113 @@ X'' = \nabla^2 X (\alpha', \alpha')
 so this really is a tensorial (and hence invariantly defined) ODE.
 #+END_rem
 
+* The space of Jacobi Fields
+
+In the course of the proof in the previous section, we noted that Jacobi fields along a geodesic \(\gamma\) are completely determined by the following linear system of ODE's:
+\begin{cases}
+J'' + R(J, \gamma') \gamma' &= 0 \\
+J(0) &= X \\
+J'(0) &= Y.
+\end{cases}
+where \(X, Y \in T_{\gamma(0)} M\) are arbitrary tangent vectors.
+
+#+BEGIN_defn
+Let us denote the set of Jacobi fields along \(\gamma\) by \(\mathcal{J}\).
+#+END_defn
+
+#+BEGIN_ex
+Show that \(\mathcal{J}\) is a vector space of dimension \(n^2\).
+#+END_ex
+
+Notice that if \(X = \gamma'(0)\) and \(Y = 0\), then \(J = \gamma'\) is a solution! That is, the velocity vector of a geodesic satisfies the Jacobi equation with tangential initial condition and zero initial acceleration. The Jacobi equation in this case follows from
+\[
+J'' = \nabla_{\gamma'} (\nabla_{\gamma'} \gamma') = 0, \quad R(\gamma', \gamma') \gamma' = 0.
+\]
+
+#+BEGIN_ex
+Show that
+\[
+J(t) = t \gamma'(t)
+\]
+satisfies the Jacobi equation with \(J(0) = 0\) and \(J'(0) = \gamma'(0)\).
+
+Conclude that by linearity that
+\[
+J(t) = (a + b t) \gamma'(t)
+\]
+is the unique Jacobi field satisfying
+\[
+J(0) = a \gamma'(0), \quad J'(0) = b \gamma'(0).
+\]
+#+END_ex
+
+#+BEGIN_defn
+The space of /orthogonal/ Jacobi fields, \(\mathcal{J}^{\perp}\) is defined to be
+\[
+\mathcal{J}^{\perp} = \{J : g(J(t), \gamma'(t)) \equiv 0\}.
+\]
+#+END_defn
+
+#+BEGIN_lem
+The space \(\mathcal{J}^{\perp}\) is an \(n^2 - 2\) dimensional linear subspace of the \(n^2\) dimensional space of Jacobi fields along \(\gamma\). That is, \(\mathcal{J}^{\perp}\) is a co-dimension \(2\) subspace of \(\mathcal{J}\).
+#+END_lem
+
+
+#+BEGIN_proof
+Let \(J_1, J_2 \in \mathcal{J}\) be Jacobi fields. Then we claim that
+\[
+g(\nabla_{\gamma'} J_1, J_2) = g(J_1, \nabla_{\gamma'} J_2) + \text{const}.
+\]
+
+This follows by differentiating:
+\begin{split}
+\partial_{\gamma'} [g(\nabla_{\gamma'} J_1, J_2) - g(J_1, \nabla_{\gamma'} J_2)] &= g(\nabla^2 J_1 (\gamma', \gamma'), J_2) - g(J_1, \nabla^2 J_2 (\gamma', \gamma')) \\
+&= \operatorname{Rm(J_1, \gamma', \gamma', J_2)} - \operatorname{Rm(J_2, \gamma', \gamma', J_1)} \\
+&= 0.
+\end{split}
+Here in the first line we used metric compatibility and in the second the Jacobi equation. The last line follows from the curvature tensor symmetries.
+
+Next, let \(J\) be any Jacobi field and recall that \(\gamma'\) is also a Jacobi field. Then the claim implies that
+\[
+g(\nabla_{\gamma'} J, \gamma') = g(J, \nabla_{\gamma'} \gamma') + \text{const} = \text{const}.
+\]
+Therefore,
+\[
+\partial_{\gamma'} g(J, \gamma') = g(\nabla_{\gamma'} J, \gamma') + g(J, \nabla_{\gamma'} \gamma') = \text{const}
+\]
+and hence
+\[
+g(J, \gamma') = at + b
+\]
+for some constants \(a, b \in \mathbb{R}\).
+
+Finally then, the linear map
+\[
+J \in \mathcal{J} \mapsto (\partial_t g(J, \gamma'), g(J, \gamma')) = (a, b) \in \mathbb{R}^2
+\]
+is surjective (because \((a + b t) \gamma'\) is a Jacobi field) with kernel precisely \(\mathcal{J}^{\perp}\). Therefore by the rank-nullity theorem,
+\[
+\operatorname{dim} \mathcal{J}^{\perp} = \operatorname{dim} \mathcal{J} - 2 = n^2 - 2.
+\]
+#+END_proof
+
+The following exercise gives some structure to Jacobi fields. It shows that the radial component is linear and that all the interesting behaviour is contained in \(\mathcal{J}^{\perp}\). This simply follows from \(\mathcal{R}_V (V) = 0\) so that radial Jacobi fields satisfy \(J'' = 0\).
+
+
+#+BEGIN_ex
+Let \(X, Y \in T_{\gamma(0)} M\) and write uniquely
+\[
+X = a \gamma'(0) + X^{\perp}, \quad Y = b \gamma'(0) + Y^{\perp}
+\]
+where \(a = g(X, \gamma'(0))\) and \(X^{\perp}\) is the component of \(X\), \(g\)-orthogonal to \(\gamma'(0)\). Likewise for \(Y\).
+
+Show that the Jacobi field \(J\) determined by \(J(0) = X\), \(J'(0) = Y\) is
+\[
+J(t) = (a + b t) \gamma'(0) + J^{\perp}(t)
+\]
+where \(J^{\perp}\) is the Jacobi field determined by \(J^{\perp}(0) = X^{\perp}\), \((J^{\perp})'(0) = X^{\perp}\).
+
+Show moreover that \(J^{\perp} \in \mathcal{J}^{\perp}\). /Hint/: Evaluate a certain equation from the proof of the previous lemma at \(t = 0\).
+#+END_ex
+
 * First Order System For Jacobi Fields and Riccati Equation
