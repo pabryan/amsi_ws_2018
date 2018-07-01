@@ -360,3 +360,78 @@ Show moreover that \(J^{\perp} \in \mathcal{J}^{\perp}\). /Hint/: Evaluate a cer
 #+END_ex
 
 * First Order System For Jacobi Fields and Riccati Equation
+
+Now we split the Jacobi equation into a first order system. The interesting thing about the way we do it is that we /do not/ do the obvious thing, introducing a new variable for the derivative of \(J\), say \(K = J'\) which satisfies \(K' = - \operatorname{R}(J, V) V\). Such a formulation is useful for proving existence and uniqueness of Jacobi fields but does not furnish us with a useful comparison theory.
+
+Rather, let us set
+\[
+A = \nabla V.
+\]
+where \(V = \gamma'\) as before. That is, \(A : \Gamma(\gamma, TM) \to \Gamma(\gamma, TM)\) is a \(C^{\infty}\) linear (tensorial) map taking vector fields \(X\) along \(\gamma\) to vector fields along \(\gamma\) defined as
+\[
+A(X) = \nabla V (X) = \nabla_X V.
+\]
+
+Given a Jacobi field, \(J\) along \(\gamma\) we have a geodesics variations \(\varphi : [0, 1] \times (-\epsilon, \epsilon) \to M\) such that \(\varphi_{\ast} \partial_s|_{s=0} = J\) and \(\varphi(t, 0) = \gamma(t)\) so that \(\varphi_{\ast} \partial_t |_{s=0} = \gamma'\). In particular, as already used
+\[
+[J, \gamma'] = 0.
+\]
+Therefore,
+\[
+A(J) = \nabla_J V = \nabla_V J = J'.
+\]
+This is the first of our equations. It is a first order linear equation in \(J\).
+
+For the second equation, we recall the derivative \(\nabla A\) obtained by requiring \(\nabla\) to commute with traces and satisfy the Leibniz rule with respect to tensor products is
+\[
+(\nabla_X A) (Y) = \nabla_X (A(Y)) - A(\nabla_X Y) = \nabla_X \nabla_Y V - \nabla_{\nabla_X Y} V.
+\]
+for vector fields \(X, Y\) along \(\gamma\). Or in other words, the last term on the right is a correction term accounting for the variation in \(Y\).
+
+So we compute the variation of \(A\) along \(\gamma\) (i.e. \(\nabla_V A\)) applied to a Jacobi field \(J\), and commute derivatives in order to obtain an equation for \(A\):
+\begin{split}
+(\nabla_V A) (J) &= \nabla_V \nabla_J V - \nabla_{\nabla_V J} V \\
+&= \operatorname{Rm}(V, J) V + \nabla_J \nabla_V V + \nabla_{[V, J]} V - \nabla_{\nabla_J V + [V, J]} V \\
+&= -\operatorname{Rm}(J, V) V - \nabla V(\nabla V (J)).
+\end{split}
+In the last line we recall the notation \(\nabla V(J) = \nabla_J V\), and use that each \(\gamma_s = \varphi(\cdot, s)\) is a geodesic so that \(\nabla_V V \equiv 0\).
+
+Notice that if we just took an arbitrary vector field \(X\) (i.e. \(X = \varphi_{\ast} \partial_s\) where \(\varphi\) is not necessarily arising from a geodesic variation), then although \(\nabla_V V = 0\) at \(s = 0\), it need not be true that \(\nabla_V V = 0\) for other \(s\). Then since \(X\) is the variation in the \(s\) direction, \(\nabla_X \nabla_V V\) may not be zero.
+
+Now, since \(A = \nabla V\), rearranging gives,
+\[
+\nabla_V A (J) + A^2 (J) + \operatorname{Rm}(J, V) V = 0.
+\]
+Writing \(\operatorname{R}_V (J) = \operatorname{Rm} (J, V) V\) and noting that the equality is true for all \(J\) we obtain our equation for \(A\):
+\[
+\nabla_V A + A^2 + \operatorname{R}_V = 0.
+\]
+Such an equation is an example of a non-homogeneous [[https://en.wikipedia.org/wiki/Riccati_equation][Riccati equation]].
+
+That is, the Jacobi equation is equivalent to
+\begin{cases}
+\nabla_V J &= A (J) \\
+\nabla_V A + A^2 + \operatorname{R}_V &= 0.
+\end{cases}
+
+The initial conditions specifying \(J(0)\) and \(J'(0)\) are now replaced by initial conditions specifying \(J(0)\) and \(A(0)\).
+
+#+BEGIN_rem
+Note that while the equation for \(J\) is linear, the equation for \(A\) is nonlinear. This may seem like a step backward, but this formulation allows us to develop comparison theorems for \(A\) (and then in turn \(J\)) based on comparisons of the curvature \(\operatorname{R}_V\) along the geodesic \(\gamma\). What's more, the equation for \(A\) is completely decoupled from that of \(J\) so that we may solve for \(A\) independently of any Jacobi field \(J\). There is much geometric information contained in \(A\) and the equation is of the same form for all geodesics and all manifolds with the only difference occurring in the \(\operatorname{R}_V\). In other words, we may think of the geometry along \(\gamma\), expressed through \(\operatorname{R}_V\), as a forcing term in
+\[
+A' + A^2 = - \operatorname{R}_V.
+\]
+That is, all the varying behaviour for different manifolds and geodesics is contained only in the forcing term \(\operatorname{R}_V\)!
+
+Compare with the obvious idea mentioned at the start of this section which would give the coupled system \(J' = K\), \(K' = - \operatorname{R}_V (J)\).
+#+END_rem
+
+#+BEGIN_rem
+Note that
+\[
+\operatorname{R}_V (V) = \operatorname{Rm}(V, V) V = 0.
+\]
+Then \(A\) satisfies \(A' + A^2 = 0\) in the \(V\) direction. Notice that this equation is the same for all geodesics in all manifolds! As already noted: /there is no geometry in the radial direction/.
+
+In the previous section, we observed that the only interesting behaviour occurs along \(\mathcal{J}^{\perp}\). For this reason, sometimes only the restriction of \(A\) to \(\mathcal{J}^{\perp}\) is considered.
+#+END_rem
