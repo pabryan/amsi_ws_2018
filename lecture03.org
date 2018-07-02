@@ -2,4 +2,91 @@
 
 #+TITLE: Comparison Theory
 
-* Comparison Theory
+* Self Adjoint \(A\)
+
+For the following applications it is sufficient to restrict to the case where \(A\) is self adjoint. Let's ju
+st take a look at this condition. That is, an endomorphism \(T\) is self adjoint provided \(g(T(X), Y) = g(X, T(Y)\).
+
+Given any arbitrary endomorphism \(T\), the adjoint \(T^{\ast}\) is defined by the relation
+\[
+g(T^{\ast} (X), Y) = g(X, T(Y)).
+\]
+The operator \(T\) is then self adjoint if and only if \(T = T^{\ast}\).
+
+Equivalently, \(T^{\ast}\) is defined by metric contraction: let \(B(X, Y) = g(X, T(Y)) = \operatorname{Tr}_g^2 T\) where the \(2\) denotes the contraction is in the second slot of \(g\). Then \(T^{\ast} = \operatorname{Tr}_{g^{\ast}}^1 B\) where \(g^{\ast}\) denotes the dual metric. In other words, \(T^{\ast}\) is obtained by first metric lowering the upper index of \(T\) into the second slot and then metric-raising the first slot. Explicitly,
+\[
+T^{\ast} = \operatorname{Tr}^1 g^{\ast} \otimes \operatorname{Tr}^2 (g \otimes T).
+\]
+With respect to a frame,
+\[
+(T^{\ast})^i_j = g^{ik} g_{jl} T^l_k
+\]
+In particular, if \(T_t\) is a smooth one parameter family along \(\gamma\), since \(g\) is also smooth, then \(T^{\ast}_t\) is a smooth one-parameter family.
+
+#+BEGIN_lem
+For any tangent vector \(Z\), the endomorphism \(\operatorname{R}_Z\) is \(g\)-self adjoint. That is for any vector fields \(X, Y\) along \(\gamma\),
+\[
+g(\operatorname{R}_Z (X), Y) = g(X, \operatorname{R}_Z(Y)).
+\]
+#+END_lem
+
+#+BEGIN_proof
+By the curvature tensor symmetries,
+\[
+g(\operatorname{R}_Z (X), Y) = \operatorname{Rm} (X, Z, Z, Y) = \operatorname{Rm} (Y, Z, Z, X) = g(X, \operatorname{R}_Z (Y))
+\]
+so that \(\operatorname{R}_Z\) is self adjoint.
+#+END_proof
+
+Employing the Riccati equation and the self-adjointness of \(\operatorname{R}_V\) we may deduce necessary and sufficient conditions for when \(A(t)\) is self adjoint for each \(t\).
+
+#+BEGIN_lem
+Let \(A(t)\) satisfy the Riccati equation. The \(A(t)\) is self adjoint for every \(t\) if and only if \(A(0)\) is self adjoint.
+#+END_lem
+
+#+BEGIN_proof
+One implication is obvious: if \(A(t)\) is self adjoint for every \(t\), then certainly it is self adjoint for \(t = 0\).
+
+Conversely, suppose that \(A(0)\) is self adjoint. Let \(A^{\ast}\) denote it's adjoint. That is \(A^{\ast}\) is defined by
+\[
+g(A^{\ast} (X), Y) = g(X, A(Y))
+\]
+and is differentiable with respect to \(t\). By assumption \(A^{\ast}(0) = A\) and we need to show that \(A^{\ast}(t) = A(t)\) for every \(t\).
+
+Now, we determine \(A^{\ast} (t)\) and \(\partial_t A^{\ast} (t)\) by their action on tangent vectors at \(\gamma(t)\). In fact, we may do this by determining their action on parallel fields along \(\gamma\): Let \(X, Y\) be arbitrary parallel vector fields along \(\gamma\). Since parallel transport is an isomorphism, every tangent vector in \(T_{\gamma(t)} M\) is equal to the restriction \(X(t)\) of such a parallel field \(X\) along \(\gamma\). Thus we may compute the variation of \(A^{\ast}\) by differentiating the relation
+\[
+g(A^{\ast} (X), Y) = g(X, A(Y)).
+\]
+where \(X, Y\) and parallel vector fields. As usual, putting \(V = \gamma'\) then differentiating, using metric compatibility and the fact that \(X, Y\) are parallel gives
+\[
+g((\nabla_V A^{\ast}) (X), Y) = g(X, (\nabla_V A) (Y)).
+\]
+Note here that the parallel assumption gives \(\nabla_V X = \nabla_V Y = 0\) and \(\nabla_V [A(X)] = (\nabla_V A) (X) + A(\nabla_V X) = (\nabla_V A)(X)\).
+
+Therefore from the Riccati equation and the fact that \(\operatorname{R}_V\) is self adjoint,
+\[
+g((\nabla_V A^{\ast}) (X), Y) = -g(X, \operatorname{R}_V (Y)) - g(X, A^2(Y)) = -g(\operatorname{R}_V (X) + (A^{\ast})^2 (X), Y).
+\]
+That is, for every \(X, Y\)
+\[
+g((\nabla_V A^{\ast})(X) + (A^{\ast})^2 (X) + \operatorname{R}_V (X), Y) = 0
+\]
+and hence
+\[
+\nabla_V A^{\ast} + (A^{\ast})^2 + \operatorname{R}_V = 0.
+\]
+
+Therefore the adjoint \(A^{\ast}\) also satisfies the Riccati equation! But if \(A(0)\) is self adjoint, then \(A^{\ast}(0) = A(0)\) and we see that \(A^{\ast}\) satisfies the Riccati equation with the same initial conditions as \(A\). Hence by uniqueness of solutions, \(A^{\ast} = A\) and therefore \(A\) is self adjoint.
+#+END_proof
+
+#+BEGIN_rem
+Ensuring that \(A\) is self adjoint thus amounts to choosing self-adjoint initial conditions \(A(0)\) or equivalently, choosing \(J_i(0), J_i'(0)\), \(1 \leq i \leq n\) such that the mapping \(A_0\) determined by \(A_0(J_i(0)) = J_i'(0)\) is self adjoint. That is,
+\[
+g(J_i'(0), J_k(0)) = g(A_0(J_i(0)), J_k(0)) = g(J_i(0), A_0(J_k(0))) = g(J_i(0), J_k'(0)).
+\]
+for each \(1 \leq i,k \leq n\).
+#+END_rem
+
+* Comparison Theory for Riccati Equation
+* Comparison Theory for Jacobi Fields
+* Averaged Comparison Theory
