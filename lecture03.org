@@ -95,27 +95,50 @@ A' + A^2 + \operatorname{R}_V = 0.
 \]
 For our later applications, the restriction to self adjoint solutions will not cause in difficulties.
 
-#+BEGIN_rem
-In Eschenburg's notes, the setup is to identify \(T_{\gamma(t)} M\) with \(T_{\gamma(0)} M\) via parallel transport and consider \(A(t)\) as a one-parameter family of endomorphisms of \(T_{\gamma(0)} M\). Explicitly, given \(A(t)\) a solution of the Riccati equation, define
+Ultimately, we will need to compare solutions arising along geodesics on different manifolds. There are a number of ways we might do this and they all essentially come down to the fact that any two geodesics are diffeomorphic to an interval (or \(\mathbb{S}^1\) for closed geodesics which are diffeomorphic to an interval after removing a single point). Any vector bundle over an interval is trivial and hence all \(n\)-dimensional vector bundles over an interval are linearly isomorphic and so we may compare different solutions of the Riccati equation arising from different manifolds of the same dimension. The way we realise this observation here is via parallel transport as in Eschenburg.
+
+In this and future sections, geodesics will be parametrised by unit speed so that \(|\gamma'| \equiv 1\) and \(\gamma\) is defined on an interval \([0, T)\). Let \(\tau_t : T_{\gamma(0)} M \to T_{\gamma(t)}\) be parallel transport along \(\gamma\) and note that it is an isometry; that is
 \[
-\bar{A}_t (X) = \tau_t^{-1} A(t) \tau_t (X)
+g_{\gamma(t)} (\tau_t X, \tau_t Y) = g_{\gamma(0)} (X, Y).
 \]
-for \(X \in T_{\gamma(0)} M\) and where \(\tau_t\) denotes parallel transport from \(\gamma(0)\) to \(\gamma(t)\).
 
-Then \(\bar{A}_t\) is a one-parameter family of endomorphism of \(T_{\gamma(0)} M\) and we may recover \(A\) by
+Now we define
 \[
-A_t (X) = \tau_t \bar{A} \tau_t^{-1} (X)
+\bar{A}(t) : X \in T_{\gamma(0)} M \mapsto \tau_t^{-1} A(t) \tau_t (X) \in T_{\gamma(0)}.
 \]
-for \(X \in T_{\gamma(t)} M\).
+That is
+\[
+\bar{A}(t) = \tau_t^{-1} \circ A(t) \circ \tau_t
+\]
+is a smooth, one-parameter family of endomorphisms of the fixed vector space \(E = T_{\gamma(0)} M\).
 
-The point of this approach is that now \(\bar{A}\) acts on the /finite dimensional/ vector space \(T_{\gamma(0)} M\) rather than the infinite dimensional vector space of vector fields along \(\gamma\).
+Then we have
+\[
+\partial_t (\bar{A} (X)) = \partial_t (\tau_t^{-1} A \tau_t (X)) = \tau_t^{-1} A' \tau_t (X) = -\tau_t^{-1} A^2 \tau_t (X) - \tau_t^{-1} \operatorname{R}_V \tau_t (X).
+\]
+Here we use the fact for the parallel vector field \(\bar{X}(t) = \tau_t X\) we have
+\[
+\nabla_{\gamma'} [A(\bar{X})] = [\nabla_{\gamma'} A] (X) + A(\nabla_{\gamma'} \bar{X}) = A'(X)
+\]
+and for the vector field \(Y = A(\bar{X}) = A(\tau_t X)\) along \(\gamma\), we have
+\[
+\partial_t [\tau_t^{-1} Y] = \tau_t^{-1} \nabla_{\gamma'} Y
+\]
+since \(\tau_t^{-1}\) is also parallel transport (going back the other way).
 
-Equivalently, we could restrict \(A\) to the finite dimensional subspace of parallel vector fields along \(\gamma\). Recall that parallel vector fields are uniquely determined by their initial values at \(T_{\gamma(0)} M\) and hence form an \(n\)-dimensional subspace of all vector fields along \(\gamma\).
-#+END_rem
+Note that
+\[
+\tau_t^{-1} A^2 \tau_t = \tau_t^{-1} A \tau_t \tau_t^{-1} A \tau_t = \bar{A}^2.
+\]
+Then writing \(\bar{R} = \tau_t^{-1} \operatorname{R}_V \tau_t\) we have
+\[
+\bar{A}' + \bar{A}^2 + \bar{R} = 0
+\]
+so that \(\bar{A}\) also satisfies a Riccati equation.
 
-#+BEGIN_rem
-We will deviate somewhat from Eschenburg here and make no such restrictions. Since the Jacobi equation and indeed the Riccati equation are tensorial, everything is determined pointwise and there is no need to make the restrictions. At times, as done above we may compute using parallel vector fields (or indeed any vector fields we may find useful) but such a choice is simply for computational convenience. We could work with arbitrary vector fields, but tensorality allows us to choice whatever is convenient at the time.
-#+END_rem
+So we have \(\bar{A}\) a one-parameter family of endomorphisms of the fixed vector space \(E = T_{\gamma(0)} M\) equipped with the inner-product \(g_{\gamma(0)}\). By choosing a \(g\)-orthonormal basis of \(T_{\gamma}(0)\), if we wish we may further assume that \((E, g) = (\mathbb{R}^n, \langle \cdot, \cdot \rangle)\) is the standard \(n\)-dimensional Euclidean space.
+
+*Throughout this section we will assume \(A_t : E \to E\) is a one-parameter family of endomorphims of a fixed vector space \(E\) with inner-product \(\langle \cdot, \cdot \rangle\).*
 
 Now to the task at hand. In order to compare solutions of the Riccati equation we need an ordering on self-adjoint endomorphisms. The ordering we define is a /partial ordering/ which means that for self adjoint endomorphisms, neither \(T \leq S\) nor \(S \leq T\) need hold in general.
 
@@ -139,13 +162,13 @@ with initial conditions satisfying
 \[
 A_1(0) \leq A_2 (0)
 \]
-and defined on \([0, t_i)\).
+and defined on \([0, T_i)\).
 
-Then
+Then \(T_1 \leq T_2\) and
 \[
 A_1(t) \leq A_2 (t)
 \]
-for all \(t \in [0, t_1) \cap [0, t_2)\).
+for all \(t \in [0, T_1)\).
 #+END_thm
 
 #+BEGIN_rem
@@ -162,90 +185,101 @@ And the conclusion is
 A_1(t) \leq A_2(t).
 \]
 
-The idea of the proof now is to rewrite the inequality as \(A_1' \leq A_2' + A_2^2 - A_1^2\) so that if at some \(t_0\), \(A_1(t_0) = A_2(t_0)\), then \(A_1'(t_0) \leq A_2'(t_0)\). But since \(A_1(0) \leq A_2(0)\), in order that \(A_1(t_0) = A_2(t_0)\), \(A_1\) must increase up to \(A_2\) so that \(A_1'(t_0) \geq A_2' (t_0)\). So we have two opposite inequalities, and if at least one was strict we would obtain a contradiction.
+Roughly, we can expect the theorem to be true since rewriting the inequality as \(A_1' \leq A_2' + A_2^2 - A_1^2\) shows that if at some \(t_0\), \(A_1(t_0) = A_2(t_0)\), then \(A_1'(t_0) \leq A_2'(t_0)\). But since \(A_1(0) \leq A_2(0)\), in order that \(A_1(t_0) = A_2(t_0)\), \(A_1\) must increase up to \(A_2\) so that \(A_1'(t_0) \geq A_2' (t_0)\). So we have two opposite inequalities, but neither are strict; if at least one was strict then we would have a contradiction and that would be the end of it.
 
-So we must modify the argument to obtain a strict inequality. This is more or less standard but requires a little care.
+This approach can be made to work for scalar Riccati equations \(u' + u^2 + f = 0\) with \(u, f\) real valued functions but there is a difficulty with operator (equivalently, matrix) valued functions. If \(A_1 \leq A_2\) (somewhat surprisingly) it need not be true that \(A_1^2 \leq A_2^2\). An example I found [[https://arxiv.org/pdf/1305.2471.pdf][here]] is,
+\[
+A_2 = \begin{pmatrix}
+3/2 & 0 \\
+0 & 3/4
+\end{pmatrix}
+\quad
+A_1 = \begin{pmatrix}
+1/2 & 1/2 \\
+1/2 & 1/2
+\end{pmatrix}
+\]
+The relevant notion here is that of [[https://en.wikipedia.org/wiki/Operator_monotone_function][Operator Monotone Function]] of which \(x \mapsto x^2\) is not one! The problem is that \(A_1, A_2\) need not be /simultaneously diagonalisable/; that is the eigenvectors of \(A_1\) need to be the eigenvectors of \(A_2\) so it is not enough to simply compare the squares of the eigenvalues in order to establish \(A_1^2 \leq A_2^2\). The result is indeed true if \(A_1, A_2\) are simultaneously diagonalisable which is true if and only if \(A_1\) and \(A_2\) commute. See https://en.wikipedia.org/wiki/Diagonalizable_matrix#Simultaneous_diagonalization.
 
-Also, because the order \(\leq\) on self adjoint endomorphisms is only a partial order, it need not be true that \(A_1(t_0) = A_2(t_0)\); rather we would just find some \(X \in E\) such that \(A_1(t_0) \cdot X = A_2(t_0) \cdot X\). For other elements \(Y \in E\) we could still have \( A_1(t_0) \cdot Y \leq A_2(t_0) \cdot Y\). Thus we also need to account for such possibilities but this is not difficult.
+Thus we must take a different approach.
 #+END_rem
 
+The following proof is the one in [[http://myweb.rz.uni-augsburg.de/~eschenbu/comparison.pdf][Eschenburg]] and originating in:
+
+[[https://doi.org/10.1007/BF02568760][Comparison theory for Riccati equations by J.-H. Eschenburg and E. Heintze, Manuscripta Math. 68, 209 - 214 (1990)]]
+
+Another proof may be found in
+
+[[https://doi.org/10.1002/cpa.3160410512][Comparison Theorems for the Matrix Riccati Equation by H.L. Royden 41, Comm. Pure Appl. Math. 5 July 1988, Pages 739-746]]
+
 #+BEGIN_proof
-According to the remark, we have
+Let \(U = A_2 - A_1\) so that \(U(0) \geq 0\) and
 \[
-A_1' + A_1^2 \leq A_2' + A_2'
+U' = A_2' - A_1' = A_1^2 - A_2^2 + R_1 - R_2  = -\frac{1}{2}(A_1 + A_2) (A_1 - A_2) - \frac{1}{2} (A_1 - A_2) (A_1 + A_2) + R_1 - R_2.
 \]
+That is, if we let \(M = -\tfrac{1}{2}(A_1 + A_2)\) and \(S = R_1 - R_2\) (which are bounded on any interval \([0, \tau]\) with \(\tau < \min{T_1, T_2}\)), then
+\[
+U' = M U + U M + S.
+\]
+
+Now we can solve the equation for \(U\) by variation of parameters. Let \(B\) solve the linear equation
+\[
+B' = M B, \quad B(0) = \operatorname{Id}.
+\]
+Observe that if \(C\) is the solution of
+\[
+C' = -C M, \quad C(0) = \operatorname{Id},
+\]
+then
+\[
+(C B)' = C' B + C B' = - CMB + CMB = 0
+\]
+and hence \((CB)(t) = C(0)B(0) = \operatorname{Id}\) so that \(B\) is non-singular.
+
+Let \(V\) solve
+\[
+V' = B^{-1} S (B^{-1})^{\ast}, \quad V(0) = U(0).
+\]
+where \(T^{\ast}\) denotes the adjoint operator (with respect to the standard Euclidean basis, the matrix for \(B^{\ast}\) is just the transpose matrix). Notice that since \(S \geq 0\), then
+\[
+\langle V'(X), X \rangle = \langle B^{-1} S (B^{-1})^{\ast} (X), X \rangle = \langle S (B^{-1})^{\ast} (X), (B^{-1})^{\ast} X \rangle \geq 0.
+\]
+and also
+\[
+V(0) \geq 0.
+\]
+Then, by the same reasoning changing \(B^{-1}\) to \(B\) and replacing \(S\) with \(V\),
+\[
+\bar{U} := B V B^{\ast} \geq 0.
+\]
+
+But now
+\begin{split}
+\bar{U}' &= B' V B^{\ast} + B V' B^{\ast} + B V (B^{\ast})' \\
+&= M B V B^{\ast} + B B^{-1} S (B^{\ast})^{-1} B^{\ast} + B V B^{\ast} M^{\ast} \\
+&= M \bar{U} + \bar{U} M + S
+\end{split}
 and
 \[
-A_1(0) \leq A_2(0).
+\bar{U}(0) = B(0) V(0) B^{\ast} (0) = V(0) = U(0).
 \]
 
-As usual with this type of argument, suppose by way of obtaining a contradiction that the conclusion is false. That is, there exists a \(\tau \in (0, t_1) \cap (0, t_2)\) such that \(A_1(\tau) \not\leq A_2(\tau)\). As mentioned in the remark, \(\leq\) is only a partial order so this does mean that \(A_t(\tau) > A_2(\tau)\). Rather, it means there exists an \(X \in E\) such that
+That is \(U\) and \(\bar{U}\) satisfy the same linear ODE with the same initial condition hence
 \[
-g(A_1(\tau) \cdot X, X) > g (A_2(\tau) \cdot X, X).
+U(t) = \bar{U} (t) \geq 0
 \]
-Let us define
+on \(t \in [0, \tau]\) for every \(\tau \leq \min\{T_1, T_2\}\) and so \(U(t) \geq 0\) for every \(t\) in this interval.
+
+Then since by definition \(U(t) = A_2(t) - A_1(t)\) we obtain the desired inequality,
 \[
-f(t) = g((A_2(t) - A_1(t)) \cdot X, X)
-\]
-so that our assumptions give,
-\[
-f(0) \geq 0, \quad f(\tau) < 0.
+A_1(t) \leq A_2(t).
 \]
 
-Since \(f\) is continuous on \([0, \tau]\), it attains a negative minimum on \([0, \tau]\). Let
+For the statement that \(T_1 \leq T_2\) notice that
 \[
-m = -\min\{f : 0 \leq t \leq \tau\} > 0
+A_i' \leq -A_i^2 - R_i
 \]
-and let \(t_1\) be such that
-\[
-f(t_1) = -m.
-\]
-Also by continuity, we may choose \(\lambda > 0\) such that
-\[
-e^{\lambda \tau} \lambda > \frac{1}{m} \max\{|g((A_1^2(t) - A_2^2)\cdot X, X)| : 0 \leq t \leq \tau\}.
-\]
-
-Then we define
-\[
-h(t) = e^{-\lambda t} f(t) = e^{-\lambda t} g((A_2(t) - A_1(t)) \cdot X, X).
-\]
-Then the initial inequality \(f(0) \geq 0\) implies \(h(0) \geq 0\) and the contradiction assumption \(f(\tau) < 0\) implies \(h(\tau) < 0\).
-
-By continuity, we may choose \(t_0\) such that
-\[
-h(t_0) = \min\{h(t) : 0 \leq t \leq \tau\} \leq h(\tau) < 0.
-\]
-Then at \(t_0\) we have
-\[
-h'(t_0) \leq 0.
-\]
-In fact, we will have equality if \(t_0 \ne \tau\) but for our purposes the inequality suffices.
-
-On the other hand, the inequality
-\[
-A_1' + A_1^2 \leq A_2' + A_2'
-\]
-implies that
-\[
-h'(t) = e^{-\lambda t}[g((A_2' - A_1') \cdot X, X) - \lambda g((A_2 - A_1) \cdot X, X)] \geq e^{-\lambda t}[g((A_1^2 - A_2^2) \cdot X, X) - \lambda f(t)].
-\]
-Now recall that \(m = f(t_1)\) is the infimum of \(f\) while the infimum of \(h(t) = e^{-\lambda t} f(t)\) is attained at \(t_0\). Therefore,
-\[
-e^{-\lambda t_0}f(t_0) \leq e^{-\lambda t_1} f(t_1) = -m e^{-\lambda t_1}.
-\]
-That is,
-\[
-f(t_0) \leq -m e^{-\lambda(t_1 - t_0)} \leq -m e^{-\lambda|(t_1 - t_0)|} \leq -m e^{-\lambda \tau}.
-\]
-Note that of course we also have \(-m \leq f(t_0)\) but it's the upper bound that is important here.
-
-Therefore at \(t_0\),
-\begin{split}
-h'(t_0) \geq e^{-\lambda t_0}[g((A_1^2 - A_2^2)(t_0) \cdot X, X) - \lambda f(t_0)] & \geq e^{-\lambda t_0}[g((A_1^2 - A_2^2)(t_0) \cdot X, X) + m \lambda e^{\lambda\tau}] \\
-&\geq e^{-\lambda t_0}[-|g((A_1^2 - A_2^2)(t_0) \cdot X, X)| + m \lambda e^{\lambda\tau}] \\
-&> 0
-\end{split}
-with the last inequality by the choice of \(\lambda\). But this contradicts \(h'(t_0) \leq 0\).
+is bounded above so the only way \(A_i\) can blow up is to \(-\infty\) and since \(A_1 \leq A_2\), if \(A_2\) blows up to \(-\infty\) as \(t \to T_2\), then so does \(A_1\) hence \(T_1 \leq T_2\).
 #+END_proof
 
 * Comparison Theory for Jacobi Fields
