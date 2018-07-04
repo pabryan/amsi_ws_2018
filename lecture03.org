@@ -185,32 +185,22 @@ And the conclusion is
 A_1(t) \leq A_2(t).
 \]
 
-Roughly, we can expect the theorem to be true since rewriting the inequality as \(A_1' \leq A_2' + A_2^2 - A_1^2\) shows that if at some \(t_0\), \(A_1(t_0) = A_2(t_0)\), then \(A_1'(t_0) \leq A_2'(t_0)\). But since \(A_1(0) \leq A_2(0)\), in order that \(A_1(t_0) = A_2(t_0)\), \(A_1\) must increase up to \(A_2\) so that \(A_1'(t_0) \geq A_2' (t_0)\). So we have two opposite inequalities, but neither are strict; if at least one was strict then we would have a contradiction and that would be the end of it.
-
-This approach can be made to work for scalar Riccati equations \(u' + u^2 + f = 0\) with \(u, f\) real valued functions but there is a difficulty with operator (equivalently, matrix) valued functions. If \(A_1 \leq A_2\) (somewhat surprisingly) it need not be true that \(A_1^2 \leq A_2^2\). An example I found [[https://arxiv.org/pdf/1305.2471.pdf][here]] is,
-\[
-A_2 = \begin{pmatrix}
-3/2 & 0 \\
-0 & 3/4
-\end{pmatrix}
-\quad
-A_1 = \begin{pmatrix}
-1/2 & 1/2 \\
-1/2 & 1/2
-\end{pmatrix}
-\]
-The relevant notion here is that of [[https://en.wikipedia.org/wiki/Operator_monotone_function][Operator Monotone Function]] of which \(x \mapsto x^2\) is not one! The problem is that \(A_1, A_2\) need not be /simultaneously diagonalisable/; that is the eigenvectors of \(A_1\) need to be the eigenvectors of \(A_2\) so it is not enough to simply compare the squares of the eigenvalues in order to establish \(A_1^2 \leq A_2^2\). The result is indeed true if \(A_1, A_2\) are simultaneously diagonalisable which is true if and only if \(A_1\) and \(A_2\) commute. See https://en.wikipedia.org/wiki/Diagonalizable_matrix#Simultaneous_diagonalization.
-
-Thus we must take a different approach.
+Roughly, we can expect the theorem to be true since rewriting the inequality as \(A_1' \leq A_2' + A_2^2 - A_1^2\) shows that if at some \(t_0\), \(A_1(t_0) = A_2(t_0)\), then \(A_1'(t_0) \leq A_2'(t_0)\). But since \(A_1(0) \leq A_2(0)\), in order that \(A_1(t_0) = A_2(t_0)\), \(A_1\) must increase up to \(A_2\) so that \(A_1'(t_0) \geq A_2' (t_0)\). So we have two opposite inequalities, but neither are strict; if at least one was strict then we would have a contradiction and that would be the end of it which is the motivation for the method of proof.
 #+END_rem
 
-The following proof is the one in [[http://myweb.rz.uni-augsburg.de/~eschenbu/comparison.pdf][Eschenburg]] and originating in:
+The proof idea in the remark is the basis of the proof in
+
+[[https://doi.org/10.1007/BF01174796][Comparison theorems and hypersurfaces by J.-H. Eschenburg, Manuscripta Math. 59, 295 - 323 (1987)]]
+
+The proof in [[http://myweb.rz.uni-augsburg.de/~eschenbu/comparison.pdf][Eschenburg]] has the advantage of applying even when \(A_1, A_2\) blow up at \(t = 0\) in such a way that \(U = A_2 - A_1\) is continuous up to \(t=0\). That proof originates in
 
 [[https://doi.org/10.1007/BF02568760][Comparison theory for Riccati equations by J.-H. Eschenburg and E. Heintze, Manuscripta Math. 68, 209 - 214 (1990)]]
 
 Another proof may be found in
 
 [[https://doi.org/10.1002/cpa.3160410512][Comparison Theorems for the Matrix Riccati Equation by H.L. Royden 41, Comm. Pure Appl. Math. 5 July 1988, Pages 739-746]]
+
+We'll describe the proof of Eschenburg/Heintze.
 
 #+BEGIN_proof
 Let \(U = A_2 - A_1\) so that \(U(0) \geq 0\) and
