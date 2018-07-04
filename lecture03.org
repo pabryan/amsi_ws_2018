@@ -404,4 +404,84 @@ J_2' = A_2 J_2 = \lambda J_2
 and \(J_2 = j(t) J_2(0)\) for the same function \(j(t)\).
 #+END_proof
 
+As a consequence we obtain the so called Rauch I and Rauch II comparison theorems.
+
+#+BEGIN_cor
+*Rauch I*
+
+Let \(J_1, J_2\) be solutions of
+\[
+J_i ''+ R_i J_i = 0
+\]
+where \(\lambda_-(R_1) \geq \lambda_+(R_2)\) and
+\[
+J_i(0) = 0, \quad \|J_1'(0)\| = \|J_2'(0)\|.
+\]
+
+Then \(\|J_1(t)\| \leq \|J_2(t)\|\) for all \(t \in [0, T)\) such that \(J_1(t) \ne 0\) on \([0, T)\). The same equality conclusion of the Jacobi field comparison theorem holds if we have equality for some \(\tau\).
+#+END_cor
+
+#+BEGIN_proof
+As already noted, the assumptions on \(R_i\) imply that \(R_1 \geq R_2\). The trick here is to define initial conditions \(A_1(0), A_2(0)\). Suppose for the moment that we have those in hand with \(A_1(0) \leq A_2(0)\). Then the comparison theorem applies to give \(A_1 \leq A_2\). If we make the stronger initial assumption, \(\lambda_+(A(0)) \leq \lambda_-(A(0))\), then the stronger assumption \(\lambda_-(R_1) \geq \lambda_+(R_2)\) actually implies the stronger conclusion that \(\lambda_+(A_1) \leq \lambda_-(A_2)\).
+
+Then we may apply the Jacobi field comparison to conclude that while both \(J_1\) and \(J_2\) are non-zero we have
+\[
+\|J_1\| \leq \|J_2\|.
+\]
+If \(\|J_1(0)'\| = \|J_2(0)'\| = 0\), the both \(J_1\) and \(J_2\) are identically \(0\) and the theorem is vacuously true in that case. Otherwise, both \(J_1\) and \(J_2\) must be non-zero at least on some interval \((0, \epsilon)\) and then \(J_1\) must attain a zero before \(J_2\).
+
+Now, the initial conditions for \(A_i\) are a little tricky because they must satisfy
+\[
+A_i(0) \cdot J_i(0) = J_i'(0)
+\]
+which is impossible for finite \(A_i(0)\) if \(J_i'(0) \ne 0\) since \(J_i(0) = 0\). Rather we take
+\[
+A_i(t) \sim \frac{1}{t} \operatorname{Id}
+\]
+as \(t \to 0\). Then we may apply the Riccati comparison to conclude \(A_1(t) \leq A_2(t)\) since \(U = A_2(t) - A_1(t)\) extends continuously to \(t = 0\) given the same asymptotic behaviour of \(A_1\) and \(A_2\).
+#+END_proof
+
+#+BEGIN_ex
+Show that if we make the stronger initial assumption, \(\lambda_+(A_2(0)) \leq \lambda_-(A_1(0))\), then the stronger assumption \(\lambda_-(R_1) \geq \lambda_+(R_2)\) actually implies the stronger conclusion that \(\lambda_+(A_1) \leq \lambda_-(A_2)\).
+
+/Hint/: The assumptions actually imply that for any \(X, Y\) with \(\|X\| = \|Y\| = 1\) we have
+\[
+g(A_2(0) \cdot X, X) \leq g(A_1(0) \cdot Y, Y)
+\]
+and similar for \(R_1, R_2\).
+#+END_ex
+
+#+BEGIN_ex
+Show that there exists a solution of 
+\[
+A' + A^2 + R = 0
+\]
+such that
+\[
+A \sim \frac{1}{t} \operatorname{Id}
+\]
+as \(t \to 0\).
+
+See the Theorem on p. 210 and also Remark 2 in [[https://doi.org/10.1007/BF02568760][Comparison theory for Riccati equations by J.-H. Eschenburg and E. Heintze, Manuscripta Math. 68, 209 - 214 (1990)]]
+#+END_ex
+
+#+BEGIN_cor
+*Rauch II*
+
+Let \(J_1, J_2\) be solutions of
+\[
+J_i ''+ R_i J_i = 0
+\]
+where \(\lambda_-(R_1) \geq \lambda_+(R_2)\) and
+\[
+J_i'(0) = 0, \quad \|J_1(0)\| = \|J_2(0)\|.
+\]
+
+Then \(\|J_1(t)\| \leq \|J_2(t)\|\) for all \(t \in [0, T)\) such that \(J_1(t) \ne 0\) on \([0, T)\). The same equality conclusion of the Jacobi field comparison theorem holds if we have equality for some \(\tau\).
+#+END_cor
+
+#+BEGIN_proof
+This time we take the initial condition \(A_i(0) = 0\) and conclude that \(\lambda_+(A_1(t)) \leq \lambda_-(A_2(t))\) by the strengthened Riccati comparison theorem mentioned in the proof of Rauch I. Then the Jacobi field comparison theorem gives the result.
+#+END_proof
+
 * Averaged Comparison Theory
