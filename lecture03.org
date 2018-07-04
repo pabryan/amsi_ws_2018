@@ -88,5 +88,165 @@ for each \(1 \leq i,k \leq n\).
 #+END_rem
 
 * Comparison Theory for Riccati Equation
+
+Here we develop a comparison theory for /self adjoint/ solutions to the Riccati equation
+\[
+A' + A^2 + \operatorname{R}_V = 0.
+\]
+For our later applications, the restriction to self adjoint solutions will not cause in difficulties.
+
+#+BEGIN_rem
+In Eschenburg's notes, the setup is to identify \(T_{\gamma(t)} M\) with \(T_{\gamma(0)} M\) via parallel transport and consider \(A(t)\) as a one-parameter family of endomorphisms of \(T_{\gamma(0)} M\). Explicitly, given \(A(t)\) a solution of the Riccati equation, define
+\[
+\bar{A}_t (X) = \tau_t^{-1} A(t) \tau_t (X)
+\]
+for \(X \in T_{\gamma(0)} M\) and where \(\tau_t\) denotes parallel transport from \(\gamma(0)\) to \(\gamma(t)\).
+
+Then \(\bar{A}_t\) is a one-parameter family of endomorphism of \(T_{\gamma(0)} M\) and we may recover \(A\) by
+\[
+A_t (X) = \tau_t \bar{A} \tau_t^{-1} (X)
+\]
+for \(X \in T_{\gamma(t)} M\).
+
+The point of this approach is that now \(\bar{A}\) acts on the /finite dimensional/ vector space \(T_{\gamma(0)} M\) rather than the infinite dimensional vector space of vector fields along \(\gamma\).
+
+Equivalently, we could restrict \(A\) to the finite dimensional subspace of parallel vector fields along \(\gamma\). Recall that parallel vector fields are uniquely determined by their initial values at \(T_{\gamma(0)} M\) and hence form an \(n\)-dimensional subspace of all vector fields along \(\gamma\).
+#+END_rem
+
+#+BEGIN_rem
+We will deviate somewhat from Eschenburg here and make no such restrictions. Since the Jacobi equation and indeed the Riccati equation are tensorial, everything is determined pointwise and there is no need to make the restrictions. At times, as done above we may compute using parallel vector fields (or indeed any vector fields we may find useful) but such a choice is simply for computational convenience. We could work with arbitrary vector fields, but tensorality allows us to choice whatever is convenient at the time.
+#+END_rem
+
+Now to the task at hand. In order to compare solutions of the Riccati equation we need an ordering on self-adjoint endomorphisms. The ordering we define is a /partial ordering/ which means that for self adjoint endomorphisms, neither \(T \leq S\) nor \(S \leq T\) need hold in general.
+
+#+BEGIN_defn
+Let \(S, T\) be self adjoint endmorphisms acting on a vector space \(E\) with inner product \(g\). We say that \(T \leq S\) provided for every \(X \in E\)
+\[
+g(T(X), X) \leq g(S(X), X).
+\]
+
+Let \(S_t, T_t\) be one parameter families of self-adjoint endomorphisms along \(\gamma\). Then we say \(T \leq S\) provided for every \(t\), \(T_t \leq S_t\).
+#+END_defn
+
+Here's the comparison theorem.
+
+#+BEGIN_thm
+Let \(R_1, R_2\) be one-parameter families of self-adjoint endomorphisms such that \(R_1 \geq R_2\). Let \(A_i\), \(i = 1,2\) be solutions of the Riccati equation
+\[
+A_i' + A_i^2 + R_i = 0
+\]
+with initial conditions satisfying
+\[
+A_1(0) \leq A_2 (0)
+\]
+and defined on \([0, t_i)\).
+
+Then
+\[
+A_1(t) \leq A_2 (t)
+\]
+for all \(t \in [0, t_1) \cap [0, t_2)\).
+#+END_thm
+
+#+BEGIN_rem
+Notice that there is a changing of inequality: \(R_1 \geq R_2\) but \(A_1 \leq A_2\). This is just because of the way we have written the Riccati equation: really \(-R_i\) is the driving term which then satisfies \(-R_1 \leq -R_2\). In other words, the assumptions of the theorem are
+\[
+A_1' + A_1^2 = - R_1 \leq - R_2 = A_2' + A_2^2
+\]
+and
+\[
+A_1(0) \leq A_2(0).
+\]
+And the conclusion is
+\[
+A_1(t) \leq A_2(t).
+\]
+
+The idea of the proof now is to rewrite the inequality as \(A_1' \leq A_2' + A_2^2 - A_1^2\) so that if at some \(t_0\), \(A_1(t_0) = A_2(t_0)\), then \(A_1'(t_0) \leq A_2'(t_0)\). But since \(A_1(0) \leq A_2(0)\), in order that \(A_1(t_0) = A_2(t_0)\), \(A_1\) must increase up to \(A_2\) so that \(A_1'(t_0) \geq A_2' (t_0)\). So we have two opposite inequalities, and if at least one was strict we would obtain a contradiction.
+
+So we must modify the argument to obtain a strict inequality. This is more or less standard but requires a little care.
+
+Also, because the order \(\leq\) on self adjoint endomorphisms is only a partial order, it need not be true that \(A_1(t_0) = A_2(t_0)\); rather we would just find some \(X \in E\) such that \(A_1(t_0) \cdot X = A_2(t_0) \cdot X\). For other elements \(Y \in E\) we could still have \( A_1(t_0) \cdot Y \leq A_2(t_0) \cdot Y\). Thus we also need to account for such possibilities but this is not difficult.
+#+END_rem
+
+#+BEGIN_proof
+According to the remark, we have
+\[
+A_1' + A_1^2 \leq A_2' + A_2'
+\]
+and
+\[
+A_1(0) \leq A_2(0).
+\]
+
+As usual with this type of argument, suppose by way of obtaining a contradiction that the conclusion is false. That is, there exists a \(\tau \in (0, t_1) \cap (0, t_2)\) such that \(A_1(\tau) \not\leq A_2(\tau)\). As mentioned in the remark, \(\leq\) is only a partial order so this does mean that \(A_t(\tau) > A_2(\tau)\). Rather, it means there exists an \(X \in E\) such that
+\[
+g(A_1(\tau) \cdot X, X) > g (A_2(\tau) \cdot X, X).
+\]
+Let us define
+\[
+f(t) = g((A_2(t) - A_1(t)) \cdot X, X)
+\]
+so that our assumptions give,
+\[
+f(0) \geq 0, \quad f(\tau) < 0.
+\]
+
+Since \(f\) is continuous on \([0, \tau]\), it attains a negative minimum on \([0, \tau]\). Let
+\[
+m = -\min\{f : 0 \leq t \leq \tau\} > 0
+\]
+and let \(t_1\) be such that
+\[
+f(t_1) = -m.
+\]
+Also by continuity, we may choose \(\lambda > 0\) such that
+\[
+e^{\lambda \tau} \lambda > \frac{1}{m} \max\{|g((A_1^2(t) - A_2^2)\cdot X, X)| : 0 \leq t \leq \tau\}.
+\]
+
+Then we define
+\[
+h(t) = e^{-\lambda t} f(t) = e^{-\lambda t} g((A_2(t) - A_1(t)) \cdot X, X).
+\]
+Then the initial inequality \(f(0) \geq 0\) implies \(h(0) \geq 0\) and the contradiction assumption \(f(\tau) < 0\) implies \(h(\tau) < 0\).
+
+By continuity, we may choose \(t_0\) such that
+\[
+h(t_0) = \min\{h(t) : 0 \leq t \leq \tau\} \leq h(\tau) < 0.
+\]
+Then at \(t_0\) we have
+\[
+h'(t_0) \leq 0.
+\]
+In fact, we will have equality if \(t_0 \ne \tau\) but for our purposes the inequality suffices.
+
+On the other hand, the inequality
+\[
+A_1' + A_1^2 \leq A_2' + A_2'
+\]
+implies that
+\[
+h'(t) = e^{-\lambda t}[g((A_2' - A_1') \cdot X, X) - \lambda g((A_2 - A_1) \cdot X, X)] \geq e^{-\lambda t}[g((A_1^2 - A_2^2) \cdot X, X) - \lambda f(t)].
+\]
+Now recall that \(m = f(t_1)\) is the infimum of \(f\) while the infimum of \(h(t) = e^{-\lambda t} f(t)\) is attained at \(t_0\). Therefore,
+\[
+e^{-\lambda t_0}f(t_0) \leq e^{-\lambda t_1} f(t_1) = -m e^{-\lambda t_1}.
+\]
+That is,
+\[
+f(t_0) \leq -m e^{-\lambda(t_1 - t_0)} \leq -m e^{-\lambda|(t_1 - t_0)|} \leq -m e^{-\lambda \tau}.
+\]
+Note that of course we also have \(-m \leq f(t_0)\) but it's the upper bound that is important here.
+
+Therefore at \(t_0\),
+\begin{split}
+h'(t_0) \geq e^{-\lambda t_0}[g((A_1^2 - A_2^2)(t_0) \cdot X, X) - \lambda f(t_0)] & \geq e^{-\lambda t_0}[g((A_1^2 - A_2^2)(t_0) \cdot X, X) + m \lambda e^{\lambda\tau}] \\
+&\geq e^{-\lambda t_0}[-|g((A_1^2 - A_2^2)(t_0) \cdot X, X)| + m \lambda e^{\lambda\tau}] \\
+&> 0
+\end{split}
+with the last inequality by the choice of \(\lambda\). But this contradicts \(h'(t_0) \leq 0\).
+#+END_proof
+
 * Comparison Theory for Jacobi Fields
 * Averaged Comparison Theory
