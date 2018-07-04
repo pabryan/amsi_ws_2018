@@ -273,4 +273,135 @@ is bounded above so the only way \(A_i\) can blow up is to \(-\infty\) and since
 #+END_proof
 
 * Comparison Theory for Jacobi Fields
+
+Now we may deduce a comparison theorem for Jacobi fields. Let us write \(\lambda_-(A)\) for the minimum eigenvalue of a self adjoint operator \(A\) and \(\lambda_+(A)\) for the maximum eigenvalue. Suppose that there are two operators \(A_1, A_2\) with \(\lambda_+(A_1) \leq \lambda_-(A_2)\), then \(A_1 \leq A_2\). This follows since if \(E_i\) is an orthonormal basis of eigenvectors for \(A_1\) with corresponding eigenvalues \(\lambda_i\), then for any \(X\),
+\[
+\langle A_1(X), X\rangle = \langle A_1(X^i E_i), X^j E_j\rangle = X^i X^j \lambda_i \delta_{ij} = \lambda_i (X^i)^2 \leq \lambda_+(A_1) \sum_i (X^i)^2 = \lambda_+(A_1) \|X\|^2.
+\]
+Likewise, writing \(X\) with respect to an orthonormal basis of eigenvectors for \(A_2\), we have
+\[
+\langle A_2(X), X \rangle \geq \lambda_-(A_2) \|X\|^2.
+\]
+Therefore,
+\[
+\langle A_1(X), X \rangle \leq \lambda_+(A_1)\|X\|^2 \leq \lambda_-(A_2) \|X\|^2 \leq \langle A_2(X), X \rangle.
+\]
+
+The converse however, is false. For example, consider
+\[
+A_1 = \begin{pmatrix}
+1 & 0 \\
+0 & 3
+\end{pmatrix}
+\]
+and
+\[
+A_2 = \begin{pmatrix}
+2 & 0 \\
+0 & 4
+\end{pmatrix}.
+\]
+Then \(A_1 \leq A_2\) but \(\lambda_+(A_1) = 3\) while \(\lambda_-(A_2) = 2\).
+
+Thus the inequality \(\lambda_+(A_1) \leq \lambda_-(A_2)\) is strictly stronger than the inequality \(A_1 \leq A_2\) even in the case that \(A_1, A_2\) are simultaneously diagonalisable as in the example. Note in particular though that
+\[
+\lambda_-(A) \operatorname{Id} \leq A \leq \lambda_+(A) \operatorname{Id}.
+\]
+
+#+BEGIN_thm
+Let \(A_1, A_2\) both be smooth one parameter, self adjoint families of endomorphisms defined on \((0, T)\) and such that
+\[
+\lambda_+(A_1(t)) \leq \lambda_-(A_2(t))
+\]
+Suppose for \(i=1,2\),\(J_i\) are non-zero solutions of \(J_i' = A_i \cdot J\).
+
+Then \(\|J_1\|/\|J_2\|\) is monotonically decreasing. In particular, if
+\[
+\limsup_{t\to 0^+} \frac{\|J_1\|}{\|J_2\|} = C
+\]
+then
+\[
+\|J_1\| \leq C \|J_2\|.
+\]
+
+Moreover, if
+\[
+\lim_{t\to 0} \frac{\|J_1\|}{\|J_2\|} = 1
+\]
+and \(\|J_1\|(\tau) = \|J_2\|(\tau)\) for some \(\tau \in (0, T)\), then for all \(t \in (0, \tau]\),
+\[
+\lambda_+(A_1(t)) = \lambda_-(A_2(t)) := \lambda(t),
+\]
+and \(J_i(0)\) is an eigenvector for \(A_i(t)\) with eigenvalue \(\lambda(t)\) and in fact,
+\[
+J_i(t) = j(t) J_i(0)
+\]
+where \(j\) is uniquely determined by
+\[
+j' = \lambda j, \quad j(0) = 1.
+\]
+#+END_thm
+
+Notice here that we do not require \(J_1, J_2\) to be smooth up to \(t=0\).
+
+#+BEGIN_proof
+As in the discussion above the statement of the theorem, we have for any \(X\),
+\[
+\lambda_- (A_i) \|X\|^2 \leq \langle A_i(X), X \rangle \leq \lambda_+(A_i) \|X\|^2
+\]
+Then since both \(J_i\) are not zero and \(J_i' = A_i J_i\),
+\[
+\frac{\|J_1\|'}{\|J_1\|} = \frac{\langle A_1 J_1, J_1\rangle}{\|J_1\|^2} \leq \lambda_+(A_1) \leq \lambda_-(A_2) \leq \frac{\|J_2\|'}{\|J_2\|}.
+\]
+That is,
+\[
+(\ln \|J_1\|)' \leq (\ln \|J_2\|)'
+\]
+which is equivalent to
+\[
+\left(\ln \frac{\|J_1\|}{\|J_2\|}\right)' =(\ln \|J_1\| - \ln \|J_2\|)' \leq 0
+\]
+so that \(\|J_1\|/\|J_2\|\) is monotonically decreasing (since \(\ln\) is monotonically increasing).
+
+If equality holds at \(t=0\) and \(t=\tau\), then \(\|J_1\| = \|J_2\|\) on \([0, \tau]\) so that we have equality all the way through in
+\[
+\frac{\|J_1\|'}{\|J_1\|} = \frac{\langle A_1 J_1, J_1\rangle}{\|J_1\|^2} \leq \lambda_+(A_1) \leq \lambda_1(A_2) \leq \frac{\|J_2\|'}{\|J_2\|}.
+\]
+
+Then
+\[
+\lambda_+(A_1) = \lambda_-(A_2).
+\]
+
+Also we obtain
+\[
+J_1' = A_1 J_ 1 = \lambda J_1
+\]
+since \(J_1 = J_1^i E_i\) where \(A_1 E_i = \lambda_i E_i\). But if \(J_1^i \ne 0\) for some \(i\) with \(\lambda_i > \lambda_-(A_1) = \lambda\), then
+\[
+\|J_1\|^2 \lambda_-(A_1) = \langle A_i J_i, J_i \rangle = \sum_i \lambda_i (J_1^i)^2 > \sum_i \lambda (J_1^i)^2 = \lambda_-(A_1) \|J_1\|^2
+\]
+a contradiction. Thus
+\[
+J_1 = \sum_{i=1}^k J_1^i E_i
+\]
+where \(A_i E_i = \lambda E_i\) for each \(i\). Thus \(A_1 J_1 = \lambda J_1\).
+
+Now, the unique solution of
+\[
+J' = \lambda J, J(0) = J_1(0)
+\]
+is
+\[
+J_1 = j(t) J_1(0)
+\]
+where \(j' = \lambda j\) and \(j(0) = 1\).
+
+Likewise,
+\[
+J_2' = A_2 J_2 = \lambda J_2
+\]
+and \(J_2 = j(t) J_2(0)\) for the same function \(j(t)\).
+#+END_proof
+
 * Averaged Comparison Theory
