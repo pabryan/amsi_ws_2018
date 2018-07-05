@@ -491,17 +491,17 @@ Recall that we are interested in solutions \(A\) of the Riccati equation when
 R(X) = \operatorname{R}_V(X) = \operatorname{Rm} (X, V) V.
 \]
 
-We already know precisely how \(A\) acts on the tangential directions to \(\gamma\) and so we restrict \(A\) to act only on \(\gamma'(0)^{\perp}\). Note also that in our formulation using parallel transport, since parallel transport is an isometry, the space of parallel fields orthogonal to \(\gamma'(t)\) is determined precisely by \(\gamma'(0)^{\perp}\). Equivalently, since \(A(\gamma') = \nabla_{\gamma'} \gamma' = 0\), when acting on all of \(T_{\gamma{0}} M\), here is always a zero in the tangential direction so we ignore that. Otherwise, below we would have to replace the \(n-1\) identity \operatorname{I} with the matrix that is zero in the top corner and the \(n-1\) identity in the bottom corner which is a little more messy. Since we are interested in taking traces here, it doesn't matter as either matrix has trace equal to \(n-1\) anyway.
+We already know precisely how \(A\) acts on the tangential directions to \(\gamma\) and so we restrict \(A\) to act only on \(\gamma'(0)^{\perp}\). Note also that in our formulation using parallel transport, since parallel transport is an isometry, the space of parallel fields orthogonal to \(\gamma'(t)\) is determined precisely by \(\gamma'(0)^{\perp}\). Equivalently, since \(A(\gamma') = \nabla_{\gamma'} \gamma' = 0\), when acting on all of \(T_{\gamma(0)} M\), there is always a zero in the tangential direction so we ignore that. Otherwise, below we would have to replace the \(n-1\) identity \(\operatorname{I}\) with the matrix that is zero in the top corner and the \(n-1\) identity in the bottom corner which is a little more messy. Since we are interested in taking traces here, it doesn't matter as either matrix has trace equal to \(n-1\) anyway.
 
 So taking the trace of \(\operatorname{R}_V\) we have,
 \[
-\opertaorname{Tr} R = \operatorname{Tr} \operatorname{Rm}(\cdot, V) V = \operatorname{Ric} (V, V).
+\operatorname{Tr} \operatorname{R}_V = \operatorname{Tr} \operatorname{Rm}(\cdot, V) V = \operatorname{Ric} (V, V).
 \]
-We abbreviate the last term as \(\operatorname{Ric}(V) := \operatornmame{Ric}(V, V)\). Then if
+We abbreviate the last term as \(\operatorname{Ric}(V) := \operatorname{Ric}(V, V)\). Then if
 \[
 A' + A^2 + \operatorname{R}_V = 0
 \]
-since the Trace is linear, we obtain
+since the trace is linear, we obtain
 \[
 (\operatorname{Tr} A)' + \operatorname{Tr} A^2 + \operatorname{Ric}(V) = 0.
 \]
@@ -521,7 +521,7 @@ Now, let
 \]
 be the trace free part of \(A\). Then
 \[
-\operatorname{Tr} A^2 = \operatorname{Tr}(\overset{\circ}{A} + a \operatorname{Id})^2 = \operatorname{Tr}(\overset{\circ}{A}^2 + 2 \operatorname{Tr}(a \overset{\circ}{A}) + \operatorname{Tr} a^2 \operatorname{Id} = (n-1) a^2 + \operatorname{Tr}(\overset{\circ}{A}^2.
+\operatorname{Tr} A^2 = \operatorname{Tr}(\overset{\circ}{A} + a \operatorname{Id})^2 = \operatorname{Tr}\overset{\circ}{A}^2 + 2 \operatorname{Tr}(a \overset{\circ}{A}) + \operatorname{Tr} a^2 \operatorname{Id} = (n-1) a^2 + \operatorname{Tr}\overset{\circ}{A}^2.
 \]
 Then letting
 \[
@@ -529,12 +529,13 @@ r = \frac{1}{n-1}\left(\operatorname{Tr}(\overset{\circ}{A}^2 + \operatorname{Ri
 \]
 we have
 \[
-r \geq \frac{1}{n-1} \operatorname{Ric}(V)
-\]
-and
-\[
 a' + a^2 + r = 0.
 \]
+Notice that \(r\) satisfies
+\[
+r \geq \frac{1}{n-1} \operatorname{Ric}(V)
+\]
+since for a self adjoint matrix \(B\), we have \(\operatorname{Tr} B = \lambda_1^2 + \cdots + \lambda_{n-1}^2 \geq 0\) where \(\lambda_i\) are the eigenvalues of \(B\).
 
 An easy consequence of the Riccati comparison theorem is the /averaged Ricci comparison theorem/, so called because the Trace is an averaging operator (e.g. in terms of eigenvalues, the trace is the unnormalised average).
 
