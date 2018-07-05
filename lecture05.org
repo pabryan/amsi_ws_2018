@@ -4,6 +4,9 @@
 
 * Topogonov Triangle Theorem
 * Homeomorphic sphere theorem
-* Some remarks on differentiable sphere theorem and Brendle-Schoen
+* Some remarks on differentiable sphere theorem of Brendle-Schoen
 
 See Andrews-Hopper.
+* Some remarks on Milnor conjecture and open manifolds
+
+See https://arxiv.org/pdf/math/0606774.pdf
