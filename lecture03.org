@@ -422,7 +422,7 @@ Then \(\|J_1(t)\| \leq \|J_2(t)\|\) for all \(t \in [0, T)\) such that \(J_1(t) 
 #+END_cor
 
 #+BEGIN_proof
-As already noted, the assumptions on \(R_i\) imply that \(R_1 \geq R_2\). The trick here is to define initial conditions \(A_1(0), A_2(0)\). Suppose for the moment that we have those in hand with \(A_1(0) \leq A_2(0)\). Then the comparison theorem applies to give \(A_1 \leq A_2\). If we make the stronger initial assumption, \(\lambda_+(A(0)) \leq \lambda_-(A(0))\), then the stronger assumption \(\lambda_-(R_1) \geq \lambda_+(R_2)\) actually implies the stronger conclusion that \(\lambda_+(A_1) \leq \lambda_-(A_2)\).
+As already noted, the assumptions on \(R_i\) imply that \(R_1 \geq R_2\). The trick here is to define initial conditions \(A_1(0), A_2(0)\). Suppose for the moment that we have those in hand with \(A_1(0) \leq A_2(0)\). Then the comparison theorem applies to give \(A_1 \leq A_2\). If we make the stronger initial assumption, \(\lambda_+(A(0)) \leq \lambda_-(A(0))\), then the stronger assumption \(\lambda_-(R_1) \geq \lambda_+(R_2)\) actually implies the stronger conclusion that \(\lambda_+(A_1) \leq \lambda_-(A_2)\) (see exercise below).
 
 Then we may apply the Jacobi field comparison to conclude that while both \(J_1\) and \(J_2\) are non-zero we have
 \[
@@ -442,13 +442,17 @@ as \(t \to 0\). Then we may apply the Riccati comparison to conclude \(A_1(t) \l
 #+END_proof
 
 #+BEGIN_ex
-Show that if we make the stronger initial assumption, \(\lambda_+(A_2(0)) \leq \lambda_-(A_1(0))\), then the stronger assumption \(\lambda_-(R_1) \geq \lambda_+(R_2)\) actually implies the stronger conclusion that \(\lambda_+(A_1) \leq \lambda_-(A_2)\).
+Show that if we make the stronger initial assumption, \(\lambda_+(A_1(0)) \leq \lambda_-(A_2(0))\) then the stronger assumption \(\lambda_-(R_1) \geq \lambda_+(R_2)\) actually implies the stronger conclusion that \(\lambda_+(A_1) \leq \lambda_-(A_2)\).
 
-/Hint/: The assumptions actually imply that for any \(X, Y\) with \(\|X\| = \|Y\| = 1\) we have
+/Hint/: Use the initial conditions,
 \[
-g(A_2(0) \cdot X, X) \leq g(A_1(0) \cdot Y, Y)
+A_1(0) \leq \lambda_+(A_1(0))\operatorname{Id} \leq \lambda_-(A_2(0)) \operatorname{Id} \leq A_2(0).
 \]
-and similar for \(R_1, R_2\).
+and the assumption \(\lambda_-(R_1) \geq \lambda_+(R_2)\). Show that
+\[
+\lambda_+(A_1(t)) \leq \lambda_+(\bar{A}_1(t))
+\]
+where \(\bar{A}_1(t)\) solves the Riccati equation with initial condition \(\lambda_+(A_1(0))\operatorname{Id}\) and \(\bar{R}_1 = \lambda_+(R_1) \operatorname{Id}\). Similar for \(A_2\).
 #+END_ex
 
 #+BEGIN_ex
@@ -462,7 +466,7 @@ A \sim \frac{1}{t} \operatorname{Id}
 \]
 as \(t \to 0\).
 
-See the Theorem on p. 210 and also Remark 2 in [[https://doi.org/10.1007/BF02568760][Comparison theory for Riccati equations by J.-H. Eschenburg and E. Heintze, Manuscripta Math. 68, 209 - 214 (1990)]]
+See pp. 210-212 in [[https://doi.org/10.1007/BF02568760][Comparison theory for Riccati equations by J.-H. Eschenburg and E. Heintze, Manuscripta Math. 68, 209 - 214 (1990)]]
 #+END_ex
 
 #+BEGIN_cor
