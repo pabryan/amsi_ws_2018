@@ -2,7 +2,7 @@
 
 #+TITLE: Applications of Comparison Theory
 
-* Jacobi Fields and the Exponential Map
+* Jacobi Fields, Conjugate Points and the Exponential Map
 
 Here we see how Jacobi fields arise as variations of the exponential map. This should be of no surprise since Jacobi fields are variations of geodesics and the exponential map is defined in terms of geodesics.
 
@@ -75,6 +75,80 @@ Since we know that \(d(\exp_x)_0\) is non-singular we must have \(t > 0\) and ta
 J(t) = d(\exp_x)_{tX} (t t^{-1} Y) = 0.
 \]
 #+END_proof
+
+* Metric Balls and the Cut Locus
+
+#+BEGIN_defn
+The open (metric) ball \(B_r(x)\) of radius \(r>0\) and centre \(x \in M\) is the set
+\[
+B_r(x) = \{y : d(x, y) < r\}.
+\]
+The closed ball has the inequality replaced by equality.
+#+END_defn
+
+Let \(X \in T_x M\) with \(|X| < r\). That is \(X \in B_r(0) \subseteq T_x M\). Then
+\[
+d(x, \exp_x(X)) \leq L[\gamma_X(1)] = \int_0^1 |\gamma'(t)| dt = \int_0^1 |X| dt = |X| < r.
+\]
+Thus
+\[
+\lvert X\rvert < r \Rightarrow \exp_x(X) \in B_r(x).
+\]
+Conversely, by the Hopf-Rinow theorem, if \(y \in B_r(x)\), there exists a length minimising geodesic \(\gamma\) joining \(x\) to \(y\). Let
+\[
+X = \frac{d(x, y)}{|\gamma'(0)|} \gamma'(0)
+\]
+so that
+\[
+\lvert X\rvert = d(x, y) < r
+\]
+and hence \(X \in B_r(0)\) such that
+\[
+\exp_x(X) = \gamma_X(1) = y.
+\]
+That is
+\[
+y \in \exp_x(B_r(0)).
+\]
+
+Therefore,
+\[
+B_r(x) = \exp_x(B_r(0)).
+\]
+
+In fact, as just observed if \(y \in B_r(x)\), then there exists an \(X \in B_r(0) \subseteq T_x M\) such that \(d(x, y) = L[\gamma_X]\) and \(y = \exp_x(X)\). In other words, \(\gamma_X\) minimises length between \(x\) and \(\gamma_x(t)\) for each \(t \in [0, 1]\): /if there were a shorter geodesic \(\mu\) joining \(x\) to \(\gamma_X(t)\) for some \(t \in (0, 1)\), then following first \(\mu\) from \(x\) to \(\gamma_X(t)\), and then \(\gamma_X\) to \(y\) would give a shorter geodesic joining \(x\) to \(y\).
+
+#+BEGIN_defn
+Let,
+\[
+C_x = \{X \in T_x M : \gamma_X \text{ minimises length for all } t \in [0, 1]\}.
+\]
+The boundary \(\partial C_x\) is called the /cut locus/ of \(x \in M\). The interior, \(\overset{\circ}{C_x}\) is called the /injectivity domain/.
+#+END_defn
+
+Notice that homogeneity of geodesics, \(\gamma_{tX}(s) = \gamma_X (ts)\), if \(X \in C_x\), then so is \(\lambda X\)for all \(\lambda \in [0, 1]\). Thus \(C_x\) is /star shaped/. Moreover, by the Hopf-Rinow theorem, \(M = \exp_x(C_x\).
+
+On the other hand, for \(X \in \overset{\circ}{C_x}\), there does not exist any other \(Y \in \overset{\circ}{C_x}\) such that \(\exp_x(X) = \exp_x(Y)\). This follows since if there is another geodesic \(\mu\) minimising length between \(x\) and \(y = \exp_x(X) = \gamma_X(1)\), then \(\gamma_X\) does not minimise length from \(x\) to \(\gamma_X(1+\epsilon)\) for any \(\epsilon\). The reason for this is that one can prove minimising geodesics are smooth and hence \(mu\) must be parallel or anti-parallel with \(\gamma_X\) at \(y\) so either \(\mu = \gamma_X\), or \(\mu\) meets \(\gamma_X\) coming from the other direction and hence minimises length to \(\gamma_X(1 + \epsilon) = \mu(1-\epsilon)\).
+
+*In other words, \(\exp_x\) is injective on \(\overset{\circ}{C_x}\).*
+
+Now, as in Eschenburg chapter 5 and the references therein, a geodesic \(\gamma\) fails to minimise length from \(x = \gamma(0)\) to \(y = \gamma(1)\) only if either there exists another minimising geodesic joining \(x\) to \(y\) or if \(y\) is a conjugate point to \(x\) along \(\gamma\). We just observed the first possibility and so what remains to prove is that a geodesic does not minimise past a conjugate point (see Eschenburg for the reference to the proof). Thus since \(X \in \overset{\circ}{C_x}\) implies \(\gamma_X\) minimises up to \(1 + \epsilon\) for some \(\epsilon > 0\), neither possibility occurs. Then not only is \(\exp_x\) injective on \(\overset{\circ}{C_x}\) it also is an immersion since \(\d(\exp_x)_X Y = J(t)\) for a Jacobi field along \(\gamma_X\) and since \(\gamma_X\) has no conjugate points \(J(t) \ne 0\) unless \(Y = 0\).
+
+*In other words, \(\exp_x\) is an immersion on \(\overset{\circ}{C_x}\).*
+
+#+BEGIN_rem
+Therefore in fact \(\exp_x\) is an injective immersion from \(\overset{\circ}{C_x} \to M\). In fact, it is an embedding and hence \(\exp_x\) is diffeomorphic with it's image. Moreover since \(M = \exp_x C_x\) and \(C_x = \overline{\oveset{\circ}{C_x}}\) is the closure of \(\overset{\circ}{C_x}\).
+
+Therefore \(\exp_x(\overset{\circ}{C_x})\) is a dense, open, contractible subset of \(M\). Since contractible sets have trivial topology, *all* the topology of \(M\) is contained in the boundary \(\partial C_x\)! Another way to put this is that the map \(\exp_x : C_x \to M\) is a surjective map from a topologically trivial set onto \(M\) and thus all the topological information is contained in the map \(\exp_x\) and what's more that information is encoded precisely on the \(\exp_x\) restricted to the boundary. Since the topology of a manifold can be arbitrarily complex, the behaviour of \(\exp_x\) can be arbitrarily bad along the boundary.
+#+END_rem
+
+#+BEGIN_rem
+We have
+\[
+B_r(x) = \exp_x(B_r(0) \cap C_x).
+\]
+This just follows since as discussed above, for any \(y \in M\), there always exists \(X \in C_x\) such that \(\gamma_X\) is length minimising; that is since \(\exp_x : C_x \to M\) is a surjection.
+#+END_rem
 
 * Cheng-Bonnet-Myers Diameter Theorem in Positive Curvature
 
