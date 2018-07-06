@@ -132,12 +132,12 @@ On the other hand, for \(X \in \overset{\circ}{C_x}\), there does not exist any 
 
 *In other words, \(\exp_x\) is injective on \(\overset{\circ}{C_x}\).*
 
-Now, as in Eschenburg chapter 5 and the references therein, a geodesic \(\gamma\) fails to minimise length from \(x = \gamma(0)\) to \(y = \gamma(1)\) only if either there exists another minimising geodesic joining \(x\) to \(y\) or if \(y\) is a conjugate point to \(x\) along \(\gamma\). We just observed the first possibility and so what remains to prove is that a geodesic does not minimise past a conjugate point (see Eschenburg for the reference to the proof). Thus since \(X \in \overset{\circ}{C_x}\) implies \(\gamma_X\) minimises up to \(1 + \epsilon\) for some \(\epsilon > 0\), neither possibility occurs. Then not only is \(\exp_x\) injective on \(\overset{\circ}{C_x}\) it also is an immersion since \(\d(\exp_x)_X Y = J(t)\) for a Jacobi field along \(\gamma_X\) and since \(\gamma_X\) has no conjugate points \(J(t) \ne 0\) unless \(Y = 0\).
+Now, as in Eschenburg chapter 5 and the references therein, a geodesic \(\gamma\) fails to minimise length from \(x = \gamma(0)\) to \(y = \gamma(1)\) only if either there exists another minimising geodesic joining \(x\) to \(y\) or if \(y\) is a conjugate point to \(x\) along \(\gamma\). We just observed the first possibility and so what remains to prove is that a geodesic does not minimise past a conjugate point (see Eschenburg for the reference to the proof). Thus since \(X \in \overset{\circ}{C_x}\) implies \(\gamma_X\) minimises up to \(1 + \epsilon\) for some \(\epsilon > 0\), neither possibility occurs. Then not only is \(\exp_x\) injective on \(\overset{\circ}{C_x}\) it is also an immersion since \(d(\exp_x)_X Y = J(t)\) for a Jacobi field along \(\gamma_X\) and since \(\gamma_X\) has no conjugate points \(J(t) \ne 0\) unless \(Y = 0\).
 
 *In other words, \(\exp_x\) is an immersion on \(\overset{\circ}{C_x}\).*
 
 #+BEGIN_rem
-Therefore in fact \(\exp_x\) is an injective immersion from \(\overset{\circ}{C_x} \to M\). In fact, it is an embedding and hence \(\exp_x\) is diffeomorphic with it's image. Moreover since \(M = \exp_x C_x\) and \(C_x = \overline{\oveset{\circ}{C_x}}\) is the closure of \(\overset{\circ}{C_x}\).
+Therefore in fact \(\exp_x\) is an injective immersion from \(\overset{\circ}{C_x} \to M\). In fact, it is an embedding and hence \(\exp_x\) is diffeomorphic with it's image. Moreover since \(M = \exp_x C_x\) and \(C_x = \overline{\overset{\circ}{C_x}}\) is the closure of \(\overset{\circ}{C_x}\).
 
 Therefore \(\exp_x(\overset{\circ}{C_x})\) is a dense, open, contractible subset of \(M\). Since contractible sets have trivial topology, *all* the topology of \(M\) is contained in the boundary \(\partial C_x\)! Another way to put this is that the map \(\exp_x : C_x \to M\) is a surjective map from a topologically trivial set onto \(M\) and thus all the topological information is contained in the map \(\exp_x\) and what's more that information is encoded precisely on the \(\exp_x\) restricted to the boundary. Since the topology of a manifold can be arbitrarily complex, the behaviour of \(\exp_x\) can be arbitrarily bad along the boundary.
 #+END_rem
@@ -250,14 +250,14 @@ r \mapsto \frac{\operatorname{Vol} B_r(x)}{\operatorname{Vol} \bar{B}_r}
 \]
 is monotonically decreasing down to \(1\). In particular, for \(r_1 < r_2\),
 \[
-\frac{\operatorname{Vol} B_{r_2}(x)}{\operatorname{Vol} B_{r_1}(x) \leq \frac{\operatorname{Vol} \bar{B}_{r_2}}{\operatorname{Vol} \bar{B}_{r_1}}
+\frac{\operatorname{Vol} B_{r_2}(x)}{\operatorname{Vol} B_{r_1}(x)} \leq \frac{\operatorname{Vol} \bar{B}_{r_2}}{\operatorname{Vol} \bar{B}_{r_1}}
 \]
 If equality holds at some \(r_1 < r_2\) then \(B_{r_2}(x)\) is isometric to \(\bar{B}_{r_1}\).
 #+END_thm
 
 Another way to phrase the last inequality is that for say \(r > 1\),
 \[
-\frac{\operatorname{Vol} B_{r}(x)} \leq \frac{\operatorname{Vol} B_1(x)}{\operatorname{Vol} \bar{B}_1} \operatorname{Vol} \bar{B}_r = C(x) \operatorname{Vol} \bar{B}_r
+\operatorname{Vol} B_{r}(x) \leq \frac{\operatorname{Vol} B_1(x)}{\operatorname{Vol} \bar{B}_1} \operatorname{Vol} \bar{B}_r = C(x) \operatorname{Vol} \bar{B}_r
 \]
 and we get an estimate for the growth rate of the volume of metric balls.
 
@@ -268,9 +268,9 @@ We have
 \]
 is a diffeomorphism onto a dense subset of \(B_r(x)\) so that
 \[
-\operatorname{Vol} (B_r(x)) = \int_{\overset{\circ}{C_x} \to B_r(x)} \det(d(\exp_x)_X) dX.
+\operatorname{Vol} (B_r(x)) = \int_{B_r(0) \cap \overset{\circ}{C_x}} \det(d(\exp_x)_X) dX.
 \]
-For \(X \in T_x M\) with \(\|X\| = 1\) (i.e. \(X \in \mathbb{S}^{n-1}\), let \(\operatorname{cut}(X) = \sup\{t : \gamma_X \text{ is minimising} \}\) and \(r(X) = \min\{r, \operatorname{cut}(X)}\). Then in polar coordinates,
+For \(X \in T_x M\) with \(\|X\| = 1\) (i.e. \(X \in \mathbb{S}^{n-1}\), let \(\operatorname{cut}(X) = \sup\{t : \gamma_X \text{ is minimising} \}\) and \(r(X) = \min\{r, \operatorname{cut}(X)\}\). Then in polar coordinates,
 \[
 \operatorname{Vol} (B_r(x)) = \int_{\mathbb{S}^{n-1}} \int_0^{r(v)} \det(d(\exp_x)_{tX}) t^{n-1} dt dX.
 \]
@@ -289,12 +289,12 @@ and
 
 Then \(j/\bar{j}\) is monotonically decreasing where \(\bar{j}\) is the corresponding quantity in constant curvature. Therefore the function
 \[
-q(t) = \frac{1}{\operatorname{Vol}(\mathbb{S}^{n-1})} \int_{\mathbb{S}^{n-1}] \frac{j_X(t)}{\bar{j}(t)} dX
+q(t) = \frac{1}{\operatorname{Vol} \mathbb{S}^{n-1} } \int_{\mathbb{S}^{n-1}} \frac{j_X(t)}{\bar{j}(t)} dX
 \]
 is also monotone decreasing.
 Then
 \[
-\frac{\operatorname{Vol} B_r(x)}{\operatorname{Vol} \bar{B}_r} = \frac{\int_0^r \int_{\mathbb{S}^{n-1}} j_X(t) dt dX}{\operatorname{Vol} \mathbb{S}^{n-1} \int_0^r \bar{j}(t) dt} =  \frac{\int_0^r q(t) \bar{j}(t)}{\int_0^r \bar{j}(t) dt}
+\frac{\operatorname{Vol} B_r(x)}{\operatorname{Vol} \bar{B}_r} = \frac{\int_0^r \int_{\mathbb{S}^{n-1}} j_X(t) dt dX}{\operatorname{Vol} \mathbb{S}^{n-1} \int_0^r \bar{j}(t) dt} =  \frac{\int_0^r q(t) \bar{j}(t) dt}{\int_0^r \bar{j}(t) dt}
 \]
 is the mean of \(\bar{q}\) with respect to the non-negative, weighted measure \(\bar{j}(t) dt\). But means of decreasing functions are decreasing in the upper limit of integration \(r\).
 #+END_proof
@@ -302,7 +302,7 @@ is the mean of \(\bar{q}\) with respect to the non-negative, weighted measure \(
 #+BEGIN_ex
 Prove that if \(q\) is a decreasing function and \(\bar{j} \geq 0\), then
 \[
-r \mapsto \frac{\int_0^r q(t) \bar{j}(t)}{\int_0^r \bar{j}(t) dt}
+r \mapsto \frac{\int_0^r q(t) \bar{j}(t) dt}{\int_0^r \bar{j}(t) dt}
 \]
 is decreasing. /Hint/: Differentiate with respect to \(r\).
 #+END_ex
