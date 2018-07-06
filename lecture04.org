@@ -236,3 +236,73 @@ The theorem implies that both \(M\) and its universal cover \(\hat{M}\) have fin
 #+END_proof
 
 * Bishop-Gromov Volume Comparison Theorem
+
+Next we a theorem on the growth of the volume of metric balls.
+
+#+BEGIN_thm
+Let \((M, g)\) be a complete manifold with
+\[
+\operatorname{Ric} \geq k(n-1)
+\]
+where \(k \in \mathbb{R}\). Let \(\bar{B}_r\) be a ball of radius \(r > 0\) in \((\bar{M}, g_k)\) the complete, simply connected manifold of constant sectional curvature \(k\) (sphere, Euclidean space or hyperbolic space). Then for any \(x \in M\) writing \(B_r(x)\) for the ball of radius \(r\), the function
+\[
+r \mapsto \frac{\operatorname{Vol} B_r(x)}{\operatorname{Vol} \bar{B}_r}
+\]
+is monotonically decreasing down to \(1\). In particular, for \(r_1 < r_2\),
+\[
+\frac{\operatorname{Vol} B_{r_2}(x)}{\operatorname{Vol} B_{r_1}(x) \leq \frac{\operatorname{Vol} \bar{B}_{r_2}}{\operatorname{Vol} \bar{B}_{r_1}}
+\]
+If equality holds at some \(r_1 < r_2\) then \(B_{r_2}(x)\) is isometric to \(\bar{B}_{r_1}\).
+#+END_thm
+
+Another way to phrase the last inequality is that for say \(r > 1\),
+\[
+\frac{\operatorname{Vol} B_{r}(x)} \leq \frac{\operatorname{Vol} B_1(x)}{\operatorname{Vol} \bar{B}_1} \operatorname{Vol} \bar{B}_r = C(x) \operatorname{Vol} \bar{B}_r
+\]
+and we get an estimate for the growth rate of the volume of metric balls.
+
+#+BEGIN_proof
+We have
+\[
+\exp_x : B_r(0) \cap \overset{\circ}{C_x} \to B_r(x)
+\]
+is a diffeomorphism onto a dense subset of \(B_r(x)\) so that
+\[
+\operatorname{Vol} (B_r(x)) = \int_{\overset{\circ}{C_x} \to B_r(x)} \det(d(\exp_x)_X) dX.
+\]
+For \(X \in T_x M\) with \(\|X\| = 1\) (i.e. \(X \in \mathbb{S}^{n-1}\), let \(\operatorname{cut}(X) = \sup\{t : \gamma_X \text{ is minimising} \}\) and \(r(X) = \min\{r, \operatorname{cut}(X)}\). Then in polar coordinates,
+\[
+\operatorname{Vol} (B_r(x)) = \int_{\mathbb{S}^{n-1}} \int_0^{r(v)} \det(d(\exp_x)_{tX}) t^{n-1} dt dX.
+\]
+Letting \(e_1, \cdots, e_{n-1}\) be a basis for \(X^{\perp}\) gives
+\[
+d(\exp_x)_{tX} e_i = \frac{1}{t} d(\exp_x)_{tX} t e_i = \frac{1}{t} J_i(t)
+\]
+where \(J_i\) is the Jacobi field with \(J_i(0) = 0\), \(J_i'(0) = e_i\). Therefore
+\[
+\det d(\exp_x)_{tX} = \frac{1}{t^{n-1}} j_X
+\]
+and
+\[
+\operatorname{Vol} (B_r(x)) = \int_{\mathbb{S}^{n-1}} \int_0^{r(v)} j(t) dt dX.
+\]
+
+Then \(j/\bar{j}\) is monotonically decreasing where \(\bar{j}\) is the corresponding quantity in constant curvature. Therefore the function
+\[
+q(t) = \frac{1}{\operatorname{Vol}(\mathbb{S}^{n-1})} \int_{\mathbb{S}^{n-1}] \frac{j_X(t)}{\bar{j}(t)} dX
+\]
+is also monotone decreasing.
+Then
+\[
+\frac{\operatorname{Vol} B_r(x)}{\operatorname{Vol} \bar{B}_r} = \frac{\int_0^r \int_{\mathbb{S}^{n-1}} j_X(t) dt dX}{\operatorname{Vol} \mathbb{S}^{n-1} \int_0^r \bar{j}(t) dt} =  \frac{\int_0^r q(t) \bar{j}(t)}{\int_0^r \bar{j}(t) dt}
+\]
+is the mean of \(\bar{q}\) with respect to the non-negative, weighted measure \(\bar{j}(t) dt\). But means of decreasing functions are decreasing in the upper limit of integration \(r\).
+#+END_proof
+
+#+BEGIN_ex
+Prove that if \(q\) is a decreasing function and \(\bar{j} \geq 0\), then
+\[
+r \mapsto \frac{\int_0^r q(t) \bar{j}(t)}{\int_0^r \bar{j}(t) dt}
+\]
+is decreasing. /Hint/: Differentiate with respect to \(r\).
+#+END_ex
